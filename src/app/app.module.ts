@@ -7,6 +7,10 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProblemsComponent } from './problems/problems.component';
 import { HighlightsComponent } from './highlights/highlights.component';
+import { LoginComponent } from './login/login.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -15,10 +19,14 @@ import { HighlightsComponent } from './highlights/highlights.component';
     CarouselComponent,
     FooterComponent,
     ProblemsComponent,
-    HighlightsComponent
+    HighlightsComponent,
+    LoginComponent,
+    HomepageComponent,
+    LoginPageComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

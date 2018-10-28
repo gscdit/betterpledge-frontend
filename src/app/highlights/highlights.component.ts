@@ -11,5 +11,6 @@ export class HighlightsComponent implements OnInit {
 
   ngOnInit() {
   }
+  
 
 }
