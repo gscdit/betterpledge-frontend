@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CarouselComponent } from './carousel/carousel.component';
@@ -15,13 +16,12 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { WorkersComponent } from './workers/workers.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { trigger,
-  state,
-  style,
-  animate,
-  transition } from '@angular/animations';
 import { RegisterComponent } from './register/register.component';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { HttpService } from './Service/http.service';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthService } from './Service/auth-service.service';
+import { AuthGuard } from './auth.guard';
+import { TokenInterceptorService } from './Service/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -42,9 +42,16 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    
+    HttpClientModule,
     BrowserAnimationsModule,
-    MatButtonModule, MatCheckboxModule],
-  providers: [],
+  ],
+  providers: [HttpService,AuthService,AuthGuard,TokenInterceptorService,{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

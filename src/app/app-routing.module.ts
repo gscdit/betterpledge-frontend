@@ -8,7 +8,7 @@ import { ContactComponent } from "./contact/contact.component";
 import { WorkersComponent } from "./workers/workers.component";
 import { RegisterComponent } from "./register/register.component";
 const appRoutes: Routes = [
-  { path:'',redirectTo:'/Home',pathMatch:'full'},
+{ path:'',redirectTo:'/Home',pathMatch:'full'},
 { path:'Home',component:HomepageComponent},
 { path:'Login',component:LoginPageComponent},
 { path:'About',component:AboutComponent},
