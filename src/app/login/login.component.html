@@ -13,18 +13,27 @@
       <div class="card-body">
 
           <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-     
+            <div *ngIf="invalidLogin" class="alert alert-danger" style="text-align:center">Invalid username or password.</div>
               <div class="col  form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" ngModel class="form-control" required>
+                <input type="email" id="email" name="email" ngModel class="form-control" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]+)$" >
+                <!-- <span class="help-block" *ngIf="email.touched && email.errors?.required" style="color:red">Email is required</span>
+                <span class="help-block" *ngIf="email.touched && email.invalid  && !email.errors?.required" style="color:red">Please enter valid email</span> -->
               </div>
+              
              
               <div class="col  form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" ngModel class="form-control" required>
+                <input type="password" id="password" name="password" ngModel class="form-control" required  minlength="8" maxlength="32">
+                <!-- <span class="help-block" *ngIf="password.touched && password.errors?.required" style="color:red">Password
+                  is required</span>
+                  
+                <span class="help-block" *ngIf="password.touched && password.invalid  && !password.errors?.required" style="color:red">Please enter valid password</span> -->
               </div>
+              
              
-              <button type="submit" class="col btn btn-primary" [disabled]="!f.valid">Sign in</button>
+              <button type="submit"  class="pull-right btn btn-primary" [disabled]="!f.valid">Sign in</button><br><br>
+             
             </form>
       </div>
     </div>

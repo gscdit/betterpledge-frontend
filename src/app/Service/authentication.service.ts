@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-  
-
-private _registerUrl="http://7fe6adf7.ngrok.io/beneficiary"
-private _loginUrl="http://7fe6adf7.ngrok.io/login"
+export class AuthenticateService {
+private _registerUrl="http://obv53599.pythonanywhere.com/beneficiary"
+private _loginUrl="http://obv53599.pythonanywhere.com/login"
   constructor(private http:HttpClient,private router:Router) { }
 
   register(user){
@@ -19,6 +17,7 @@ private _loginUrl="http://7fe6adf7.ngrok.io/login"
    return this.http.post<any>(this._loginUrl,user) 
   }
   loggedin(){
+    
     return !!localStorage.getItem('token')
   }
   getToken(){
@@ -27,6 +26,11 @@ private _loginUrl="http://7fe6adf7.ngrok.io/login"
   logout(){
      localStorage.removeItem('token')
     this.router.navigate(['/Home'])
-
+  }
+   currentUser(){
+    let token=localStorage.getItem('token')
+    let jwthelper=new JwtHelperService();
+    // console.log(jwthelper.decodeToken(token))
+    return jwthelper.decodeToken(token)
   }
 }
