@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-declare var $:any;
-
+import * as $ from "jquery"
 @Component({
   selector: 'app-highlights',
   templateUrl: './highlights.component.html',
@@ -36,6 +34,7 @@ export class HighlightsComponent implements OnInit {
         }
       });
     });
+    
   }
 
  

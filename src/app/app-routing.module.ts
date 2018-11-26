@@ -7,6 +7,9 @@ import { AboutComponent } from "./about/about.component";
 import { ContactComponent } from "./contact/contact.component";
 import { WorkersComponent } from "./workers/workers.component";
 import { RegisterComponent } from "./register/register.component";
+import { MyProfileComponent } from "./my-profile/my-profile.component";
+import { MyOrderComponent } from "./my-order/my-order.component";
+import { AuthGuard } from "./auth.guard";
 const appRoutes: Routes = [
 { path:'',redirectTo:'/Home',pathMatch:'full'},
 { path:'Home',component:HomepageComponent},
@@ -14,7 +17,9 @@ const appRoutes: Routes = [
 { path:'About',component:AboutComponent},
 { path:'Contact',component:ContactComponent},
 { path:'Services',component:WorkersComponent},
-{ path:'Register',component:RegisterComponent}
+{ path:'Register',component:RegisterComponent},
+{path:'Profile',component:MyProfileComponent,canActivate:[AuthGuard]},
+{path:'Order',component:MyOrderComponent,canActivate:[AuthGuard]}
 ];
 @NgModule({
     imports: [

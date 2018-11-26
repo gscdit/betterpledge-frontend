@@ -1,0 +1,101 @@
+<app-header></app-header>
+<div class="container d1">
+  <h4>My Account </h4>
+</div>
+<div class="container d2">
+  <div class="row">
+    <div class="col-lg-4">
+      <div>
+        <div class="card">
+          <div class="card-body">
+            <span>
+              <img class="propic img img-responsive" src="" style="height: 50px; width:50px;" alt="Avatar">
+              <strong>Welcome {{authenticateService.currentUser().name }} </strong>
+            </span>
+
+          </div>
+        </div>
+      </div>
+      <div class="more-info">
+        <div class="card d3">
+          <div class="card-body">
+            <h5>Other Links</h5>
+            <hr>
+            <button class="btn btn-success">Order History</button>
+            <button class="btn btn-danger pull-right">WishList</button>
+
+          </div>
+        </div>
+      </div><br>
+    </div>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <form (ngSubmit)="onSave(f)" #f="ngForm">
+            <div class="card">
+              <div class="card-body">
+                <h5> <span> <i class="fa fa-user"></i> &nbsp; Personal Information </span></h5>
+                <hr>
+
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="First Name: {{authenticateService.currentUser().name}}"
+                  readonly>
+                <input class="form-control" type="text" name="first_name" [(ngModel)]="title.name" *ngIf="edit" placeholder="First Name"  ngModel><br>
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="Last Name: {{authenticateService.currentUser().name}}"
+                  readonly>
+                <input class="form-control" type="text" name="last_name" [(ngModel)]="title.name" *ngIf="edit" placeholder="Last Name" ngModel>
+              </div>
+            </div>
+            <div class="card d3">
+              <div class="card-body">
+                <h5> <span> <i class="fa fa-inbox"></i> &nbsp; Username</span> </h5>
+                <hr>
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="{{authenticateService.currentUser().username}}"
+                  readonly>
+                <input class="form-control" type="text" name="username" [(ngModel)]="title.usernamename" *ngIf="edit" placeholder="Username" ngModel>
+              </div>
+            </div>
+            <div class="card d3">
+              <div class="card-body">
+                <h5> <span> <i class="fa fa-inbox"></i> &nbsp; Email Address</span> </h5>
+                <hr>
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="{{authenticateService.currentUser().username}}"
+                  readonly>
+                <input class="form-control" type="text" name="email" *ngIf="edit" [(ngModel)]="title.email" placeholder="Email Address" ngModel>
+              </div>
+            </div>
+            <div class="card d3">
+              <div class="card-body">
+                <h5> <span> <i class="fa fa-mobile"></i> &nbsp; Mobile Number </span> </h5>
+                <hr>
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="{{authenticateService.currentUser().username}}"
+                  readonly>
+                <input class="form-control" type="text" *ngIf="edit" name="phone_no" [(ngModel)]="title.phone_no" placeholder="Mobile Number" ngModel>
+              </div>
+            </div>
+            <div class="card d3">
+              <div class="card-body">
+                <h5> <span> <i class="fa fa-map-marker"></i> &nbsp; Address</span> </h5>
+                <hr>
+
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="{{authenticateService.currentUser().username}}"
+                  readonly>
+                <textarea class="form-control" *ngIf="edit" name="address" id="exampleFormControlTextarea1" [(ngModel)]="title.address" rows="3" ngModel
+                  placeholder="Address..."></textarea>
+
+
+              </div>
+            </div><br>
+            <Button class="btn btn-success"  *ngIf="edit" type="submit">Save Change</Button>
+            <Button class="btn btn-danger pull-right" type="button" (click)="onEdit()">{{edit ? 'Cancel':'Edit Profile'}}</Button>
+
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div><br>
+
+
+</div>
+<app-footer></app-footer>

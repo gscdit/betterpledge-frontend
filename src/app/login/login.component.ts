@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthenticateService } from '../Service/authentication.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   invalidLogin: boolean;
 
-  constructor(private authService:AuthenticateService,private router:Router) { }
+  constructor(private authService:AuthenticateService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -19,8 +19,9 @@ export class LoginComponent implements OnInit {
   onSubmit(form:NgForm){
     this.authService.login(form.value).subscribe(
       response=>{console.log(response)
+        let returnUrl=this.route.snapshot.queryParamMap.get('returnUrl')
       localStorage.setItem('token',response.token)//(key,value)
-       this.router.navigate(['/'])
+       this.router.navigate([returnUrl || '/'])
       },
       error=>{
         console.log(error)

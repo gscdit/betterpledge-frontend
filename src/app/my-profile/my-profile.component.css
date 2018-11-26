@@ -1,0 +1,19 @@
+.d1{
+    margin-top: 5%;
+}
+.d2{
+   margin-top: 1rem;
+   padding-top: 1rem;
+}
+.d3{
+    margin-top: 1rem;
+}
+.propic {
+    border-radius: 50%;
+}
+@media screen and (min-width: 0px) and (max-width: 400px) {
+  .more-info { display: none; }   /* hide it elsewhere */
+}
+@media screen and (min-width: 401px) {
+  .only-sm { display: none; }   /* hide it elsewhere */
+}

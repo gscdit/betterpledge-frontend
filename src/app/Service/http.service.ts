@@ -11,4 +11,7 @@ export class HttpService {
     getData() {
         return this.http.get("http://6208bf5c.ngrok.io/createdonor");
     }
+    changeProfile(value){
+    
+    }
 }

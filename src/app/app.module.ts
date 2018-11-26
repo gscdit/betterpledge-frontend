@@ -24,6 +24,10 @@ import { TokenInterceptorService } from './Service/token-interceptor.service';
 import { ConfirmPassword } from './shared/confirm-password.directive';
 import {ProgressBarModule} from "angular-progress-bar";
 import { AngularFireModule } from '@angular/fire';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { MyOrderComponent } from './my-order/my-order.component';
+import { OrderItemComponent } from './my-order/order-item/order-item.component';
+
 
 @NgModule({
   declarations: [
@@ -40,16 +44,20 @@ import { AngularFireModule } from '@angular/fire';
     ContactComponent,
     WorkersComponent,
     RegisterComponent,
-    ConfirmPassword
+    ConfirmPassword,
+    MyProfileComponent,
+    MyOrderComponent,
+    OrderItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+   
     AngularFireModule,
     ProgressBarModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   
   ],
   providers: [HttpService,AuthenticateService,AuthGuard,TokenInterceptorService,{
