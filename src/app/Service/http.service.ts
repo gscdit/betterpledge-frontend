@@ -6,10 +6,10 @@ export class HttpService {
     constructor(private http: HttpClient) { }
    
     sendData(user:JSON) {
-        return this.http.post('http://6208bf5c.ngrok.io/createdonor',user);
+        return this.http.post('https://6208bf5c.ngrok.io/createdonor',user);
     }
     getData() {
-        return this.http.get("http://6208bf5c.ngrok.io/createdonor");
+        return this.http.get("https://6208bf5c.ngrok.io/createdonor");
     }
     changeProfile(value){
     

@@ -6,8 +6,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthenticateService {
-private _registerUrl="http://obv53599.pythonanywhere.com/beneficiary"
-private _loginUrl="http://obv53599.pythonanywhere.com/login"
+private _registerUrl="https://obv53599.pythonanywhere.com/beneficiary"
+private _loginUrl="https://obv53599.pythonanywhere.com/login"
   constructor(private http:HttpClient,private router:Router) { }
 
   register(user){
@@ -17,7 +17,6 @@ private _loginUrl="http://obv53599.pythonanywhere.com/login"
    return this.http.post<any>(this._loginUrl,user) 
   }
   loggedin(){
-    
     return !!localStorage.getItem('token')
   }
   getToken(){

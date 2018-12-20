@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticateService } from './../Service/authentication.service';
+import { AuthenticateService } from '../../Service/authentication.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { HttpService } from './../Service/http.service';
+import { HttpService } from '../../Service/http.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -20,7 +20,7 @@ export class MyProfileComponent implements OnInit {
    }
   
 
-  constructor(private authenticateService:AuthenticateService,private router:Router,private httpService:HttpService) { }
+  constructor(public authenticateService:AuthenticateService,private router:Router,private httpService:HttpService) { }
    edit:boolean;
   ngOnInit() {
   }
