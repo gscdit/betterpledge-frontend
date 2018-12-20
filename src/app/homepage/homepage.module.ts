@@ -15,7 +15,6 @@ import { HomePageRoutingModule } from "./homepage-routing.module";
      HighlightsComponent
     ],
     imports:[
-  
     CommonModule,
     HomePageRoutingModule
     ]
