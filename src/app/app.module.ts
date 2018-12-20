@@ -3,19 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { CarouselComponent } from './carousel/carousel.component';
 import { FooterComponent } from './footer/footer.component';
-import { ProblemsComponent } from './problems/problems.component';
-import { HighlightsComponent } from './highlights/highlights.component';
-import { LoginComponent } from './login/login.component';
-import { HomepageComponent } from './homepage/homepage.component';
+import { LoginComponent } from './Authentication/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginPageComponent } from './login-page/login-page.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { WorkersComponent } from './workers/workers.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './Authentication/register/register.component';
 import { HttpService } from './Service/http.service';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthenticateService } from './Service/authentication.service';
@@ -28,21 +22,14 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { MyOrderComponent } from './my-order/my-order.component';
 import { OrderItemComponent } from './my-order/order-item/order-item.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CarouselComponent,
     FooterComponent,
-    ProblemsComponent,
-    HighlightsComponent,
     LoginComponent,
-    HomepageComponent,
-    LoginPageComponent,
     AboutComponent,
     ContactComponent,
-    WorkersComponent,
     RegisterComponent,
     ConfirmPassword,
     MyProfileComponent,
@@ -52,13 +39,11 @@ import { OrderItemComponent } from './my-order/order-item/order-item.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-   
+    FormsModule,  
     AngularFireModule,
     ProgressBarModule,
     HttpClientModule,
     BrowserAnimationsModule
-  
   ],
   providers: [HttpService,AuthenticateService,AuthGuard,TokenInterceptorService,{
     provide:HTTP_INTERCEPTORS,
