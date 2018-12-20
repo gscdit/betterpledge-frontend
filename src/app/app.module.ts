@@ -23,11 +23,8 @@ import { HomePageModule } from './homepage/homepage.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-   
+    HeaderComponent, 
     FooterComponent,
-  
-   
     AboutComponent,
     ContactComponent,
     MyProfileComponent,
