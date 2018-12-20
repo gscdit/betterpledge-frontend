@@ -2,11 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { CarouselComponent } from './HomePage/carousel/carousel.component';
 import { FooterComponent } from './footer/footer.component';
-import { ProblemsComponent } from './HomePage/problems/problems.component';
-import { HighlightsComponent } from './HomePage/highlights/highlights.component';
-import { HomepageComponent } from './homepage/homepage.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
@@ -19,17 +15,19 @@ import { TokenInterceptorService } from './Service/token-interceptor.service';
 import { AngularFireModule } from '@angular/fire';
 import { MyProfileComponent } from './Profile/my-profile/my-profile.component';
 import { FormsModule } from '@angular/forms';
+import { AuthenticateModule } from './Authentication/authentication.module';
+import { ProductModule } from './product/product.module';
+import { HomePageModule } from './homepage/homepage.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CarouselComponent,
+   
     FooterComponent,
-    ProblemsComponent,
-    HighlightsComponent,
-    HomepageComponent,
+  
+   
     AboutComponent,
     ContactComponent,
     MyProfileComponent,
@@ -40,8 +38,14 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule, 
     AngularFireModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AuthenticateModule,
+    ProductModule,
+    HomePageModule
   ],
+        exports:[
+         HeaderComponent
+        ],
   providers: [HttpService,AuthenticateService,AuthGuard,TokenInterceptorService,{
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptorService,
