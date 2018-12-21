@@ -1,0 +1,25 @@
+<p>
+  <a (click)="donate()" class="btn btn-danger">Donate</a>
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Category</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of products$ | async">
+      <td>
+      {{p.title}}
+      </td>
+      <td>
+       {{p.category}}
+      </td>
+      <td>
+        <a [routerLink]="['donor/addProduct/',p.productkey]">Edit</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

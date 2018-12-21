@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   }
   
   onSubmit(form:NgForm){
+    console.log(form.value);
     this.authService.login(form.value).subscribe(
       response=>{console.log(response)
         let returnUrl=this.route.snapshot.queryParamMap.get('returnUrl')

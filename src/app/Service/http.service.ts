@@ -5,12 +5,12 @@ import { Injectable } from "@angular/core";
 export class HttpService {
     constructor(private http: HttpClient) { }
    
-    sendData(user:JSON) {
-        return this.http.post('https://6208bf5c.ngrok.io/createdonor',user);
-    }
-    getData() {
-        return this.http.get("https://6208bf5c.ngrok.io/createdonor");
-    }
+    // sendData(user:JSON) {
+    //     return this.http.post('https://6208bf5c.ngrok.io/createdonor',user);
+    // }
+    // getData() {
+    //     return this.http.get("https://6208bf5c.ngrok.io/createdonor");
+    // }
     changeProfile(value){
     
     }

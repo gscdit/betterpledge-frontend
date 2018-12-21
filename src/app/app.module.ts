@@ -16,6 +16,7 @@ import { HomePageModule } from './homepage/homepage.module';
 import { CoreModule } from './Core/core.module';
 import { ExtraModule } from './Extra/extra.module';
 import { DonorModule } from './Donor/donor.module';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DonorModule } from './Donor/donor.module';
     HomePageModule,
     CoreModule,
     ExtraModule,
-    DonorModule
+    DonorModule,
+    HttpModule
   ],
  
   providers: [HttpService,AuthenticateService,AuthGuard,TokenInterceptorService,{

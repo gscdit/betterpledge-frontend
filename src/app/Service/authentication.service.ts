@@ -29,7 +29,7 @@ private _loginUrl="https://obv53599.pythonanywhere.com/login"
    currentUser(){
     let token=localStorage.getItem('token')
     let jwthelper=new JwtHelperService();
-    // console.log(jwthelper.decodeToken(token))
+    console.log(jwthelper.decodeToken(token))
     return jwthelper.decodeToken(token)
   }
   
