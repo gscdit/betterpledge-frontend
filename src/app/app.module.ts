@@ -15,7 +15,7 @@ import { ProductModule } from './product/product.module';
 import { HomePageModule } from './homepage/homepage.module';
 import { CoreModule } from './Core/core.module';
 import { ExtraModule } from './Extra/extra.module';
-
+import { DonorModule } from './Donor/donor.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { ExtraModule } from './Extra/extra.module';
     ProductModule,
     HomePageModule,
     CoreModule,
-    ExtraModule
+    ExtraModule,
+    DonorModule
   ],
  
   providers: [HttpService,AuthenticateService,AuthGuard,TokenInterceptorService,{

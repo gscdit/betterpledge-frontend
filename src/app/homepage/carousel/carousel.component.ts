@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carousel',
@@ -11,5 +12,5 @@ export class CarouselComponent implements OnInit {
 
   ngOnInit() {
   }
-
+ 
 }
