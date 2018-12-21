@@ -1,36 +1,52 @@
-<div class="row">
-  <div class="col-md-6">
-    <form (ngSubmit)="onSave(f.value)" #f="ngForm">
+<div class="container m-5">
+  <form (ngSubmit)="onSave(f.value)" #f="ngForm">
+    <div class="row">
+      <div class="col-md-6">
+        <div>
+          <h2 class="display-5">Enter Information</h2>
+          <hr>
+        </div>
         <div class="form-group">
           <label id="title" for="">Product Name</label>
-          <input #productName="ngModel" type="text" ngModel id="title" name="product-name" class="form-control">
-        </div> 
+          <input #productName="ngModel" type="text" ngModel id="title" name="description" class="form-control" required>
+        </div>
         <div class="form-group">
-            <label id="Organization" for="Organization">Organization</label>
-            <input #company="ngModel" type="text" ngModel name="company" id="Organization" class="form-control">
-          </div> 
+          <label id="Organization" for="Organization">Organization</label>
+          <input #company="ngModel" type="text" ngModel name="company" id="Organization" class="form-control" required>
+        </div>
         <div class="form-group">
-            <label id="Category" for="">Category</label>
-            <select #category="ngModel" ngModel name="Category" id="Category" class="form-control">
-              <option value="veg">Veg.</option>
-              <option value="non-veg">Non-Veg.</option>
-            </select>
-          </div> 
-          <div class="form-group">
-              <label id="url" for="url">Image URL</label>
-              <input #imageUrl="ngModel" type="text" ngModel name="url" id="url" class="form-control">
-            </div> 
-      <button class="btn btn-success">Save</button>
-    </form>
-  </div>
-  <div class="col-md-6">
-      <div class="card" style="width: 18rem;">
-          <img class="card-img-top" [src]="imageUrl.value" >
-          <div class="card-body">
-            <h5 class="card-title">{{ productName.value }}</h5>
-            <p class="card-text">{{ company.value | uppercase }}</p>
-            <p class="card-text">{{ category.value }}</p>
+          <label id="Category" for="">Category</label>
+          <select #category="ngModel" ngModel name="type" id="Category" class="form-control" required>
+            <option value="veg">Veg.</option>
+            <option value="non-veg">Non-Veg.</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label id="quantity" for="quantity">Quantity</label>
+          <input #imageUrl="ngModel" type="text" ngModel name="quantity" id="quantity" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label id="url" for="url">Image URL</label>
+          <input #imageUrl="ngModel" type="text" ngModel name="image" id="url" class="form-control" required>
+        </div>
+        <button class="btn btn-success" [disabled]="!f.valid">Save</button>
+      </div>
+      <div class="col-md-6">
+        <div>
+          <h2 class="display-5">Preview Card</h2>
+          <hr>
+        </div>
+        <div style="margin:auto auto">
+          <div class="card" *ngIf="f.valid">
+            <img class="card-img-top" *ngIf="imageUrl.value" [src]="imageUrl.value">
+            <div class="card-body">
+              <span class="card-title display-6">{{ productName.value }}</span>
+              <p class="card-text pull-right badge badge-light">{{ category.value | uppercase }}</p> <hr>
+              <p class="card-text">{{ company.value | uppercase }}</p>
+            </div>
           </div>
         </div>
-  </div>
+      </div>
+    </div>
+  </form>
 </div>

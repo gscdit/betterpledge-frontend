@@ -7,12 +7,16 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthenticateService {
 private _registerUrl="https://obv53599.pythonanywhere.com/beneficiary"
+private _register2Url="https://obv53599.pythonanywhere.com/donor"
 private _loginUrl="https://obv53599.pythonanywhere.com/login"
   constructor(private http:HttpClient,private router:Router) { }
 
   register(user){
    return this.http.post<any>(this._registerUrl,user)
   }
+  registerdonor(user){
+    return this.http.post<any>(this._register2Url,user)
+   }
   login(user){
    return this.http.post<any>(this._loginUrl,user) 
   }
@@ -29,7 +33,7 @@ private _loginUrl="https://obv53599.pythonanywhere.com/login"
    currentUser(){
     let token=localStorage.getItem('token')
     let jwthelper=new JwtHelperService();
-    console.log(jwthelper.decodeToken(token))
+    // console.log(jwthelper.decodeToken(token))
     return jwthelper.decodeToken(token)
   }
   

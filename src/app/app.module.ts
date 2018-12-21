@@ -35,10 +35,10 @@ import { HttpModule } from '@angular/http';
     CoreModule,
     ExtraModule,
     DonorModule,
-    HttpModule
+    HttpClientModule
   ],
  
-  providers: [HttpService,AuthenticateService,AuthGuard,TokenInterceptorService,{
+  providers: [HttpService,AuthenticateService,AuthGuard,{
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptorService,
     multi:true

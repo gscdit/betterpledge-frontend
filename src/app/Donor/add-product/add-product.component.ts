@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ProductsService } from 'src/app/Service/products.service';
 
 @Component({
   selector: 'app-add-product',
@@ -9,12 +10,17 @@ import { Router } from '@angular/router';
 })
 export class AddProductComponent implements OnInit {
 
-  constructor(private route:Router) { }
-
+  constructor(private route:Router,private ps:ProductsService) { }
+  mydata=true;
   ngOnInit() {
   }
   onSave(value:NgForm){
-    console.log(value);
-    this.route.navigate(['/donor/donatedProduct'])
+ 
+    this.ps.addProduct(value).subscribe(res=>{
+      this.route.navigate(['/donor/donatedProduct']);
+    },
+    error=>{
+    console.log(error);  
+    });
   }
 }
