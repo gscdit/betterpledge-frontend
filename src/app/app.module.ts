@@ -8,7 +8,6 @@ import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthenticateService } from './Service/authentication.service';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './Service/token-interceptor.service';
-import { AngularFireModule } from '@angular/fire';
 import { MyProfileComponent } from './Profile/my-profile/my-profile.component';
 import { FormsModule } from '@angular/forms';
 import { AuthenticateModule } from './Authentication/authentication.module';
@@ -21,7 +20,7 @@ import { ExtraModule } from './Extra/extra.module';
 @NgModule({
   declarations: [
     AppComponent,
-    MyProfileComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,

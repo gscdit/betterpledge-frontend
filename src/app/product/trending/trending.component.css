@@ -1,0 +1,18 @@
+.d1{
+    margin-top: 5%;
+}
+.d2{
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.d3{
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+.subd31{
+    border-right: 0.4px solid rgba(0, 0, 0, 0.2);
+}
+.pagination {
+   justify-content: center;
+}
