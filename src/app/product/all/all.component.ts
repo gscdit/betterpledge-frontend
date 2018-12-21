@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from './../../Service/products.service';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/take';
 @Component({
   selector: 'app-all',
   templateUrl: './all.component.html',
@@ -9,15 +10,15 @@ import 'rxjs/add/operator/map'
 export class AllComponent implements OnInit {
   product;
   constructor(private ps:ProductsService) { 
-    this.ps.getAll().map((res)=>{
-      console.log(res.json())
-      res.json();
-    }).subscribe(p=>{
-      console.log(p);
-    })
+    this.ps.getAll().take(1).subscribe(
+        p=>{console.log(p.listing[0])
+          this.product=p.listing
+        }
+      )
+        
   }
 
-  ngOnInit() {
+  ngOnInit() { 
   }
 
 }
