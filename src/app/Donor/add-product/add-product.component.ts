@@ -19,7 +19,10 @@ export class AddProductComponent implements OnInit {
   ngOnInit() {
   }
   delete(){
-    this.ps.deleteProduct(this.id);
+    if(confirm("Are you sure you want to delete this product?")) return;
+    this.ps.deleteProduct(this.id).subscribe(res=>
+      this.router.navigate(['/donor/donatedProduct'])
+    );
   }
   onSave(value:NgForm){
     if(this.id){
