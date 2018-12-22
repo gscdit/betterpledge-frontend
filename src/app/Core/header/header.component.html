@@ -30,8 +30,9 @@
 
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="cursor:pointer">
             <a class="dropdown-item" routerLink="/login" *ngIf="!authService.loggedin()">Login</a>
-            <a class="dropdown-item" routerLink="/register" *ngIf="!authService.loggedin()">Register</a>
+            <a class="dropdown-item" routerLink="/register-beneficiary" *ngIf="!authService.loggedin()">Register</a>
             <a class="dropdown-item" routerLink="/Order" *ngIf="authService.loggedin()">My Orders</a>
+            <a class="dropdown-item" routerLink="/donor/donatedProduct" *ngIf="authService.loggedin()">My Orders</a>
             <a class="dropdown-item" routerLink="/Profile" *ngIf="authService.loggedin()">My Account</a>
 
             <a class="dropdown-item" routerLink="/Notifications" *ngIf="authService.loggedin()">Notifications</a>

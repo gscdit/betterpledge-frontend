@@ -1,6 +1,9 @@
-
-<div class="container d1">
-  <h4>My Account </h4>
+<div class="container-fluid jumbotron m-0 p-0">
+    <div class="container jumbotron">
+        <h4 class="display-4">My Account</h4>
+        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet impedit, voluptas culpa eaque repellendus facere enim autem. Illum ipsa nobis magni reprehenderit soluta rerum doloribus a totam deserunt, culpa dolore?</span>
+        <a style="bottom:25px;right:25px;position:fixed; color:white; z-index: 1 " routerLink="/donor/addProduct" class="btn btn-success"><i class="fa fa-plus " title="Donate"></i> </a>
+    </div>
 </div>
 <div class="container d2">
   <div class="row">
@@ -9,7 +12,7 @@
         <div class="card">
           <div class="card-body">
             <span>
-              <img class="propic img img-responsive" src="" style="height: 50px; width:50px;" alt="Avatar">
+              <img class="propic img img-responsive" src="./assets/user.png" style="height: 50px; width:50px;" alt="Avatar"> &nbsp;
               <strong>Welcome {{authenticateService.currentUser().name }} </strong>
             </span>
 

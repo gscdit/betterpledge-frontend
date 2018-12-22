@@ -1,7 +1,17 @@
-<div class="container m-5">
+<div class="container-fluid jumbotron m-0 p-0">
+  <div class="container jumbotron">
+    <h4 class="display-4">Donate Products</h4>
+    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet impedit, voluptas culpa eaque repellendus
+      facere enim autem. Illum ipsa nobis magni reprehenderit soluta rerum doloribus a totam deserunt, culpa dolore?</span>
+    <a style="bottom:25px;right:25px;position:fixed; color:white; z-index: 1" routerLink="/donor/addProduct" class="btn btn-success"><i
+        class="fa fa-plus " title="Donate"></i> </a>
+  </div>
+</div>
+
+<div class="container my-3 mx-auto">
   <form (ngSubmit)="onSave(f.value)" #f="ngForm">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-7">
         <div>
           <h2 class="display-5">Enter Information</h2>
           <hr>
@@ -32,7 +42,7 @@
         <button class="btn btn-success" [disabled]="!f.valid">Save</button>
         <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-5">
         <div>
           <h2 class="display-5">Preview Card</h2>
           <hr>
@@ -42,7 +52,8 @@
             <img class="card-img-top" *ngIf="imageUrl.value" [src]="imageUrl.value">
             <div class="card-body">
               <span class="card-title display-6">{{ productName.value }}</span>
-              <p class="card-text pull-right badge badge-light">{{ category.value | uppercase }}</p> <hr>
+              <p class="card-text pull-right badge badge-light">{{ category.value | uppercase }}</p>
+              <hr>
               <p class="card-text">{{ company.value | uppercase }}</p>
             </div>
           </div>
