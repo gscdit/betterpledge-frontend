@@ -1,10 +1,19 @@
+<div class="container">
 
-<div class="row " style="padding: 70px">
+  <div class="row mx-auto my-5">
     <div class="col-md-8 mx-auto">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register-beneficiary">Beneficiary Registration </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="#">Be a proud donor!</a>
+        </li>
+      </ul>
       <div class="card rounded-0">
         <div class="card-header">
-          <h3 class="mb-0">
-            Register
+          <h3 class="mb-0 lead">
+            Take your pledge for a better tomorrow. Start donating, today! 🎉
           </h3>
         </div>
         <div class="card-body">
@@ -14,7 +23,8 @@
               <input type="text" id="name" pattern="^[A-Z]+[a-z]*$" minlength="3" maxlength="10" name="name" ngModel
                 class="form-control" required #name="ngModel">
               <span class="help-block" *ngIf="name.touched && name.errors?.required" style="color:red">Name is required</span>
-              <span class="help-block" *ngIf="name.touched && name.invalid  && !name.errors?.required" style="color:red">Please enter valid name</span>
+              <span class="help-block" *ngIf="name.touched && name.invalid  && !name.errors?.required" style="color:red">Please
+                enter valid name</span>
             </div>
             <div class="col  form-group">
               <label for="email">Email</label>
@@ -22,36 +32,40 @@
                 ngModel class="form-control" required #email="ngModel">
               <span class="help-block" *ngIf="email.touched && email.errors?.required" style="color:red">Email is
                 required</span>
-                
-              <span class="help-block" *ngIf="email.touched && email.invalid  && !email.errors?.required" style="color:red">Please enter valid email</span>
+
+              <span class="help-block" *ngIf="email.touched && email.invalid  && !email.errors?.required" style="color:red">Please
+                enter valid email</span>
             </div>
             <div class="col  form-group">
-                <label for="type">Type</label>
-                <select type="type" id="type"  name="type"  ngModel class="form-control" required #type="ngModel">
-  
-                  <option value="beneficiary">Donor</option>
-                </select>
-                <span class="help-block" *ngIf="type.touched && type.errors?.required" style="color:red">type is
-                  required</span>      
-                <span class="help-block" *ngIf="type.touched && type.invalid  && !type.errors?.required" style="color:red">Please enter valid type</span>
-              </div>
+              <label for="type">Type</label>
+              <select type="type" id="type" name="type" ngModel class="form-control" required #type="ngModel">
+
+                <option value="beneficiary">Donor</option>
+              </select>
+              <span class="help-block" *ngIf="type.touched && type.errors?.required" style="color:red">type is
+                required</span>
+              <span class="help-block" *ngIf="type.touched && type.invalid  && !type.errors?.required" style="color:red">Please
+                enter valid type</span>
+            </div>
             <div class="col  form-group">
               <label for="phone_no">Phone No</label>
               <input type="text" id="phone_no" pattern="^[1-9]+[0-9]*$" name="phone_no" ngModel class="form-control"
                 required minlength="10" maxlength="10" #phone_no="ngModel">
               <span class="help-block" *ngIf="phone_no.touched && phone_no.errors?.required" style="color:red">Phone No
                 is required</span>
-                
-              <span class="help-block" *ngIf="phone_no.touched && phone_no.invalid  && !phone_no.errors?.required" style="color:red">Please enter valid phone no</span>
+
+              <span class="help-block" *ngIf="phone_no.touched && phone_no.invalid  && !phone_no.errors?.required"
+                style="color:red">Please enter valid phone no</span>
             </div>
             <div class="col  form-group">
               <label for="password">Password</label>
-              <input type="password" id="password" name="password"  minlength="8" maxlength="32" ngModel class="form-control"
+              <input type="password" id="password" name="password" minlength="8" maxlength="32" ngModel class="form-control"
                 required #password="ngModel">
               <span class="help-block" *ngIf="password.touched && password.errors?.required" style="color:red">Password
                 is required</span>
-                
-              <span class="help-block" *ngIf="password.touched && password.invalid  && !password.errors?.required" style="color:red">Please enter valid password</span>
+
+              <span class="help-block" *ngIf="password.touched && password.invalid  && !password.errors?.required"
+                style="color:red">Please enter valid password</span>
             </div>
             <div class="col  form-group">
               <label for="password2">Confirm Password</label>
@@ -61,8 +75,9 @@
                 Password is required</span>
               <span class="help-block" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required"
                 style="color:red">Password and Confirm Password does not match</span>
-                
-              <span class="help-block" *ngIf="password2.touched && password2.invalid  && !password2.errors?.required" style="color:red">Please enter valid password</span>
+
+              <span class="help-block" *ngIf="password2.touched && password2.invalid  && !password2.errors?.required"
+                style="color:red">Please enter valid password</span>
             </div>
             <button type="submit" class="col btn btn-primary" [disabled]="!f.valid">Sign Up</button>
           </form>
@@ -70,3 +85,4 @@
       </div>
     </div>
   </div>
+</div>

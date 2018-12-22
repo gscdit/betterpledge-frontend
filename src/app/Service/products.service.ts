@@ -14,7 +14,7 @@ export class ProductsService {
     return this.http.get<any>('https://obv53599.pythonanywhere.com/donorlistings',{headers: new HttpHeaders().set("x-access-token",this.authService.getToken())});
   }
   getAll(){
-    return this.http.get<any>('https://obv53599.pythonanywhere.com/listing',{headers: new HttpHeaders().set("x-access-token",this.authService.getToken())});
+    return this.http.get<any>('https://obv53599.pythonanywhere.com/listing');
   }
   addProduct(value){
     return this.http.post<any>('https://obv53599.pythonanywhere.com/listing',value,{headers: new HttpHeaders().set("x-access-token",this.authService.getToken())});
