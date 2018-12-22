@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/Service/products.service';
 
 @Component({
@@ -9,15 +9,18 @@ import { ProductsService } from 'src/app/Service/products.service';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
-
-  constructor(private route:Router,private ps:ProductsService) { }
-  mydata=true;
+     product;
+  constructor(private route:ActivatedRoute,
+    private router:Router,private ps:ProductsService) {
+      let id=this.route.snapshot.paramMap.get('id')   //to get :id from url
+      if(id) this.ps.getSingleProduct(id).subscribe(p=>this.product=p);      
+     }
   ngOnInit() {
   }
   onSave(value:NgForm){
  
     this.ps.addProduct(value).subscribe(res=>{
-      this.route.navigate(['/donor/donatedProduct']);
+      this.router.navigate(['/donor/donatedProduct']);
     },
     error=>{
     console.log(error);  
