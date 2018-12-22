@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductsService } from 'src/app/Service/products.service';
 
 @Component({
   selector: 'app-donor-product',
@@ -8,11 +9,15 @@ import { Router } from '@angular/router';
 })
 export class DonorProductComponent implements OnInit {
 
-  constructor(private router:Router) { }
- 
+  constructor(private router:Router,private ps:ProductsService) {
+    this.ps.getUserProduct().take(1).subscribe(p=>console.log(p)
+    )
+   }
+  
   ngOnInit() {
   }
   donate(){
     this.router.navigate(['/donor/addProduct'])
   }
+  
 }
