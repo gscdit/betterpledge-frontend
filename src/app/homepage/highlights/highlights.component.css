@@ -58,3 +58,7 @@
     display: block;
     visibility: visible;
   }}
+
+  .carousel-inner{
+    height: 50%;
+  }

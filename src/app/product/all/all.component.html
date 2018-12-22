@@ -8,7 +8,7 @@
       <div class="input-group">
         <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
         <div class="input-group-append">
-          <button class="btn btn-link" type="button"><i class="fas fa-search"></i></button>
+          <button class="btn btn-link" type="button"><i class="fa fa-search"></i></button>
         </div>
       </div>
     </div>
@@ -32,10 +32,9 @@
         <div class="card" style="width: 18rem;">
           <img class="card-img-top" src="{{p.image}}">
           <div class="card-body">
-            <h5 class="card-title">{{p.description}}</h5>
-            <p class="card-text">{{p.quantity}}</p>
-            <p class="card-text">{{p.type}}</p>
-            <a class="btn btn-primary">Add to cart</a>
+            <span class="card-title">{{p.description}}</span><p class="badge badge-dark pull-right">{{p.type}}</p><hr>
+            <p class="card-text">Quantity - {{p.quantity}}</p>
+            <a class="btn btn-primary pull-right" style="color: white">Add to cart</a>
           </div>
         </div>
       </div>
