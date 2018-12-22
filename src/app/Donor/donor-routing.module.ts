@@ -6,7 +6,7 @@ import { DonorProductComponent } from './donor-product/donor-product.component';
 
 const recipesRoutes: Routes = [
   {path:'donor/addProduct',component:AddProductComponent},
-  {path:'donor/addProduct/:id',component:AddProductComponent},
+  {path:'donor/editProduct/:id',component:AddProductComponent},
   {path:'donor/donatedProduct',component:DonorProductComponent}
 ];
 

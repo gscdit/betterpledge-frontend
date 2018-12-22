@@ -8,28 +8,29 @@
         </div>
         <div class="form-group">
           <label id="title" for="">Product Name</label>
-          <input #productName="ngModel" type="text" ngModel id="title" name="description" class="form-control" required>
+          <input #productName="ngModel" type="text" [(ngModel)]="product.description" id="title" name="description" class="form-control" required>
         </div>
         <div class="form-group">
           <label id="Organization" for="Organization">Organization</label>
-          <input #company="ngModel" type="text" ngModel name="company" id="Organization" class="form-control" required>
+          <input #company="ngModel" type="text" [(ngModel)]="product.description" name="company" id="Organization" class="form-control" required>
         </div>
         <div class="form-group">
           <label id="Category" for="">Category</label>
-          <select #category="ngModel" ngModel name="type" id="Category" class="form-control" required>
+          <select #category="ngModel" [(ngModel)]="product.type" name="type" id="Category" class="form-control" required>
             <option value="veg">Veg.</option>
             <option value="non-veg">Non-Veg.</option>
           </select>
         </div>
         <div class="form-group">
           <label id="quantity" for="quantity">Quantity</label>
-          <input #imageUrl="ngModel" type="text" ngModel name="quantity" id="quantity" class="form-control" required>
+          <input #imageUrl="ngModel" type="text" [(ngModel)]="product.quantity" name="quantity" id="quantity" class="form-control" required>
         </div>
         <div class="form-group">
           <label id="url" for="url">Image URL</label>
-          <input #imageUrl="ngModel" type="text" ngModel name="image" id="url" class="form-control" required>
+          <input #imageUrl="ngModel" type="text" [(ngModel)]="product.image" name="image" id="url" class="form-control" required>
         </div>
         <button class="btn btn-success" [disabled]="!f.valid">Save</button>
+        <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
       </div>
       <div class="col-md-6">
         <div>
