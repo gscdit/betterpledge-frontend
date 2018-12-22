@@ -10,15 +10,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let p of products$ ">
+    <tr *ngFor="let p of products$; let i =index ">
       <td>
-      {{p.title}}
+      {{p[i].description}}
       </td>
       <td>
-       {{p.category}}
+       {{p[i].type}}
       </td>
       <td>
-        <a [routerLink]="['donor/addProduct/',p.productkey]">Edit</a>
+        <a [routerLink]="['/donor/addProduct/',p[i].listing_id]">Edit</a>
       </td>
     </tr>
   </tbody>

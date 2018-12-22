@@ -19,5 +19,8 @@ export class ProductsService {
   addProduct(value){
     return this.http.post<any>('https://obv53599.pythonanywhere.com/listing',value,{headers: new HttpHeaders().set("x-access-token",this.authService.getToken())});
   }
+  getSingleProduct(product_id){
+    return this.http.post('',product_id);
+  }
  
 }

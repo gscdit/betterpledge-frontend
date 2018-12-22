@@ -8,9 +8,11 @@ import { ProductsService } from 'src/app/Service/products.service';
   styleUrls: ['./donor-product.component.css']
 })
 export class DonorProductComponent implements OnInit {
-
+  products$: {};
+  
   constructor(private router:Router,private ps:ProductsService) {
-    this.ps.getUserProduct().take(1).subscribe(p=>console.log(p)
+    this.ps.getUserProduct().take(1).subscribe(p=>{console.log(p)
+    this.products$=p.listings}
     )
    }
   
