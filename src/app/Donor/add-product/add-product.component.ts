@@ -9,7 +9,11 @@ import { ProductsService } from 'src/app/Service/products.service';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
-     product={};
+     product={'description':null,
+    'type':null,
+    'quantity':null,
+    'image':null
+    };
      id;
   constructor(private route:ActivatedRoute,
     private router:Router,private ps:ProductsService) {
@@ -19,20 +23,25 @@ export class AddProductComponent implements OnInit {
   ngOnInit() {
   }
   delete(){
-    if(confirm("Are you sure you want to delete this product?")) return;
+    if(!confirm("Are you sure you want to delete this product?")) return;{
     this.ps.deleteProduct(this.id).subscribe(res=>
       this.router.navigate(['/donor/donatedProduct'])
-    );
+    );}
   }
   onSave(value:NgForm){
     if(this.id){
-       this.ps.updateProduct(value,this.id)
-      }
+       this.ps.updateProduct(value,this.id).subscribe(res=>{
+        this.router.navigate(['/donor/donatedProduct']);
+      },
+      error=>{
+      console.log(error);  
+      });
+      }else{
     this.ps.addProduct(value).subscribe(res=>{
       this.router.navigate(['/donor/donatedProduct']);
     },
     error=>{
     console.log(error);  
-    });
+    });}
   }
 }

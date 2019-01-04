@@ -16,26 +16,44 @@
 </div>
 <div class="container d3" style="margin-top:0px; padding-top:0px;">
   <div class="row">
-    <div class="col-lg-2 align-self-start subd31">
-      <div>
-        <a href="#">Preference</a><br>
-        <input type="radio" name="Preference" value="Veg"> Veg<br>
-        <input type="radio" name="Preference" value="Non-Veg"> Non-Veg<br>
-        <input type="radio" name="Preference" value="Both" checked> Both<br>
-      </div>
+    <div class="col-lg-2 align-self-start subd31 sticky-top">
+     <div class="list-group">
+       <a routerLink="/product/all" [queryParams]="{type:'non-veg'}">
+      Non-Veg
+     </a>
+     <a routerLink="/product/all"  [queryParams]="{type:'veg'}">
+        Veg
+      </a>
+      <a routerLink="/product/all">
+         Both
+        </a>
+    </div>
     </div>
     <hr>
     <div class="col-lg-10 col-sm align-middle">
       <div class="card-deck">
-        <ng-container *ngFor="let p of product; let i=index;">
-          <div class="card col-md-4 col-sm-8"  style="width: 18rem; margin-bottom: 15px;">
+        <ng-container *ngFor="let p of filteredProduct; let i=index;">
+          <div class="card col-md-4 col-sm-8"  style="width: 18rem; margin-bottom: 15px;" (click)="detailPage(p)">
             <img class="card-img-top img" src="{{p.image}}">
             <div class="card-body">
               <span class="card-title">{{p.description}}</span>
               <p class="badge badge-dark pull-right">{{p.type | uppercase}}</p>
               <hr>
               <p class="card-text">Quantity - {{p.quantity}}</p>
-              <a class="btn btn-primary pull-right" style="color: white">Add to cart</a>
+            </div>
+            <div class="card-footer">
+                <button *ngIf="getQuantity() === 0;else updateQuantity" class="btn btn-primary btn-block" type="button" (click)="addToCart(p)" style="color: white">Add to cart</button>
+               <ng-template #updateQuantity>
+                 <div class="row">
+                   <div class="col-2">
+                     <button class="btn btn-secondary btn-block" (click)="removeFromCart(p)">-</button>
+                    </div>
+                    <div class="col text-center">{{ getQuantity() }} in cart</div>
+                    <div class="col-2">
+                        <button class="btn btn-secondary btn-block" (click)="addToCart(p)">+</button>
+                       </div>
+                 </div> 
+               </ng-template>
             </div>
           </div>
           <div *ngIf="(i+1)%3===0" class="w-100"> </div>

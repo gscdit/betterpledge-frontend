@@ -16,12 +16,14 @@ import { HomePageModule } from './homepage/homepage.module';
 import { CoreModule } from './Core/core.module';
 import { ExtraModule } from './Extra/extra.module';
 import { DonorModule } from './Donor/donor.module';
-import { HttpModule } from '@angular/http';
+import { ShoppingCartService } from './Service/shopping-cart.service';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,7 @@ import { HttpModule } from '@angular/http';
     HttpClientModule
   ],
  
-  providers: [HttpService,AuthenticateService,AuthGuard,{
+  providers: [HttpService,AuthenticateService,AuthGuard,ShoppingCartService,{
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptorService,
     multi:true

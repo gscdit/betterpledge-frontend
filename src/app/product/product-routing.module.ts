@@ -9,7 +9,7 @@ import { ProductHeaderComponent } from './product-header/product-header.componen
 
 const recipesRoutes: Routes = [
   {path:'product/all',component:AllComponent},
-  {path:'product/detail',component:ProductDetailComponent},
+  {path:'product/detail/:id',component:ProductDetailComponent},
   {path:'product/lightning',component:LightningFastDealComponent},
   {path:'product/trending',component:TrendingComponent},
   {path:'product/header',component:ProductHeaderComponent}
