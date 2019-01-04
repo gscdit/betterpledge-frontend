@@ -1,28 +1,26 @@
-<nav class="navbar navbar-static-top navbar-expand-lg navbar-dark bg-dark ">
+<nav class="navbar navbar-static-top navbar-expand-lg navbar-dark bg-dark " id="header" (scroll)="scrollHandler($event)">
   <div class="container">
-    <a class="navbar-brand" routerLink="/Home">Better Pledge</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+    <a class="navbar-brand" routerLink="/">Better Pledge</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"  data-target="#navbarResponsive" aria-controls="navbarResponsive"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item " routerLinkActive="active" routerLinkActiveOptions="{exact:true}">
-          <a class="nav-link" routerLink="/Home">Home
-            <span class="sr-only">(current)</span>
-          </a>
+        <li class="nav-item pull-left" routerLinkActive="active">
+          <a class="nav-link" routerLink="/product/all" >Donations</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
+        <li class="nav-item  pull-left" routerLinkActive="active">
           <a class="nav-link" routerLink="/About">About</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
+        <li class="nav-item  pull-left" routerLinkActive="active">
           <a class="nav-link" routerLink="/Contact">Contact</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/Cart">Shopping Cart
-          <span class="badge badge-warning badge-pill">{{ totalQuantityCount }}</span>
+        <li class="nav-item  pull-left" routerLinkActive="active">
+          <a class="nav-link" routerLink="/Cart"><i class="fa fa-shopping-cart" style="font-size:20px"></i>
+            <span class="badge badge-warning badge-pill">{{ totalQuantityCount }}</span>
           </a>
-        </li>        
+        </li>
         <li class="nav-item dropdown" routerLinkActive="active">
 
           <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" *ngIf="authService.loggedin()"
@@ -30,7 +28,8 @@
               {{ authService.currentUser().name }}</span></a>
 
           <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" *ngIf="!authService.loggedin()"
-            aria-expanded="false"><span style="font-size:100%;cursor: pointer;"><i class="fa fa-user-circle"></i>&nbsp;Hello, Guest!</span>
+            aria-expanded="false"><span style="font-size:100%;cursor: pointer;"><i class="fa fa-user-circle"></i>&nbsp;Hello,
+              Guest!</span>
           </a>
 
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="cursor:pointer">

@@ -5,7 +5,7 @@ import { AuthGuard } from "./auth.guard";
 import { ShoppingCartComponent } from "./shopping-cart/shopping-cart.component";
 
 const appRoutes: Routes = [
-{ path:'',redirectTo:'/Home',pathMatch:'full'},
+{ path:'',redirectTo:'/',pathMatch:'full'},
 {path:'Profile',component:MyProfileComponent,canActivate:[AuthGuard]},
 {path:'Cart',component:ShoppingCartComponent}
 ];

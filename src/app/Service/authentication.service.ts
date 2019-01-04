@@ -28,7 +28,7 @@ private _loginUrl="https://obv53599.pythonanywhere.com/login"
   }
   logout(){
      localStorage.removeItem('token')
-    this.router.navigate(['/Home'])
+    this.router.navigate(['/'])
   }
    currentUser(){
     let token=localStorage.getItem('token')
