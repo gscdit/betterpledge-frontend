@@ -37,16 +37,21 @@ export class AllComponent implements OnInit {
   }
   
   removeFromCart(product){
+    console.log(product)
    this.cartService.removeFromCart(product)
   }
 
   detailPage(product){
-    this.router.navigate(['/product/detail',product.listing_id]);
+    // this.router.navigate(['/product/detail',product.listing_id]);
   }
 
   addToCart(product){ 
+    console.log(product)
   // this.cartService.addToCart(product)
-  localStorage.setItem("Product",product)
+  
+ sessionStorage.setItem('product',JSON.stringify(product))
+
+
   }
 
   getQuantity(){
