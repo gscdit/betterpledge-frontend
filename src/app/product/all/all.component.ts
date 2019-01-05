@@ -46,7 +46,7 @@ export class AllComponent implements OnInit {
   }
 
   detailPage(product){
-    // this.router.navigate(['/product/detail',product.listing_id]);
+    this.router.navigate(['/product/detail',product.listing_id]);
   }
 
   addToCart(product){ 

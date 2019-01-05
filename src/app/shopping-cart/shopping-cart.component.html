@@ -1,3 +1,52 @@
-<p>
-  shopping-cart works!
-</p>
+<div class="container p-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">My Cart (0)</h5> <hr>
+
+      <!-- Empty Items -->
+      <!-- <p class="card-text lead" style="text-align: center;" >
+        <img src="https://img1a.flixcart.com/www/linchpin/fk-cp-zion/img/empty-cart_ee6141.png" width="200px" > <br><br>
+        <b>Your Cart is Empty</b>
+      </p> -->
+
+      <!-- With Items Loop Here -->
+      <div class="row">
+        <div class="col-md-2">
+          <img src="https://placehold.it/100" width="100%" class="img" alt="" srcset="">
+        </div>
+        <div class="col-md-6">
+          <p class="lead">
+            Product Title
+          </p>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio commodi in culpa ipsa dignissimos aliquam eaque error, animi fuga veniam.
+          </p>
+          <p class="lead"> 
+            <span style="color: green" >In Stock</span> 
+            <!-- <span style="color: red" >Out Stock</span>  -->
+            &nbsp; 
+            <button class="btn btn-sm btn-danger">Remove</button>
+          </p>
+        </div>
+        <div class="col-md-4 lead" style="text-align:center">
+          <span class="px-1">
+            <i class="fa fa-lg fa-plus-circle"></i>
+          </span>
+           1 
+          <span class="px-1">
+            <i class="fa fa-lg fa-minus-circle"></i>
+          </span>
+        </div>
+      </div>
+      <hr>
+      <!-- Loop Ends here -->
+
+      <div class="card-footer" style="background-color:white">
+        <div class="btn-group pull-right">
+          <button class="btn btn-secondary ">Continue Shopping</button> &nbsp;
+          <button class="btn btn-success ">Place Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
