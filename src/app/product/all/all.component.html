@@ -2,7 +2,7 @@
 <div class="container d2">
   <div class="row">
     <div class="col-lg-8 align-self-start">
-      <h6>Showing xx of xxx results</h6>
+      <h6>Showing {{totalQuantity()}} results</h6>
     </div>
     <div class="col-lg align-self-end">
       <div class="input-group">
@@ -16,14 +16,20 @@
 </div>
 <div class="container d3" style="margin-top:0px; padding-top:0px;">
   <div class="row">
-    <div class="col-lg-2 col-sm align-self-start subd31 sticky-top" style="top:56px; background-color:white;">
+    <div class="col-lg-2 col-sm align-self-start subd31 sticky-top" style="top:58px; background-color:white;">
       Filter<i class="fa fa-filter pull-right"></i>
       <div class="card">
-        <div class="card-body">
-          <input type="radio" name="Preference" value="Both" routerLink="/product/all" checked> Both<br>
-          <input type="radio" name="Preference" value="Veg" routerLink="/product/all" [queryParams]="{type:'veg'}"> Veg<br>
-          <input type="radio" name="Preference" value="Non-Veg" routerLink="/product/all" [queryParams]="{type:'non-veg'}">
-          Non-Veg<br>
+        <div class="card-body filter-custom">
+          <label class="radio">
+            <input type="radio" name="Preference" value="Both" routerLink="/product/all" checked> Both
+          </label>
+          <label class="radio">
+            <input type="radio" name="Preference" value="Veg" routerLink="/product/all" [queryParams]="{type:'veg'}"> Veg
+          </label>
+          <label class="radio">
+            <input type="radio" name="Preference" value="Non-Veg" routerLink="/product/all" [queryParams]="{type:'non-veg'}">
+            Non-Veg
+          </label>
         </div>
       </div>
       <br>
@@ -48,11 +54,11 @@
               <ng-template #updateQuantity>
                 <div class="row">
                   <div class="col-2">
-                    <button class="btn btn-secondary btn-sm" (click)="removeFromCart(p)">-</button> 
+                    <button class="btn btn-secondary btn-sm" (click)="removeFromCart(p)">-</button>
                   </div>
                   <div class="col text-center">{{ getQuantity() }} in cart</div>
                   <div class="col-2">
-                    <button class="btn btn-secondary btn-sm" (click)="addToCart(p)">+</button> 
+                    <button class="btn btn-secondary btn-sm" (click)="addToCart(p)">+</button>
                   </div>
                 </div>
               </ng-template>

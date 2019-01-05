@@ -14,6 +14,9 @@ export class AllComponent implements OnInit {
   filteredProduct=[];
   type: string;
   shoppingCart;
+  totalQuantity(){
+    return this.filteredProduct.length;
+  }
   constructor(private route:ActivatedRoute,
     private router:Router,
      private ps:ProductsService,
@@ -35,6 +38,7 @@ export class AllComponent implements OnInit {
           this.product.filter(p=>p.type===this.type):this.product;
           });
   }
+
   
   removeFromCart(product){
     console.log(product)

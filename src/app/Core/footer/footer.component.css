@@ -1,8 +1,28 @@
 footer{
-    
-  background-color: #21D4FD;
-  background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
-  
+   background-color: #172337;
+   font-size: 14px;
+   text-align: left;
+   text-decoration: none;
     color: white;
-    padding-top:2rem;
+    padding: 2rem;
+  }
+.border-right{
+  border-right: 1px solid #878787 !important;
+}
+p{
+  text-align: left
+  
+}  
+li {
+  list-style: none;
+  text-align: left;
+}
+
+.lead{
+  color: #878787;
+}
+  @media screen and (max-width: 600px) {
+    footer {
+      display: none;
+    }
   }
