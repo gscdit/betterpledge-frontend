@@ -18,6 +18,11 @@ import { ExtraModule } from './Extra/extra.module';
 import { DonorModule } from './Donor/donor.module';
 import { ShoppingCartService } from './Service/shopping-cart.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { HttpModule } from '@angular/http';
+import {  AngularFireModule } from 'angularfire2';
+
+import {  AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,10 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     CoreModule,
     ExtraModule,
     DonorModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
  
   providers: [HttpService,AuthenticateService,AuthGuard,ShoppingCartService,{

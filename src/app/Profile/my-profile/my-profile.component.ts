@@ -12,24 +12,34 @@ import { HttpService } from '../../Service/http.service';
 export class MyProfileComponent implements OnInit {
 
    title={
-     name:this.authenticateService.currentUser().name,
-     username:this.authenticateService.currentUser().username,
-     email:this.authenticateService.currentUser().username,
-     phone_no:this.authenticateService.currentUser().username,
-     address:this.authenticateService.currentUser().exp
-   }
+     
+   };
   
 
   constructor(public authenticateService:AuthenticateService,private router:Router,private httpService:HttpService) { }
    edit:boolean;
   ngOnInit() {
+    this.httpService.getProfile().take(1).subscribe(res=>{
+     this.title=res['user']
+     console.log(res['user'])
+    })
   }
   onEdit(){
    this.edit=!this.edit;
     }
+    errorshow=false;
   onSave(form:NgForm){
     
     console.log(form.value);
-    // this.httpService.changeProfile(form.value)
+    this.httpService.changeProfile(form.value).subscribe(res=>{
+      console.log(res)
+      localStorage.setItem('token',res['token'])
+      if(res['message']===0)
+      {
+        this.errorshow=true;
+      }
+    });
+    if(this.errorshow===false){
+    this.edit=!this.edit;}
   }
 }

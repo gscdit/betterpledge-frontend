@@ -42,18 +42,18 @@
               <p class="card-text">Quantity - {{p.quantity}}</p>
             </div>
             <div class="card-footer">
-                <button *ngIf="getQuantity() === 0;else updateQuantity" class="btn btn-primary btn-block" type="button" (click)="addToCart(p)" style="color: white">Add to cart</button>
-               <ng-template #updateQuantity>
-                 <div class="row">
+                <button *ngIf="getQuantity(p)===0;else sh" class="btn btn-primary btn-block" type="button" (click)="addToCart(p)" style="color: white">Add to cart</button>
+              <ng-template #sh>
+                 <div class="row no-gutters">
                    <div class="col-2">
                      <button class="btn btn-secondary btn-block" (click)="removeFromCart(p)">-</button>
                     </div>
-                    <div class="col text-center">{{ getQuantity() }} in cart</div>
+                    <div  class="col text-center">{{ getQuantity(p) }} in cart</div>
                     <div class="col-2">
-                        <button class="btn btn-secondary btn-block" (click)="addToCart(p)">+</button>
+                        <button class="btn btn-secondary btn-block" (click)="addToCart(p)" [disabled]="p.quantity===getQuantity(p)">+</button>
                        </div>
                  </div> 
-               </ng-template>
+          </ng-template>
             </div>
           </div>
           <div *ngIf="(i+1)%3===0" class="w-100"> </div>

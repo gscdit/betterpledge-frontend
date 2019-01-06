@@ -1,3 +1,22 @@
-<p>
-  shopping-cart works!
-</p>
+<h1>
+  Shopping Cart
+</h1>
+<ng-container>
+  <p>
+    You have {{count}} items in your shopping cart. 
+  </p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let product_id of product_ids">
+     <td>{{cart$.items[product_id].product.description}}</td>
+     <td>{{cart$.items[product_id].quantity}}</td>
+     <td>{{cart$.items[product_id].product.type | uppercase }}</td>
+    </tbody>
+  </table>
+</ng-container>

@@ -25,6 +25,10 @@
           <input #company="ngModel" type="text" [(ngModel)]="product.description" name="company" id="Organization" class="form-control" required>
         </div>
         <div class="form-group">
+          <label id="Organization" for="Organization">Time Limit</label>
+          <input #company="ngModel" type="text" [(ngModel)]="product.description" name="expiry" id="Organization" class="form-control" required>
+        </div>
+        <div class="form-group">
           <label id="Category" for="">Category</label>
           <select #category="ngModel" [(ngModel)]="product.type" name="type" id="Category" class="form-control" required>
             <option value="veg">Veg.</option>

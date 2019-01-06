@@ -9,12 +9,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailComponent implements OnInit {
   id
-  product
+  product={image:null}
   constructor(private ps:ProductsService,private route:ActivatedRoute) { }
 
   ngOnInit() {
     this.id=this.route.snapshot.paramMap.get('id')
-    this.ps.getSingleProductFromAll(this.id);
+    this.ps.getSingleProduct(this.id).subscribe(res=>{
+      this.product=JSON.parse(res);
+      console.log(this.product)
+    });
   }
   
 

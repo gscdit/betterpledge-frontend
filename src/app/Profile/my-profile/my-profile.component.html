@@ -40,37 +40,37 @@
                 <h5> <span> <i class="fa fa-user"></i> &nbsp; Personal Information </span></h5>
                 <hr>
 
-                <input class="form-control" type="text" *ngIf="!edit" placeholder="First Name: {{authenticateService.currentUser().name}}"
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="First Name: {{title.name}}"
                   readonly>
-                <input class="form-control" type="text" name="first_name" [(ngModel)]="title.name" *ngIf="edit" placeholder="First Name"  ngModel><br>
-                <input class="form-control" type="text" *ngIf="!edit" placeholder="Last Name: {{authenticateService.currentUser().name}}"
+                <input class="form-control" type="text" name="name" [(ngModel)]="title.name" *ngIf="edit" placeholder="First Name"  ngModel><br>
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="Last Name: {{title.name}}"
                   readonly>
-                <input class="form-control" type="text" name="last_name" [(ngModel)]="title.name" *ngIf="edit" placeholder="Last Name" ngModel>
+                <input class="form-control" type="text" name="name" [(ngModel)]="title.name" *ngIf="edit" placeholder="Last Name" ngModel>
               </div>
             </div>
             <div class="card d3">
               <div class="card-body">
                 <h5> <span> <i class="fa fa-inbox"></i> &nbsp; Username</span> </h5>
                 <hr>
-                <input class="form-control" type="text" *ngIf="!edit" placeholder="{{authenticateService.currentUser().username}}"
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="{{title.username}}"
                   readonly>
-                <input class="form-control" type="text" name="username" [(ngModel)]="title.usernamename" *ngIf="edit" placeholder="Username" ngModel>
+                <input class="form-control" type="text" name="username" [(ngModel)]="title.username" *ngIf="edit" placeholder="Username" ngModel>
               </div>
             </div>
             <div class="card d3">
               <div class="card-body">
                 <h5> <span> <i class="fa fa-inbox"></i> &nbsp; Email Address</span> </h5>
                 <hr>
-                <input class="form-control" type="text" *ngIf="!edit" placeholder="{{authenticateService.currentUser().username}}"
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="{{title.email}}"
                   readonly>
-                <input class="form-control" type="text" name="email" *ngIf="edit" [(ngModel)]="title.email" placeholder="Email Address" ngModel>
+                <input class="form-control" type="text" name="email" *ngIf="edit" [(ngModel)]="title.email" placeholder="Email Address" ngModel readonly>
               </div>
             </div>
             <div class="card d3">
               <div class="card-body">
                 <h5> <span> <i class="fa fa-mobile"></i> &nbsp; Mobile Number </span> </h5>
                 <hr>
-                <input class="form-control" type="text" *ngIf="!edit" placeholder="{{authenticateService.currentUser().username}}"
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="{{title.phone_no}}"
                   readonly>
                 <input class="form-control" type="text" *ngIf="edit" name="phone_no" [(ngModel)]="title.phone_no" placeholder="Mobile Number" ngModel>
               </div>
