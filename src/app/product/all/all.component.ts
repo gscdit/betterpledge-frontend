@@ -16,26 +16,15 @@ export class AllComponent implements OnInit,OnDestroy {
   filteredProduct = [];
   type: string;
   shoppingCart;
-<<<<<<< HEAD
   constructor(private route: ActivatedRoute,
     private router: Router,
     private ps: ProductsService,
     private cartService: ShoppingCartService) {
   }
   subscription:Subscription
-=======
   totalQuantity(){
     return this.filteredProduct.length;
   }
-  constructor(private route:ActivatedRoute,
-    private router:Router,
-     private ps:ProductsService,
-    private cartService:ShoppingCartService) {
-      this.cartService.getCart().subscribe(res=>{
-        this.shoppingCart=res;
-      })
-    } 
->>>>>>> c4df688a99a530c1a9366a4d2b6deb57ec1f186d
 
   show=true;
 
