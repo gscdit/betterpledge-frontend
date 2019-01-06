@@ -31,6 +31,7 @@
         <div class="form-group">
           <label id="Category" for="">Category</label>
           <select #category="ngModel" [(ngModel)]="product.type" name="type" id="Category" class="form-control" required>
+            <option value="default">Select Category</option>
             <option value="veg">Veg.</option>
             <option value="non-veg">Non-Veg.</option>
           </select>

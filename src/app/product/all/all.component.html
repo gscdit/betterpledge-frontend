@@ -2,7 +2,7 @@
 <div class="container d2">
   <div class="row">
     <div class="col-lg-8 align-self-start">
-      <h6>Showing xx of xxx results</h6>
+      <h6>Showing {{totalQuantity()}} results</h6>
     </div>
     <div class="col-lg align-self-end">
       <div class="input-group">
@@ -16,44 +16,54 @@
 </div>
 <div class="container d3" style="margin-top:0px; padding-top:0px;">
   <div class="row">
-    <div class="col-lg-2 align-self-start subd31 sticky-top">
-     <div class="list-group">
-       <a routerLink="/product/all" [queryParams]="{type:'non-veg'}">
-      Non-Veg
-     </a>
-     <a routerLink="/product/all"  [queryParams]="{type:'veg'}">
-        Veg
-      </a>
-      <a routerLink="/product/all">
-         Both
-        </a>
-    </div>
+    <div class="col-lg-2 col-sm align-self-start subd31 sticky-top" style="top:58px; background-color:white;">
+      Filter<i class="fa fa-filter pull-right"></i>
+      <div class="card">
+        <div class="card-body filter-custom">
+          <label class="radio">
+            <input type="radio" name="Preference" value="Both" routerLink="/product/all" checked> Both
+          </label>
+          <label class="radio">
+            <input type="radio" name="Preference" value="Veg" routerLink="/product/all" [queryParams]="{type:'veg'}"> Veg
+          </label>
+          <label class="radio">
+            <input type="radio" name="Preference" value="Non-Veg" routerLink="/product/all" [queryParams]="{type:'non-veg'}">
+            Non-Veg
+          </label>
+        </div>
+      </div>
+      <br>
     </div>
     <hr>
-    <div class="col-lg-10 col-sm align-middle">
+    <div class="col-lg-10">
       <div class="card-deck">
         <ng-container *ngFor="let p of filteredProduct; let i=index;">
-          <div class="card col-md-4 col-sm-8"  style="width: 18rem; margin-bottom: 15px;" (click)="detailPage(p)">
-            <img class="card-img-top img" src="{{p.image}}">
-            <div class="card-body">
+          <div class="card col-md-4 col-sm-12" style="width: 92vw; margin-bottom: 15px;">
+            <img class="card-img-top img img-responsive" src="{{p.image}}" style="position:relative; width:100%"
+              (click)="detailPage(p)">
+            <div class="card-body" (click)="detailPage(p)">
               <span class="card-title">{{p.description}}</span>
               <p class="badge badge-dark pull-right">{{p.type | uppercase}}</p>
               <hr>
               <p class="card-text">Quantity - {{p.quantity}}</p>
             </div>
-            <div class="card-footer">
-                <button *ngIf="getQuantity(p)===0;else sh" class="btn btn-primary btn-block" type="button" (click)="addToCart(p)" style="color: white">Add to cart</button>
-              <ng-template #sh>
-                 <div class="row no-gutters">
-                   <div class="col-2">
-                     <button class="btn btn-secondary btn-block" (click)="removeFromCart(p)">-</button>
-                    </div>
-                    <div  class="col text-center">{{ getQuantity(p) }} in cart</div>
-                    <div class="col-2">
-                        <button class="btn btn-secondary btn-block" (click)="addToCart(p)" [disabled]="p.quantity===getQuantity(p)">+</button>
-                       </div>
-                 </div> 
-          </ng-template>
+            <div class="card-footer py-1" style="opacity: 1;">
+
+              <button *ngIf="getQuantity(p) === 0;else updateQuantity" class="btn btn-secondary pull-right btn-sm" type="button"
+                (click)="addToCart(p)" style="color: white">Add to cart</button>
+              <ng-template #updateQuantity>
+                <div class="row">
+                  <div class="col-2">
+                    <button class="btn btn-secondary btn-sm" (click)="removeFromCart(p)">-</button>
+                  </div>
+                  <div class="col text-center">{{ getQuantity(p) }} in cart</div>
+                  <div class="col-2">
+                    <button class="btn btn-secondary btn-sm" (click)="addToCart(p)" [disabled]="p.quantity===getQuantity(p)">+</button>
+                  </div>
+                </div>
+              </ng-template>
+              <button class="btn btn-primary pull-right btn-sm mx-1">Check Out</button>
+
             </div>
           </div>
           <div *ngIf="(i+1)%3===0" class="w-100"> </div>

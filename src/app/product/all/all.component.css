@@ -28,3 +28,21 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */   
 }
 
+@media screen and (min-width: 992px) {
+    .filter-custom {
+        text-align: left;
+    }
+    .radio{
+        display: block !important ;
+    }
+}
+
+@media screen and (max-width: 600px){
+.filter-custom{
+    text-align: center;
+}
+.radio{
+    display: inline !important ; 
+}
+}
+

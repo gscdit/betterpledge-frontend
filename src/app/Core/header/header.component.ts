@@ -25,8 +25,23 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
+ 
+
+
+
+     // // When the user scrolls the page, execute myFunction 
+  window.onscroll = _ => {
+    if (window.pageYOffset > document.getElementById("header").offsetTop) {
+      document.getElementById("header").classList.add("fixed-top");
+    }
+    else {
+      document.getElementById("header").classList.remove("fixed-top");
+    }
+  };
   }
+
   onNav() {
     this.router.navigate(['/Login']);
   }
+
 }
