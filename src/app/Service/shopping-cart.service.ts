@@ -9,6 +9,14 @@ import { ShoppingCart } from './../Models/shoppingCart';
   providedIn: 'root'
 })
 export class ShoppingCartService {
+  async delete(product) {
+    let cart_id= await this.getorcreateCartId();
+    this.db.object('/shopping-cart/'+cart_id+'/items/'+product.listing_id).remove()
+  }
+  async clearCart() {
+    let cart_id= await this.getorcreateCartId();
+    this.db.object('/shopping-cart/'+cart_id+'/items/').remove()
+  }
 
   constructor(private http: HttpClient, private db: AngularFireDatabase) { }
 
@@ -18,21 +26,23 @@ export class ShoppingCartService {
     })
   }
    totalCount(cart){
+    if(!cart) return 0;
     let count = 0;
     for (let listingid in cart.items) {
       count += cart.items[listingid].quantity;
     }
-    return count
+    return cart.items?count:0;
 }
 
  async removeFromCart(product) {
     let cart_id= await this.getorcreateCartId();
     let item$=this.db.object('/shopping-cart/'+cart_id+'/items/'+product.listing_id);
     item$.snapshotChanges().take(1).subscribe(item=>{
-      item$.update({
+      let quantity= (item.payload.exists() ? item.payload.val()['quantity'] : 0) - 1
+     if(quantity===0) item$.remove(); 
+     else item$.update({
         product: product,
-        quantity:
-          (item.payload.exists() ? item.payload.val()['quantity'] : 0) - 1
+        quantity:quantity
       });
     });
   }
@@ -54,10 +64,11 @@ export class ShoppingCartService {
     let cart_id= await this.getorcreateCartId();
     let item$=this.db.object('/shopping-cart/'+cart_id+'/items/'+product.listing_id);
     item$.snapshotChanges().take(1).subscribe(item=>{
-      item$.update({
+     let quantity= (item.payload.exists() ? item.payload.val()['quantity'] : 0) + 1
+     if(quantity===0) item$.remove(); 
+     else item$.update({
         product: product,
-        quantity:
-          (item.payload.exists() ? item.payload.val()['quantity'] : 0) + 1
+        quantity:quantity
       });
     });
   }

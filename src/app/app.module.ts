@@ -23,12 +23,14 @@ import {  AngularFireModule } from 'angularfire2';
 
 import {  AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
+import { CheckOutComponent } from './check-out/check-out.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyProfileComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    CheckOutComponent
   ],
   imports: [
     BrowserModule,

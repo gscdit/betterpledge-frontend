@@ -60,9 +60,8 @@ export class AllComponent implements OnInit,OnDestroy {
   }
 
   detailPage(product) {
-    // this.router.navigate(['/product/detail', product.listing_id]);
+    this.router.navigate(['/product/detail', product.listing_id]);
   }
-
   addToCart(product) {
     // this.show=!this.show
     this.cartService.addToCart(product)

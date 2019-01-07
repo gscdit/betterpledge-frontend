@@ -1,7 +1,4 @@
-<div class="container">
-	<br> 
-	<br>
-
+<div class="container py-4">
 	<div class="card">
 	<div class="row d-flex flex-wrap">
         <div class="col-lg-6">
@@ -18,6 +15,22 @@
 <article class="card-body p-6">
 	<h3 class="title mb-3">Food Details</h3>
 
+						<hr>
+						<!-- <div class="row">
+							<div class="col-sm-5">
+								<dl class="param param-inline">
+									<dt>Quantity(kg): </dt>
+									<dd>
+										<select class="form-control form-control-sm" style="width:70px;">
+											<option> 1 </option>
+											<option> 2 </option>
+											<option> 3 </option>
+										</select>
+									</dd>
+								</dl>  item-property .// -->
+							<!-- </div> col.// -->
+							<!-- <hr> -->
+						<!-- </div> row.// -->
 
 <dl class="item-property">
   <dt>Description</dt>
@@ -65,11 +78,24 @@
 <!-- <hr> -->
 	<!-- </div>
 	 row.// -->
-	
-	<a href="#" class="btn btn-lg btn-primary text-uppercase"> receive </a> &nbsp;
+	<div *ngIf="getQuantity() === 0;else updateQuantity">
 
-	<a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+		<a  class="btn btn btn-secondary text-uppercase" style="color:aliceblue;"> Check-out </a> &nbsp;
 	
+		<a (click)="addToCart()" style="color:aliceblue;" class="btn btn btn-secondary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+		
+	</div>
+	<ng-template #updateQuantity>
+			<div class="row no-gutters text-center">
+				<div class="col-2">
+					<button class="btn btn-secondary btn-sm" (click)="removeFromCart()">-</button>
+				</div>
+				<div class="col text-center">{{ getQuantity(p) }} in cart</div>
+				<div class="col-2">
+					<button class="btn btn-secondary btn-sm" (click)="addToCart()" [disabled]="product.quantity===getQuantity()">+</button>
+				</div>
+			</div>
+		</ng-template>
 </article> <!-- card-body.// -->
         </aside> <!-- col.// -->
         </div>

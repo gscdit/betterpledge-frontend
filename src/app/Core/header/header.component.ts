@@ -15,6 +15,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   totalQuantityCount: number;
   subscription: Subscription
   async ngOnInit() {
+    window.onscroll = _ => {
+      if (window.pageYOffset > document.getElementById("header").offsetTop) {
+        document.getElementById("header").classList.add("fixed-top");
+      }
+      else {
+        document.getElementById("header").classList.remove("fixed-top");
+      }
+    };
     let cart = await this.cartService.getCart();
     this.subscription = cart.valueChanges().subscribe(cart => {
       //  this.cart$=cart.payload.val()['items']
@@ -30,14 +38,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
 
      // // When the user scrolls the page, execute myFunction 
-  window.onscroll = _ => {
-    if (window.pageYOffset > document.getElementById("header").offsetTop) {
-      document.getElementById("header").classList.add("fixed-top");
-    }
-    else {
-      document.getElementById("header").classList.remove("fixed-top");
-    }
-  };
+ 
   }
 
   onNav() {

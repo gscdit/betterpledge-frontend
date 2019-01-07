@@ -1,22 +1,50 @@
 <h1>
   Shopping Cart
 </h1>
-<ng-container>
+<div class="row col-md-10">
   <p>
-    You have {{count}} items in your shopping cart. 
+    You have {{count}} items in your shopping cart.
   </p>
-  <table class="table">
+  <table class="table" *ngIf="cart$">
     <thead>
       <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Type</th>
+        <th></th>
+        <th style="width: 200px" class="text-center">Product</th>
+        <th style="width: 230px" class="text-center">Quantity</th>
+        <th style="width: 200px" class="text-center">Type</th>
+        <th style="width: 200px" class="text-center">Delete</th>
       </tr>
     </thead>
     <tbody *ngFor="let product_id of product_ids">
-     <td>{{cart$.items[product_id].product.description}}</td>
-     <td>{{cart$.items[product_id].quantity}}</td>
-     <td>{{cart$.items[product_id].product.type | uppercase }}</td>
+      <td>
+        <div class="thumbnail" [style.backgroundImage]="'url('+ cart$.items[product_id].product.image +')'"></div>
+      </td>
+      <td class="text-center">{{cart$.items[product_id].product.description}}</td>
+      <div class="row no-gutters">
+        <div class="col-2">
+          <button class="btn btn-secondary btn-sm" (click)="removeFromCart(cart$.items[product_id].product)" [disabled]="cart$.items[product_id].quantity === 0">-</button>
+        </div>
+        <div class="col text-center">{{cart$.items[product_id].quantity}}</div>
+        <div class="col-2">
+          <button class="btn btn-secondary btn-sm" (click)="addToCart(cart$.items[product_id].product)" [disabled]="cart$.items[product_id].product.quantity === cart$.items[product_id].quantity">+</button>
+        </div>
+      </div>
+      <td class="text-center"><span>{{cart$.items[product_id].product.type | uppercase }}</span> </td>
+      <td>
+        <div class="col text-center">
+          <button class="btn btn-danger text-center" (click)="delete(cart$.items[product_id].product)">Delete</button>
+        </div>
+      </td>
     </tbody>
+    <tfoot>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="pull-right">
+        <button *ngIf="cart$" class="btn btn-danger pull-right" (click)="clearCart()">Clear Shopping Cart</button>
+      </td>
+    </tfoot>
   </table>
-</ng-container>
+
+</div>

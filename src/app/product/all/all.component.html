@@ -38,11 +38,11 @@
     <div class="col-lg-10">
       <div class="card-deck">
         <ng-container *ngFor="let p of filteredProduct; let i=index;">
-          <div class="card col-md-4 col-sm-12" style="width: 92vw; margin-bottom: 15px;">
-            <img class="card-img-top img img-responsive" src="{{p.image}}" style="position:relative; width:100%"
+          <div class="card col-md-4 col-sm-12 product" style="width: 92vw; margin-bottom: 15px;">
+            <img class="card-img-top px-0" src="{{p.image}}"
               (click)="detailPage(p)">
             <div class="card-body" (click)="detailPage(p)">
-              <span class="card-title">{{p.description}}</span>
+              <h5 class="card-title lead">{{p.description}}</h5>
               <p class="badge badge-dark pull-right">{{p.type | uppercase}}</p>
               <hr>
               <p class="card-text">Quantity - {{p.quantity}}</p>
@@ -52,7 +52,7 @@
               <button *ngIf="getQuantity(p) === 0;else updateQuantity" class="btn btn-secondary pull-right btn-sm" type="button"
                 (click)="addToCart(p)" style="color: white">Add to cart</button>
               <ng-template #updateQuantity>
-                <div class="row">
+                <div class="row no-gutters text-center">
                   <div class="col-2">
                     <button class="btn btn-secondary btn-sm" (click)="removeFromCart(p)">-</button>
                   </div>
@@ -62,7 +62,7 @@
                   </div>
                 </div>
               </ng-template>
-              <button class="btn btn-primary pull-right btn-sm mx-1">Check Out</button>
+              <button *ngIf="getQuantity(p) === 0" class="btn btn-primary pull-right btn-sm mx-1">Check Out</button>
 
             </div>
           </div>
