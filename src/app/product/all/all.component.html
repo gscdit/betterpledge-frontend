@@ -6,7 +6,7 @@
     </div>
     <div class="col-lg align-self-end">
       <div class="input-group">
-        <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="search..." >
+        <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="search...">
         <div class="input-group-append">
           <button class="btn btn-link" type="button"><i class="fa fa-search"></i></button>
         </div>
@@ -24,7 +24,8 @@
             <input type="radio" name="Preference" value="Both" routerLink="/product/all" checked> Both
           </label>
           <label class="radio">
-            <input type="radio" name="Preference" value="Veg" routerLink="/product/all" [queryParams]="{type:'veg'}"> Veg
+            <input type="radio" name="Preference" value="Veg" routerLink="/product/all" [queryParams]="{type:'veg'}">
+            Veg
           </label>
           <label class="radio">
             <input type="radio" name="Preference" value="Non-Veg" routerLink="/product/all" [queryParams]="{type:'non-veg'}">
@@ -36,49 +37,43 @@
     </div>
     <hr>
     <div class="col-lg-10">
-      <div  *ngIf="product.length===0;else load">
-          <h1 class="text-center">Loading...</h1>
+      <div *ngIf="filteredProduct.length ===0 || filteredProduct===null || filteredProduct===undefined ;else load">
+        <h1 class="text-center">Loading...</h1>
       </div>
-      <ng-template  #load>
-            <div class="card-deck"   >
-             
-              <!-- <div *ngIf="searchProduct.length; else shows">
-                <ng-container *ngFor="let p of filteredProduct; let i=index;">
-                </div>
-                <div #shows> -->
-                  <ng-container  *ngFor="let p of filteredProduct; let i=index;">                
-                <!-- </div> -->
-                <div class="card col-md-4 col-sm-12 product" style="width: 92vw; margin-bottom: 15px;">
-                  <img class="card-img-top px-0" src="{{p.image}}"
-                    (click)="detailPage(p)">
-                  <div class="card-body" (click)="detailPage(p)">
-                    <h5 class="card-title lead">{{p.description}}</h5>
-                    <p class="badge badge-dark pull-right">{{p.type | uppercase}}</p>
-                    <hr>
-                    <p class="card-text">Quantity - {{p.quantity}}</p>
+      <ng-template #load>
+        <div class="card-deck">
+          <ng-container *ngFor="let p of filteredProduct; let i=index;">
+            <div class="card col-md-4 col-sm-12 product" style="width: 92vw; margin-bottom: 15px;">
+              <img class="card-img-top px-0" height="200px" src="{{p.image}}" (click)="detailPage(p)">
+              <div class="card-body" (click)="detailPage(p)">
+                <h5 class="card-title lead">{{p.description}}</h5>
+                <p class="badge badge-dark pull-right">{{p.type | uppercase}}</p>
+                <hr>
+                <p class="card-text">Quantity - {{p.quantity}}</p>
+              </div>
+              <div class="card-footer py-1" style="opacity: 1;">
+
+                <button *ngIf="getQuantity(p) === 0;else updateQuantity" class="btn btn-secondary pull-right btn-sm"
+                  type="button" (click)="addToCart(p)" style="color: white;margin-right: 10px">Add to cart</button>
+                <ng-template #updateQuantity>
+                  <div class="row no-gutters text-center">
+                    <div class="col-2">
+                      <button class="btn btn-secondary btn-sm" (click)="removeFromCart(p)" [disabled]="getQuantity(p)===0">-</button>
+                    </div>
+                    <div class="col text-center">{{ getQuantity(p) }} in cart</div>
+                    <div class="col-2">
+                      <button class="btn btn-secondary btn-sm" (click)="addToCart(p)" [disabled]="p.quantity===getQuantity(p)">+</button>
+                    </div>
                   </div>
-                  <div class="card-footer py-1" style="opacity: 1;">
-      
-                    <button *ngIf="getQuantity(p) === 0;else updateQuantity" class="btn btn-secondary pull-right btn-sm" type="button"
-                      (click)="addToCart(p)" style="color: white;margin-right: 10px">Add to cart</button>
-                    <ng-template #updateQuantity>
-                      <div class="row no-gutters text-center">
-                        <div class="col-2">
-                          <button class="btn btn-secondary btn-sm" (click)="removeFromCart(p)" [disabled]="getQuantity(p)===0">-</button>
-                        </div>
-                        <div class="col text-center">{{ getQuantity(p) }} in cart</div>
-                        <div class="col-2">
-                          <button class="btn btn-secondary btn-sm" (click)="addToCart(p)" [disabled]="p.quantity===getQuantity(p)">+</button>
-                        </div>
-                      </div>
-                    </ng-template>
-                    <button *ngIf="getQuantity(p) === 0" (click)="checkout(p)" class="btn btn-primary pull-right btn-sm mx-1">Check Out</button>
-      
-                  </div>
-                </div>
-                <div *ngIf="(i+1)%3===0" class="w-100"> </div>
-              </ng-container>
+                </ng-template>
+                <button *ngIf="getQuantity(p) === 0" (click)="checkout(p)" class="btn btn-primary pull-right btn-sm mx-1">Check
+                  Out</button>
+
+              </div>
             </div>
+            <div *ngIf="(i+1)%3===0" class="w-100"> </div>
+          </ng-container>
+        </div>
       </ng-template>
     </div>
   </div>

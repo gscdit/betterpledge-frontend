@@ -17,53 +17,43 @@ export class AllComponent implements OnInit,OnDestroy {
   searchProduct=[];
   type: string;
   shoppingCart;
+  subscription:Subscription
+  productsubscription: Subscription;
+  show=true;
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private ps: ProductsService,
     private cartService: ShoppingCartService) {
-      console.log(this.product.length)
-      console.log(this.searchProduct.length)
   }
-  subscription:Subscription
+
   totalQuantity(){
     return this.filteredProduct.length;
   }
 
-  show=true;
-
   async ngOnInit() {
-
-    this.ps.getAll().take(1).switchMap(
+   this.productsubscription =this.ps.getAll().switchMap(
       p => {
         if(p)
         this.product = p.listing;
-        console.log(this.product.length)
         return this.route.queryParamMap
       })
       .subscribe(
         params => {
-       
           this.type = params.get('type');
           this.searchProduct= this.filteredProduct = (this.type) ?
-            this.product.filter(p => p.type === this.type) : this.product;
-
-     
+            this.product.filter(p => p.type === this.type) : this.product;     
         });
 
-
-   this.subscription= (await this.cartService.getCart()).snapshotChanges().subscribe(
-      cart => {
-       
-        this.shoppingCart = cart.payload.val();
-    
+   this.subscription= (await this.cartService.getCart()).valueChanges().subscribe(
+      cart => { 
+        this.shoppingCart = cart;
       }
     );
-  
   }
   
 
   removeFromCart(product) {
-  
     this.cartService.removeFromCart(product)
   }
 
@@ -75,6 +65,7 @@ export class AllComponent implements OnInit,OnDestroy {
   }
   ngOnDestroy(){
     this.subscription.unsubscribe();
+    this.productsubscription.unsubscribe();
   }
   filter(query:string){
   let q= query.toLowerCase()

@@ -20,18 +20,19 @@ import { ShoppingCartService } from './Service/shopping-cart.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { HttpModule } from '@angular/http';
 import {  AngularFireModule } from 'angularfire2';
-
 import {  AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderService } from './Service/order.service';
+import { MyOrderComponent } from './profile/my-order/my-order.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyProfileComponent,
     ShoppingCartComponent,
-    CheckOutComponent
+    CheckOutComponent,
+    MyOrderComponent
   ],
   imports: [
     BrowserModule,

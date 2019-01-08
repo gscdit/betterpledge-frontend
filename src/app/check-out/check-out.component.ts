@@ -24,9 +24,9 @@ export class CheckOutComponent implements OnInit,OnDestroy {
        this.cart$=cart
        if(cart)
        this.product_ids=Object.keys(cart.items)
-       console.log(this.product_ids)
+      //  console.log(this.product_ids!==undefined)
        this.count=this.cartService.totalCount(cart)
-       console.log(this.cart$);
+      //  console.log(this.cart$!==null);
       })
   }
   placeOrder(){
