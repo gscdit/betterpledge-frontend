@@ -91,11 +91,11 @@
               </div>
               <div *ngIf="cart$.items" class="col-md-4 lead" style="text-align:center">
                 <span class="px-1" style="cursor: pointer;">
-                  <button class="fa fa-lg fa-plus-circle" [disabled]="cart$.items[product_id].product.quantity === cart$.items[product_id].quantity" (click)="addToCart(cart$.items[product_id].product)"></button>
+                  <button class="fa fa-lg fa-plus-circle custom-style" [disabled]="cart$.items[product_id].product.quantity === cart$.items[product_id].quantity" (click)="addToCart(cart$.items[product_id].product)"></button>
                 </span>
                 {{cart$.items[product_id].quantity}} 
                 <span class="px-1" style="cursor: pointer;">
-                  <i class="fa fa-lg fa-minus-circle" (click)="removeFromCart(cart$.items[product_id].product)"></i>
+                  <button class="fa fa-lg fa-minus-circle" (click)="removeFromCart(cart$.items[product_id].product)"></button>
                 </span>
               </div>
             </div>

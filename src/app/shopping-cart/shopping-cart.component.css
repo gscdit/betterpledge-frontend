@@ -5,3 +5,9 @@
     background-size: cover;
     margin-top: 20px;
 }
+
+.custom-style{
+    border:0px;
+    padding:0px;
+    background-color:white;
+}
