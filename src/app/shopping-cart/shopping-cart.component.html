@@ -42,7 +42,7 @@
       </div>
       <ng-template #shows>
         <p class="card-text lead" style="text-align: center;">
-          <img src="https://img1a.flixcart.com/www/linchpin/fk-cp-zion/img/empty-cart_ee6141.png" width="200px"> <br><br>
+          <img src="assets/empty-cart_ee6141.png" width="200px"> <br><br>
           <b>Your Cart is Empty</b>
         </p>
       </ng-template>
@@ -50,7 +50,7 @@
       <!-- Loop Ends here -->
 
       <div class="card-footer" style="background-color:white">
-        <div class="btn-group pull-right" *ngIf="cart$;else showss">
+        <div class="btn-group pull-right" *ngIf="cart$.items;else showss">
           <button class="btn btn-secondary " routerLink="/product/all">Continue Shopping</button> &nbsp;
           <button class="btn btn-success" routerLink="/check-out">Place Order</button>
         </div>

@@ -33,16 +33,13 @@
             aria-expanded="false"><span style="font-size:100%;cursor: pointer;"><i class="fa fa-user-circle"></i>&nbsp;
               Guest</span>
           </a>
-
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="cursor:pointer; z-index: 1;">
             <a class="dropdown-item" routerLink="/login" *ngIf="!authService.loggedin()">Login</a>
             <a class="dropdown-item" routerLink="/register-beneficiary" *ngIf="!authService.loggedin()">Register</a>
-            <a class="dropdown-item" routerLink="/Order" *ngIf="authService.loggedin()">My Orders</a>
+            <a class="dropdown-item" routerLink="/order" *ngIf="authService.loggedin()">My Orders</a>
             <a class="dropdown-item" routerLink="/donor/donatedProduct" *ngIf="authService.loggedin()">Manage Product</a>
             <a class="dropdown-item" routerLink="/Profile" *ngIf="authService.loggedin()">My Account</a>
-
             <a class="dropdown-item" routerLink="/Notifications" *ngIf="authService.loggedin()">Notifications</a>
-
             <a class="dropdown-item" routerLink="/Logout" *ngIf="authService.loggedin()" (click)="authService.logout()"><span><i
                   class="fas fa-sign-out-alt" style="font-size:100%"></i></span>
               Logout</a>
