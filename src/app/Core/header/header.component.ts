@@ -11,10 +11,12 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   cart$;
+  
   constructor(private router: Router, public authService: AuthenticateService, private cartService: ShoppingCartService) { }
   totalQuantityCount: number;
   subscription: Subscription
   async ngOnInit() {
+   
     window.onscroll = _ => {
       if (window.pageYOffset > document.getElementById("header").offsetTop) {
         document.getElementById("header").classList.add("fixed-top");
@@ -25,9 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     };
     let cart = await this.cartService.getCart();
     this.subscription = cart.valueChanges().subscribe(cart => {
-      //  this.cart$=cart.payload.val()['items']
-      // console.log(cart.payload.val()['items'])
-      this.totalQuantityCount = this.cartService.totalCount(cart)
+    this.totalQuantityCount = this.cartService.totalCount(cart)
     }
     )
   }

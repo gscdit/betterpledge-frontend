@@ -31,7 +31,6 @@
         <div class="form-group">
           <label id="Category" for="">Category</label>
           <select #category="ngModel" [(ngModel)]="product.type" name="type" id="Category" class="form-control" required>
-            <option value="default">Select Category</option>
             <option value="veg">Veg.</option>
             <option value="non-veg">Non-Veg.</option>
           </select>
@@ -42,7 +41,7 @@
         </div>
         <div class="form-group">
           <label id="url" for="url">Image URL</label>
-          <input #imageUrl="ngModel" type="text" [(ngModel)]="product.image" name="image" id="url" class="form-control" required>
+          <input #imageUrl="ngModel" type="file" (change)="onFileSelected($event)" [(ngModel)]="product.image" name="image" id="url" class="form-control" required>
         </div>
         <button class="btn btn-success" [disabled]="!f.valid">Save</button>
         <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>

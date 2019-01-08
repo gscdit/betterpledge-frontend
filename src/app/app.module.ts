@@ -24,6 +24,7 @@ import {  AngularFireModule } from 'angularfire2';
 import {  AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
 import { CheckOutComponent } from './check-out/check-out.component';
+import { OrderService } from './Service/order.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { CheckOutComponent } from './check-out/check-out.component';
     AngularFireDatabaseModule
   ],
  
-  providers: [HttpService,AuthenticateService,AuthGuard,ShoppingCartService,{
+  providers: [HttpService,OrderService,AuthenticateService,AuthGuard,ShoppingCartService,{
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptorService,
     multi:true

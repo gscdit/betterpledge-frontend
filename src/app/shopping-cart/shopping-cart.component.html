@@ -1,10 +1,11 @@
-<h1>
+<!-- <h1>
   Shopping Cart
 </h1>
-<div class="row col-md-10">
-  <p>
-    You have {{count}} items in your shopping cart.
-  </p>
+<p>
+  You have {{count}} items in your shopping cart.
+</p> -->
+<!-- <div class="row col-md-10">
+
   <table class="table" *ngIf="cart$">
     <thead>
       <tr>
@@ -22,29 +23,101 @@
       <td class="text-center">{{cart$.items[product_id].product.description}}</td>
       <div class="row no-gutters">
         <div class="col-2">
-          <button class="btn btn-secondary btn-sm" (click)="removeFromCart(cart$.items[product_id].product)" [disabled]="cart$.items[product_id].quantity === 0">-</button>
+          <button class="btn btn-secondary btn-sm"  [disabled]="cart$.items[product_id].quantity === 0">-</button>
         </div>
         <div class="col text-center">{{cart$.items[product_id].quantity}}</div>
         <div class="col-2">
-          <button class="btn btn-secondary btn-sm" (click)="addToCart(cart$.items[product_id].product)" [disabled]="cart$.items[product_id].product.quantity === cart$.items[product_id].quantity">+</button>
+          <button class="btn btn-secondary btn-sm"  >+</button>
         </div>
       </div>
       <td class="text-center"><span>{{cart$.items[product_id].product.type | uppercase }}</span> </td>
       <td>
         <div class="col text-center">
-          <button class="btn btn-danger text-center" (click)="delete(cart$.items[product_id].product)">Delete</button>
+          <button class="btn btn-danger text-center" >Delete</button>
         </div>
       </td>
     </tbody>
     <tfoot>
+      <td > <button  class="btn btn-primary pull-left" (click)="clearCart()">Check-Out</button></td>
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
-      <td class="pull-right">
-        <button *ngIf="cart$" class="btn btn-danger pull-right" (click)="clearCart()">Clear Shopping Cart</button>
+      <td >  <button *ngIf="cart$" class="btn btn-danger pull-right" (click)="clearCart()">Clear Shopping Cart</button>
       </td>
     </tfoot>
   </table>
-
-</div>
+  <div >
+   
+  </div>
+  <div >
+  
+  </div>
+  
+</div> -->
+<div class="container p-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" *ngIf="cart$;else show" >My Cart {{'('+count+')'}} </h5> 
+        <ng-template #show>
+            <h5 class="card-title" >My Cart (0) </h5> 
+        </ng-template> <hr>
+  
+        <!-- Empty Items -->
+        <!-- <p class="card-text lead" style="text-align: center;" >
+          <img src="https://img1a.flixcart.com/www/linchpin/fk-cp-zion/img/empty-cart_ee6141.png" width="200px" > <br><br>
+          <b>Your Cart is Empty</b>
+        </p> -->
+  
+        <!-- With Items Loop Here -->
+        <div *ngIf="cart$;else shows" >
+          <div *ngFor="let product_id of product_ids">
+            <div class="row">
+              <div class="col-md-2">
+                  <div class="img-thumbnail mx-auto thumbnail" [style.backgroundImage]="'url('+ cart$.items[product_id].product.image +')'"></div>
+                </div>
+              <div class="col-md-6" *ngIf="cart$.items">
+                <p class="lead">
+                    {{cart$.items[product_id].product.description}}
+                </p>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio commodi in culpa ipsa dignissimos aliquam eaque error, animi fuga veniam.
+                </p>
+                <p class="lead"> 
+                  <span style="color: green" >In Stock</span> 
+                  <!-- <span style="color: red" >Out Stock</span>  -->
+                  &nbsp; 
+                  <button class="btn btn-sm btn-danger" (click)="delete(cart$.items[product_id].product)">Remove</button>
+                </p>
+              </div>
+              <div *ngIf="cart$.items" class="col-md-4 lead" style="text-align:center">
+                <span class="px-1" style="cursor: pointer;">
+                  <button class="fa fa-lg fa-plus-circle" [disabled]="cart$.items[product_id].product.quantity === cart$.items[product_id].quantity" (click)="addToCart(cart$.items[product_id].product)"></button>
+                </span>
+                {{cart$.items[product_id].quantity}} 
+                <span class="px-1" style="cursor: pointer;">
+                  <i class="fa fa-lg fa-minus-circle" (click)="removeFromCart(cart$.items[product_id].product)"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ng-template #shows>
+            <p class="card-title" >There is no item in your cart </p> 
+        </ng-template>
+        <hr>
+        <!-- Loop Ends here -->
+  
+        <div class="card-footer" style="background-color:white">
+          <div class="btn-group pull-right" *ngIf="cart$;else showss">
+            <button class="btn btn-secondary " routerLink="/product/all">Continue Shopping</button> &nbsp;
+            <button class="btn btn-success" routerLink="/check-out">Place Order</button>
+          </div>
+          <ng-template #showss>
+            <div class="btn-group pull-right" >
+                <button class="btn btn-secondary " routerLink="/product/all">Continue Shopping</button>
+              </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>

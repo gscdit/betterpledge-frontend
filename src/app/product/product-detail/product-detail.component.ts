@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductsService } from 'src/app/Service/products.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/Service/shopping-cart.service';
 import { Subscription } from 'rxjs';
 
@@ -11,10 +11,10 @@ import { Subscription } from 'rxjs';
 })
 export class ProductDetailComponent implements OnInit,OnDestroy {
   id
-  product={image:null}
+  product={image:null,description:null,quantity:null,type:null}
   shoppingCart;
   subscription: Subscription
-  constructor(private ps:ProductsService,private route:ActivatedRoute,private cartService:ShoppingCartService) { }
+  constructor(private ps:ProductsService,private route:ActivatedRoute,private cartService:ShoppingCartService,private router:Router) { }
 
  async ngOnInit() {
     this.id=this.route.snapshot.paramMap.get('id')
@@ -33,9 +33,11 @@ export class ProductDetailComponent implements OnInit,OnDestroy {
   addToCart(){
     this.cartService.addToCart(this.product);
   }
+  checkout(){
+    this.addToCart();
+    this.router.navigate(['/check-out'])
+  }
   getQuantity(){
-    // console.log(this.shoppingCart.items[prod.listing_id])
-    // return 0;
    if(!this.shoppingCart) return 0;
    let item=this.shoppingCart.items[this.product['listing_id']]
    return item? item.quantity:0;
