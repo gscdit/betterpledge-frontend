@@ -52,9 +52,14 @@
                 <p class="card-text">Quantity - {{p.quantity}}</p>
               </div>
               <div class="card-footer py-1" style="opacity: 1;">
+                <div *ngIf="!getQuantity(p);else updateQuantity">
 
-                <button *ngIf="getQuantity(p) === 0;else updateQuantity" class="btn btn-secondary pull-right btn-sm"
-                  type="button" (click)="addToCart(p)" style="color: white;margin-right: 10px">Add to cart</button>
+                  <button class="btn btn-secondary pull-right btn-sm"
+                    type="button" (click)="addToCart(p)" style="color: white;margin-right: 10px">Add to cart</button>
+
+                    <button  (click)="checkout(p)" class="btn btn-primary pull-right btn-sm mx-1">Check
+                        Out</button>
+                </div>
                 <ng-template #updateQuantity>
                   <div class="row no-gutters text-center">
                     <div class="col-2">
@@ -66,8 +71,7 @@
                     </div>
                   </div>
                 </ng-template>
-                <button *ngIf="getQuantity(p) === 0" (click)="checkout(p)" class="btn btn-primary pull-right btn-sm mx-1">Check
-                  Out</button>
+               
 
               </div>
             </div>

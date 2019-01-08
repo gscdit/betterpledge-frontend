@@ -24,7 +24,7 @@ import {  AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderService } from './Service/order.service';
-import { MyOrderComponent } from './profile/my-order/my-order.component';
+import { MyOrderComponent } from './Profile/my-order/my-order.component';
 
 @NgModule({
   declarations: [

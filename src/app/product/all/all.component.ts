@@ -60,35 +60,29 @@ export class AllComponent implements OnInit,OnDestroy {
   detailPage(product) {
     this.router.navigate(['/product/detail', product.listing_id]);
   }
+
   addToCart(product) {  
     this.cartService.addToCart(product)
   }
+
   ngOnDestroy(){
     this.subscription.unsubscribe();
     this.productsubscription.unsubscribe();
   }
+
   filter(query:string){
   let q= query.toLowerCase()
-   
-
     this.filteredProduct=(query) ?
     this.filteredProduct.filter(p=>p.description.toLowerCase().includes(q)) : this.searchProduct;
-    // if(query===''){
-    //   this.filteredProduct=this.searchProduct
-    // }
-    // else{
-    //   this.filteredProduct=
-    // this.filteredProduct.filter(p=>p.description.toLowerCase().includes(q));
-    // }
   }
   checkout(product){
     this.addToCart(product);
     this.router.navigate(['/check-out'])
   }
   getQuantity(prod:Product){
-   if(!this.shoppingCart) return 0;
+   if(!this.shoppingCart) return null ;
    if(this.shoppingCart.items){
    let item=this.shoppingCart.items[prod.listing_id]
-   return item? item.quantity:0;
+   return item? item.quantity:null;
   }}
 }

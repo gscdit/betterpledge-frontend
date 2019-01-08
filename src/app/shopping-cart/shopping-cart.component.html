@@ -9,20 +9,17 @@
       <hr>
 
       <!-- With Items Loop Here -->
-      <div *ngIf="cart$;else shows">
+      <div *ngIf="cart$ && cart$.items;else shows">
         <div *ngFor="let product_id of product_ids">
           <div class="row">
             <div class="col-md-2">
               <div class="img-thumbnail mx-auto thumbnail" [style.backgroundImage]="'url('+ cart$.items[product_id].product.image +')'"></div>
             </div>
-            <div class="col-md-6" *ngIf="cart$.items[product_id].product">
+            <div class="col-md-6" *ngIf="cart$.items">
               <p class="lead">
                 {{cart$.items[product_id].product.description}}
               </p>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio commodi in culpa ipsa dignissimos
-                aliquam eaque error, animi fuga veniam.
-              </p>
+              
               <p class="lead">
                 <span style="color: green">In Stock</span>
                 <!-- <span style="color: red" >Out Stock</span>  -->
@@ -30,14 +27,14 @@
                 <button class="btn btn-sm btn-danger" (click)="delete(cart$.items[product_id].product)">Remove</button>
               </p>
             </div>
-            <div *ngIf="cart$.items[product_id].quantity" class="col-md-4 lead" style="text-align:center">
-              <span class="px-1" style="cursor: pointer;" *ngIf="cart$.items[product_id].product">
-                <button class="fa fa-lg fa-plus-circle" [disabled]="cart$.items[product_id].product.quantity === cart$.items[product_id].quantity"
+            <div *ngIf="cart$.items" class="col-md-4 lead" style="text-align:center">
+              <span class="px-1" style="cursor: pointer;" *ngIf="cart$.items">
+                <button class="fa fa-lg fa-plus-circle custom-style" [disabled]="cart$.items[product_id].product.quantity === cart$.items[product_id].quantity"
                   (click)="addToCart(cart$.items[product_id].product)"></button>
               </span>
               {{cart$.items[product_id].quantity}}
-              <span class="px-1" style="cursor: pointer;" *ngIf="cart$.items[product_id].product">
-                <i class="fa fa-lg fa-minus-circle" (click)="removeFromCart(cart$.items[product_id].product)"></i>
+              <span class="px-1" style="cursor: pointer;" *ngIf="cart$.items">
+                <button class="fa fa-lg fa-minus-circle custom-style" (click)="removeFromCart(cart$.items[product_id].product)"></button>
               </span>
             </div>
           </div>

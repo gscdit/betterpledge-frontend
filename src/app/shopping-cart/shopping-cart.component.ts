@@ -17,12 +17,9 @@ export class ShoppingCartComponent implements OnInit,OnDestroy {
   async ngOnInit() {
   this.subscription=  (await this.cartService.getCart()).valueChanges().subscribe(cart=>{
     this.count=this.cartService.totalCount(cart);
-    // console.log(cart.items)
      this.cart$=cart
-     if(cart)
+     if(cart.items)
      this.product_ids= Object.keys(cart.items);
-    //  console.log(this.product_ids[0])
-    //  console.log(this.cart$.items[this.product_ids[0]].product)
     })
   }
   ngOnDestroy(){
@@ -30,19 +27,16 @@ export class ShoppingCartComponent implements OnInit,OnDestroy {
   }
 
   removeFromCart(product) {
-    // console.log(product)
     this.cartService.removeFromCart(product)
   }
 
   addToCart(product) {
-    // this.show=!this.show
     this.cartService.addToCart(product)
   }
   clearCart(){
     this.cartService.clearCart();
   }
   delete(product){
-  //  console.log( product.listing_id)
     this.cartService.delete(product);
   }
 }
