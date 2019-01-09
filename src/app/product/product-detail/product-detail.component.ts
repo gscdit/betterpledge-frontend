@@ -24,29 +24,31 @@ export class ProductDetailComponent implements OnInit,OnDestroy {
     });
     this.subscription= (await this.cartService.getCart()).snapshotChanges().subscribe(
       cart => {
-        // console.log(cart.payload.val()['items']);
         this.shoppingCart = cart.payload.val();
-        // console.log(this.shoppingCart[2].quantity)
       }
     );
   }
+
   addToCart(){
     this.cartService.addToCart(this.product);
   }
+
   checkout(){
     this.addToCart();
     this.router.navigate(['/check-out'])
   }
+
   getQuantity(){
    if(!this.shoppingCart) return null;
    if(this.shoppingCart && this.shoppingCart.items){
    let item=this.shoppingCart.items[this.product['listing_id']]
    return item? item.quantity:null;
   }}
+
   removeFromCart() {
-    // console.log(product)
     this.cartService.removeFromCart(this.product)
   }
+
   ngOnDestroy(){
     this.subscription.unsubscribe();
   }
