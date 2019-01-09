@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { ShoppingCart } from './../Models/shoppingCart';
 import { p } from '@angular/core/src/render3';
 import { OrderService } from './../Service/order.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-check-out',
@@ -17,7 +18,7 @@ export class CheckOutComponent implements OnInit,OnDestroy {
   cart$;
   count;
   product_ids;
-  constructor(private cartService:ShoppingCartService,private os:OrderService) { }
+  constructor(private modalService: NgbModal,private cartService:ShoppingCartService,private os:OrderService) { }
 
  async ngOnInit() {
     this.subscription=  (await this.cartService.getCart()).valueChanges().subscribe(cart=>{
@@ -29,8 +30,8 @@ export class CheckOutComponent implements OnInit,OnDestroy {
       //  console.log(this.cart$!==null);
       })
   }
-  placeOrder(){
-   
+  openVerticallyCentered(content) {
+    this.modalService.open(content, { centered: true });
     let order={
       userId:localStorage.getItem('token'),
       datePlaced:new Date().getTime(),
@@ -38,9 +39,8 @@ export class CheckOutComponent implements OnInit,OnDestroy {
       items:this.cart$
     } 
     console.log(order);
-    this.os.storeOrder(order);   
-  }
- 
+    this.os.storeOrder(order);  
+  } 
  
   ngOnDestroy(){
     this.subscription.unsubscribe();

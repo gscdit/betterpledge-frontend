@@ -25,6 +25,7 @@ import { environment } from 'src/environments/environment';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderService } from './Service/order.service';
 import { MyOrderComponent } from './Profile/my-order/my-order.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { MyOrderComponent } from './Profile/my-order/my-order.component';
     DonorModule,
     HttpClientModule,
     HttpModule,
+    NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule
   ],

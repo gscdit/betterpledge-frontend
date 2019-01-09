@@ -17,12 +17,20 @@
         </div>
         <div class="card-body">
           <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-            <div class="col  form-group" [class.has-error]="name.invalid && name.touched">
-              <label for="email" class="control-label">Name</label>
-              <input type="text" id="name" pattern="^[A-Z]+[a-z]*$" minlength="3" maxlength="10" name="name" ngModel
-                class="form-control" required #name="ngModel">
-              <span class="help-block" *ngIf="name.touched && name.errors?.required" style="color:red">Name is required</span>
-              <span class="help-block" *ngIf="name.touched && name.invalid  && !name.errors?.required" style="color:red">Please
+            <div class="col  form-group" [class.has-error]="first_name.invalid && first_name.touched">
+              <label for="first_name" class="control-label">First Name</label>
+              <input type="text" id="first_name" pattern="^[A-Z]+[a-z]*$" minlength="3" maxlength="10" name="first_name" ngModel
+                class="form-control" required #first_name="ngModel">
+              <span class="help-block" *ngIf="first_name.touched && first_name.errors?.required" style="color:red">Name is required</span>
+              <span class="help-block" *ngIf="first_name.touched && first_name.invalid  && !first_name.errors?.required" style="color:red">Please
+                enter valid name</span>
+            </div>
+            <div class="col  form-group" [class.has-error]="last_name.invalid && last_name.touched">
+              <label for="last_name" class="control-label">Last Name</label>
+              <input type="text" id="last_name" pattern="^[A-Z]+[a-z]*$" minlength="3" maxlength="10" name="last_name" ngModel
+                class="form-control" required #last_name="ngModel">
+              <span class="help-block" *ngIf="last_name.touched && last_name.errors?.required" style="color:red">Name is required</span>
+              <span class="help-block" *ngIf="last_name.touched && last_name.invalid  && !last_name.errors?.required" style="color:red">Please
                 enter valid name</span>
             </div>
             <div class="col  form-group">
