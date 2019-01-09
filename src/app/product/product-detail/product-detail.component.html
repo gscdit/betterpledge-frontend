@@ -1,19 +1,19 @@
-<div class="container py-4">
+<div *ngIf="product" class="container py-4">
 	<div class="card">
-	<div class="row d-flex flex-wrap">
-        <div class="col-lg-6">
-		<aside class=" border-right">
-<article class="gallery-wrap img-fluid"> 
-<div class="img-big-wrap img-fluid " *ngIf="product.image"  >
-  <div> <img src="{{product.image}}" class="imge img-fluid"   ></div>
-</div> <!-- slider-product.// -->
-</article> <!-- gallery-wrap .end// -->
-        </aside>
-    </div>
-    <div class="col-lg-6" style="float: right;">
-		<aside >
-<article class="card-body p-6">
-	<h3 class="title mb-3">Food Details</h3>
+		<div class="row d-flex flex-wrap">
+			<div class="col-lg-6">
+				<aside class=" border-right">
+					<article class="gallery-wrap img-fluid">
+						<div class="img-big-wrap img-fluid " *ngIf="product.image">
+							<div> <img src="{{product.image}}" class="imge img-fluid"></div>
+						</div> <!-- slider-product.// -->
+					</article> <!-- gallery-wrap .end// -->
+				</aside>
+			</div>
+			<div class="col-lg-6" style="float: right;">
+				<aside>
+					<article class="card-body p-6">
+						<h3 class="title mb-3">Food Details</h3>
 
 						<hr>
 						<!-- <div class="row">
@@ -28,78 +28,46 @@
 										</select>
 									</dd>
 								</dl>  item-property .// -->
-							<!-- </div> col.// -->
-							<!-- <hr> -->
+						<!-- </div> col.// -->
+						<!-- <hr> -->
 						<!-- </div> row.// -->
 
-<dl class="item-property">
-  <dt>Description</dt>
-  <dd><p>{{product.description}} </p></dd>
-</dl>
-<dl class="param param-feature">
-  <dt>Quantity Available</dt>
-  <dd>{{product.quantity}}</dd>
-</dl>
-<dl class="param param-feature">
-  <dt>Type</dt>
-  <dd>{{product.type | uppercase}}</dd>
-</dl>
-  <!-- item-property-hor .// -->
-<!-- <dl class="param param-feature inline">
-	<dt>Duration</dt>
-	<dt></dt>
-	<dd>2 am</dd>
-	<dt>to </dt>
-	<dd>2 am</dd>
-</dl>   -->
-<!-- item-property-hor .// -->
-<!-- <dl class="param param-feature inline">
-	<dt>Delivery</dt>
-	<dt></dt>
-  <dd>Russia, USA, and Europe</dd> -->
-<!-- </dl>  item-property-hor .// -->
-
-<hr>
-	<!-- <div class="row">
-		<div class="col-sm-5">
-			<dl class="param param-inline">
-			  <dt>Quantity(kg): </dt>
-			  <dd>
-			  	<select class="form-control form-control-sm" style="width:70px;">
-			  		<option> 1 </option>
-			  		<option> 2 </option>
-			  		<option> 3 </option>
-			  	</select>
-			  </dd> -->
-			<!-- </dl>   -->
-			<!-- item-property .// -->
-		<!-- </div> -->
-		 <!-- col.// -->
-<!-- <hr> -->
-	<!-- </div>
-	 row.// -->
-	<div *ngIf="getQuantity() === 0;else updateQuantity">
-
-		<a  class="btn btn btn-secondary text-uppercase" (click)="checkout()" style="color:aliceblue;"> Check-out </a> &nbsp;
-	
-		<a (click)="addToCart()" style="color:aliceblue;" class="btn btn btn-secondary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
-		
-	</div>
-	<ng-template #updateQuantity>
-			<div class="row no-gutters text-center">
-				<div class="col-2">
-					<button class="btn btn-secondary btn-sm" (click)="removeFromCart()">-</button>
-				</div>
-				<div class="col text-center">{{ getQuantity(p) }} in cart</div>
-				<div class="col-2">
-					<button class="btn btn-secondary btn-sm" (click)="addToCart()" [disabled]="product.quantity===getQuantity()">+</button>
-				</div>
+						<dl class="item-property">
+							<dt>Description</dt>
+							<dd>
+								<p>{{product.description}} </p>
+							</dd>
+						</dl>
+						<dl class="param param-feature">
+							<dt>Quantity Available</dt>
+							<dd>{{product.quantity}}</dd>
+						</dl>
+						<dl class="param param-feature">
+							<dt>Type</dt>
+							<dd>{{product.type | uppercase}}</dd>
+						</dl>
+						<hr>
+						<div *ngIf="!getQuantity();else updateQuantity">
+							<a class="btn btn btn-secondary text-uppercase" (click)="checkout()" style="color:aliceblue;"> Check-out </a>
+							&nbsp;
+							<a (click)="addToCart()" style="color:aliceblue;" class="btn btn btn-secondary text-uppercase"> <i class="fas fa-shopping-cart"></i>
+								Add to cart </a>
+						</div>
+						<ng-template #updateQuantity>
+							<div class="row no-gutters text-center">
+								<div class="col-2">
+									<button class="btn btn-secondary btn-sm" (click)="removeFromCart()">-</button>
+								</div>
+								<div class="col text-center">{{ getQuantity(p) }} in cart</div>
+								<div class="col-2">
+									<button class="btn btn-secondary btn-sm" (click)="addToCart()" [disabled]="product.quantity===getQuantity()">+</button>
+								</div>
+							</div>
+						</ng-template>
+					</article> <!-- card-body.// -->
+				</aside> <!-- col.// -->
 			</div>
-		</ng-template>
-</article> <!-- card-body.// -->
-        </aside> <!-- col.// -->
-        </div>
-	</div> <!-- row.// -->
-</div> <!-- card.// -->
+		</div> <!-- row.// -->
+	</div> <!-- card.// -->
 
 </div>

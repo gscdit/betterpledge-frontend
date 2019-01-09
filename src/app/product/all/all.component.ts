@@ -82,7 +82,7 @@ export class AllComponent implements OnInit,OnDestroy {
   }
   getQuantity(prod:Product){
    if(!this.shoppingCart) return null ;
-   if(this.shoppingCart.items){
+   if(this.shoppingCart && this.shoppingCart.items){
    let item=this.shoppingCart.items[prod.listing_id]
    return item? item.quantity:null;
   }}

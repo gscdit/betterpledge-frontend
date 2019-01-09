@@ -22,7 +22,7 @@ export class CheckOutComponent implements OnInit,OnDestroy {
  async ngOnInit() {
     this.subscription=  (await this.cartService.getCart()).valueChanges().subscribe(cart=>{
        this.cart$=cart
-       if(cart)
+       if(cart&& cart.items)
        this.product_ids=Object.keys(cart.items)
       //  console.log(this.product_ids!==undefined)
        this.count=this.cartService.totalCount(cart)

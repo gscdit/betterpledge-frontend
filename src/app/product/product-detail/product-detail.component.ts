@@ -38,10 +38,11 @@ export class ProductDetailComponent implements OnInit,OnDestroy {
     this.router.navigate(['/check-out'])
   }
   getQuantity(){
-   if(!this.shoppingCart) return 0;
+   if(!this.shoppingCart) return null;
+   if(this.shoppingCart && this.shoppingCart.items){
    let item=this.shoppingCart.items[this.product['listing_id']]
-   return item? item.quantity:0;
-  }
+   return item? item.quantity:null;
+  }}
   removeFromCart() {
     // console.log(product)
     this.cartService.removeFromCart(this.product)
