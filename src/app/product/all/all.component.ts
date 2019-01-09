@@ -71,7 +71,8 @@ export class AllComponent implements OnInit,OnDestroy {
   }
 
   filter(query:string){
-  let q= query.toLowerCase()
+  let q= query.toLowerCase();
+    this.filteredProduct=this.searchProduct;
     this.filteredProduct=(query) ?
     this.filteredProduct.filter(p=>p.description.toLowerCase().includes(q)) : this.searchProduct;
   }
