@@ -50,7 +50,7 @@
       <!-- Loop Ends here -->
 
       <div class="card-footer" style="background-color:white">
-        <div class="btn-group pull-right" *ngIf="cart$.items;else showss">
+        <div class="btn-group pull-right" *ngIf="cart$ && cart$.items;else showss">
           <button class="btn btn-secondary " routerLink="/product/all">Continue Shopping</button> &nbsp;
           <button class="btn btn-success" routerLink="/check-out">Place Order</button>
         </div>

@@ -18,7 +18,7 @@ export class ShoppingCartComponent implements OnInit,OnDestroy {
   this.subscription=  (await this.cartService.getCart()).valueChanges().subscribe(cart=>{
     this.count=this.cartService.totalCount(cart);
      this.cart$=cart
-     if(cart.items)
+     if(cart && cart.items)
      this.product_ids= Object.keys(cart.items);
     })
   }

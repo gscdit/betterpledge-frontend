@@ -43,7 +43,7 @@
           
           <div class="card-body">
             <h5 class="card-title">Order Summary</h5>
-            <p class="card-text">You have {{count}} items in your shopping cart</p>
+            <p class="card-text" *ngIf="count">You have {{count}} items in your shopping cart</p>
            <ul class="list-group list-group-flush" *ngIf="this.product_ids!==undefined && this.cart$!==null">
              <li *ngFor="let product_id of product_ids" class="list-group-item">
                 {{cart$.items[product_id].quantity}} x {{cart$.items[product_id].product.description}} 
