@@ -50,3 +50,8 @@
     padding-right: 0px !important ;
     padding-left:0px !important ;
 }
+
+/* for overriding the default btn z-index */
+.btindex{
+    z-index: 0;
+}
