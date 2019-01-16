@@ -15,13 +15,9 @@ export class RegisterDonorComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit(form:NgForm){
-    // this.httpService.sendData(this.registerUserData).subscribe(
-    //    response=>console.log('Whats'+response),
-    //    error=>console.error('Error'+error))
     console.log(form.value); 
     this.authService.registerdonor(form.value).subscribe(
       response=>{ console.log(response)
-      // localStorage.setItem('token', response.token)
       this.router.navigate(['/login'])
       },
       error=>{console.log(error)}

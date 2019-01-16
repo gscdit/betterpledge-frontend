@@ -5,14 +5,16 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { LightningFastDealComponent } from './lightning-fast-deal/lightning-fast-deal.component';
 import { TrendingComponent } from './trending/trending.component';
 import { ProductHeaderComponent } from './product-header/product-header.component';
+import { AuthGuard } from '../auth.guard';
+import { BeneficiaryGuard } from '../beneficiary.guard';
 
 
 const recipesRoutes: Routes = [
-  {path:'product/all',component:AllComponent},
-  {path:'product/detail/:id',component:ProductDetailComponent},
-  {path:'product/lightning',component:LightningFastDealComponent},
-  {path:'product/trending',component:TrendingComponent},
-  {path:'product/header',component:ProductHeaderComponent}
+  { path: 'product/all', component: AllComponent, canActivate: [AuthGuard, BeneficiaryGuard] },
+  { path: 'product/detail/:id', component: ProductDetailComponent, canActivate: [AuthGuard, BeneficiaryGuard] },
+  { path: 'product/lightning', component: LightningFastDealComponent, canActivate: [AuthGuard, BeneficiaryGuard] },
+  { path: 'product/trending', component: TrendingComponent, canActivate: [AuthGuard, BeneficiaryGuard] },
+  { path: 'product/header', component: ProductHeaderComponent, canActivate: [AuthGuard, BeneficiaryGuard] }
 ];
 
 @NgModule({
@@ -24,4 +26,4 @@ const recipesRoutes: Routes = [
 
   ]
 })
-export class ProductRoutingModule {}
+export class ProductRoutingModule { }

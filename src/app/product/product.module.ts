@@ -8,16 +8,16 @@ import { ProductRoutingModule } from "./product-routing.module";
 import { ProductHeaderComponent } from "./product-header/product-header.component";
 
 @NgModule({
-    declarations:[
+    declarations: [
         ProductDetailComponent,
         AllComponent,
         TrendingComponent,
         LightningFastDealComponent,
         ProductHeaderComponent
     ],
-    imports:[
+    imports: [
         CommonModule,
         ProductRoutingModule
     ]
 })
-export class ProductModule{}
+export class ProductModule { }

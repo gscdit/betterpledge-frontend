@@ -18,6 +18,7 @@ export class CheckOutComponent implements OnInit,OnDestroy {
   cart$;
   count;
   product_ids;
+  ordersubsc: Subscription;
   constructor(private modalService: NgbModal,private cartService:ShoppingCartService,private os:OrderService) { }
 
  async ngOnInit() {
@@ -33,14 +34,16 @@ export class CheckOutComponent implements OnInit,OnDestroy {
   openVerticallyCentered(content) {
     this.modalService.open(content, { centered: true });
     let order={
-      userId:localStorage.getItem('token'),
-      datePlaced:new Date().getTime(),
-      shipping:this.shipping,
-      items:this.cart$
+      time_stamp:new Date().getTime(),
+     orders:this.cart$.items
     } 
     console.log(order);
-    this.os.storeOrder(order);  
-  } 
+  this.ordersubsc=  this.os.storeOrder(order).take(1).subscribe(res=>{
+      console.log(res);
+      this.cartService.clearCart();
+    });
+    
+    } 
  
   ngOnDestroy(){
     this.subscription.unsubscribe();

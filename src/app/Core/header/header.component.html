@@ -1,17 +1,31 @@
-<nav class="navbar navbar-static-top navbar-expand-lg navbar-dark bg-dark " id="header" >
+<nav class="navbar navbar-static-top navbar-expand-lg navbar-dark bg-dark " id="header">
   <div class="container">
     <a class="navbar-brand" routerLink="/">Better Pledge</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse"  data-target="#navbarResponsive" aria-controls="navbarResponsive"
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto align-center">
         <li class="nav-item pull-left" routerLinkActive="active">
-          <a class="nav-link" routerLink="/product/all" >Donations</a>
+          <a class="nav-link" routerLink="/About" *ngIf="!authService.loggedin()">About Us</a>
         </li>
-        
-        <li class="nav-item  pull-left" routerLinkActive="active">
+        <li class="nav-item pull-left" routerLinkActive="active">
+          <a class="nav-link" routerLink="/Contact" *ngIf="!authService.loggedin()">Contact</a>
+        </li>
+        <li class="nav-item pull-left" routerLinkActive="active">
+          <a class="nav-link" routerLink="/donor/addProduct" *ngIf="authService.loggedin() && authService.currentUser().type==='donor'">Donate
+            Now</a>
+        </li>
+        <li class="nav-item pull-left" routerLinkActive="active">
+          <a class="nav-link" routerLink="/donor/donatedProduct" *ngIf="authService.loggedin() && authService.currentUser().type==='donor'">Manage
+            Product</a>
+        </li>
+        <li class="nav-item pull-left" routerLinkActive="active">
+          <a class="nav-link" routerLink="/product/all" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary'">Donations</a>
+        </li>
+
+        <li class="nav-item  pull-left" routerLinkActive="active" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary'">
           <a class="nav-link" routerLink="/Cart"><i class="fa fa-shopping-cart" style="font-size:20px"></i> Cart
             <sup>
               <span class="badge badge-warning badge-pill">{{ totalQuantityCount }} </span>
@@ -22,7 +36,7 @@
 
           <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" *ngIf="authService.loggedin()"
             aria-expanded="false"><span style="font-size:100%;cursor: pointer;"><i class="fa fa-user-circle"></i>
-              {{ authService.currentUser().name }}</span></a>
+              {{ authService.currentUser().first_name }}</span></a>
 
           <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" *ngIf="!authService.loggedin()"
             aria-expanded="false"><span style="font-size:100%;cursor: pointer;"><i class="fa fa-user-circle"></i>&nbsp;

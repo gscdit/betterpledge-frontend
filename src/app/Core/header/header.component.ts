@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 export class HeaderComponent implements OnInit, OnDestroy {
   cart$;
   
-  constructor(private router: Router, public authService: AuthenticateService, private cartService: ShoppingCartService) { }
+  constructor(private router: Router, public authService: AuthenticateService, private cartService: ShoppingCartService) {}
   totalQuantityCount: number;
   subscription: Subscription
   async ngOnInit() {

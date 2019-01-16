@@ -7,18 +7,18 @@ import { CheckOutComponent } from "./check-out/check-out.component";
 import { MyOrderComponent } from "./Profile/my-order/my-order.component";
 
 const appRoutes: Routes = [
-{ path:'',redirectTo:'/',pathMatch:'full'},
-{path:'Profile',component:MyProfileComponent,canActivate:[AuthGuard]},
-{path:'Cart',component:ShoppingCartComponent},
-{path:'check-out',component:CheckOutComponent},
-{path:'order',component:MyOrderComponent}
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: 'Profile', component: MyProfileComponent, canActivate: [AuthGuard] },
+  { path: 'Cart', component: ShoppingCartComponent, canActivate: [AuthGuard] },
+  { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
+  { path: 'order', component: MyOrderComponent, canActivate: [AuthGuard] }
 ];
 @NgModule({
-    imports: [
+  imports: [
     RouterModule.forRoot(appRoutes)
   ],
-  exports: [RouterModule] 
-  
+  exports: [RouterModule]
+
 })
 export class AppRoutingModule {
 }

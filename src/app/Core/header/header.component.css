@@ -9,6 +9,10 @@ body {
 background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
 }
 
+.dropdown-menu{
+    opacity: 1;
+}
+
 .fixed-top{
     -webkit-box-shadow: 0px 2px 18px -3px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 2px 18px -3px rgba(0,0,0,0.75);

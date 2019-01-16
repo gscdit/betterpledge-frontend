@@ -20,6 +20,7 @@ export class AllComponent implements OnInit,OnDestroy {
   subscription:Subscription
   productsubscription: Subscription;
   show=true;
+  loader=true;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -40,18 +41,26 @@ export class AllComponent implements OnInit,OnDestroy {
       })
       .subscribe(
         params => {
+          this.loader=false;
           this.type = params.get('type');
           this.searchProduct= this.filteredProduct = (this.type) ?
-            this.product.filter(p => p.type === this.type) : this.product;     
+            this.product.filter(p => p.type === this.type) : this.product; 
+            
+            for(let p in this.filteredProduct){
+     
+              if(this.filteredProduct[p].quantity==0){
+               this.filteredProduct.shift()
+                }
+            }
         });
-
+        
    this.subscription= (await this.cartService.getCart()).valueChanges().subscribe(
       cart => { 
         this.shoppingCart = cart;
       }
     );
+   
   }
-  
 
   removeFromCart(product) {
     this.cartService.removeFromCart(product)
@@ -65,25 +74,28 @@ export class AllComponent implements OnInit,OnDestroy {
     this.cartService.addToCart(product)
   }
 
-  ngOnDestroy(){
-    this.subscription.unsubscribe();
-    this.productsubscription.unsubscribe();
-  }
-
   filter(query:string){
   let q= query.toLowerCase();
     this.filteredProduct=this.searchProduct;
     this.filteredProduct=(query) ?
     this.filteredProduct.filter(p=>p.description.toLowerCase().includes(q)) : this.searchProduct;
   }
+
   checkout(product){
     this.addToCart(product);
     this.router.navigate(['/check-out'])
   }
+
   getQuantity(prod:Product){
    if(!this.shoppingCart) return null ;
    if(this.shoppingCart && this.shoppingCart.items){
    let item=this.shoppingCart.items[prod.listing_id]
    return item? item.quantity:null;
   }}
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+    this.productsubscription.unsubscribe();
+  }  
+
 }

@@ -1,17 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { TokenInterceptorService } from './token-interceptor.service';
-import { AuthenticateService } from './authentication.service';
+import { HttpClient,  HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductsService {
-  getSingleProductFromAll(product_id) {
-    
-  }
+  
   constructor(private http:HttpClient) { }
+
   deleteProduct(product_id) {
     return this.http.post('https://obv53599.pythonanywhere.com/deletelisting',"hi",{params:new HttpParams().set('listing_id',product_id)})
   }

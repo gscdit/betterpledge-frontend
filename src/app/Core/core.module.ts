@@ -17,13 +17,11 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule
   ],
   exports: [
-   
     AppRoutingModule,
     HeaderComponent,
     FooterComponent
   ],
   providers: [
-  
   ]
 })
 export class CoreModule {}
