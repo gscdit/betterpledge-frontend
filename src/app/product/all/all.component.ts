@@ -6,6 +6,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ShoppingCartService } from './../../Service/shopping-cart.service';
 import { Product } from './../../Models/product';
 import { Subscription } from 'rxjs';
+import { NgProgress } from 'ngx-progressbar';
+import {Observable} from 'rxjs/Rx'
+import 'rxjs/add/observable/timer';
+
 @Component({
   selector: 'app-all',
   templateUrl: './all.component.html',
@@ -25,7 +29,9 @@ export class AllComponent implements OnInit,OnDestroy {
   constructor(private route: ActivatedRoute,
     private router: Router,
     private ps: ProductsService,
+    private progressService:NgProgress,
     private cartService: ShoppingCartService) {
+      
   }
 
   totalQuantity(){
@@ -33,33 +39,37 @@ export class AllComponent implements OnInit,OnDestroy {
   }
 
   async ngOnInit() {
-   this.productsubscription =this.ps.getAll().switchMap(
+    this.progressService.start();
+   
+    
+   this.productsubscription = this.ps.getAll().switchMap(
       p => {
         if(p)
         this.product = p.listing;
         return this.route.queryParamMap
       })
       .subscribe(
+        
         params => {
+          this.progressService.set(0.1);
+          this.progressService.inc(0.2);
+          this.progressService.done();
           this.loader=false;
           this.type = params.get('type');
           this.searchProduct= this.filteredProduct = (this.type) ?
-            this.product.filter(p => p.type === this.type) : this.product; 
-            
-            for(let p in this.filteredProduct){
-     
-              if(this.filteredProduct[p].quantity==0){
+            this.product.filter(p => p.type === this.type) : this.product;             
+            for(let p in this.filteredProduct){     
+              if(this.filteredProduct[p].quantity<=0){
                this.filteredProduct.shift()
                 }
             }
         });
-        
+      
    this.subscription= (await this.cartService.getCart()).valueChanges().subscribe(
       cart => { 
         this.shoppingCart = cart;
       }
-    );
-   
+    );   
   }
 
   removeFromCart(product) {

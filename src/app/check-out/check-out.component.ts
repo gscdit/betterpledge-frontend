@@ -37,7 +37,10 @@ export class CheckOutComponent implements OnInit,OnDestroy {
       time_stamp:new Date().getTime(),
      orders:this.cart$.items
     } 
-    console.log(order);
+    for(let product in this.product_ids){
+      order.orders
+    }
+   console.log(order)
   this.ordersubsc=  this.os.storeOrder(order).take(1).subscribe(res=>{
       console.log(res);
       this.cartService.clearCart();
