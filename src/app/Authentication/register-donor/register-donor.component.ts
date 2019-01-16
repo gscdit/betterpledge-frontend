@@ -9,13 +9,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./register-donor.component.css']
 })
 export class RegisterDonorComponent implements OnInit {
-
+  message = "Sign Up";
+  type = "donor";
   constructor(private authService:AuthenticateService,private router:Router) { }
 
   ngOnInit() {
   }
   onSubmit(form:NgForm){
     console.log(form.value); 
+
+    this.message = "Loading ..."
     this.authService.registerdonor(form.value).subscribe(
       response=>{ console.log(response)
       this.router.navigate(['/login'])
