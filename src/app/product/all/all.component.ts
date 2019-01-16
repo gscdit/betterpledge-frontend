@@ -7,8 +7,7 @@ import { ShoppingCartService } from './../../Service/shopping-cart.service';
 import { Product } from './../../Models/product';
 import { Subscription } from 'rxjs';
 import { NgProgress } from 'ngx-progressbar';
-import {Observable} from 'rxjs/Rx'
-import 'rxjs/add/observable/timer';
+import { AuthenticateService } from 'src/app/Service/authentication.service';
 
 @Component({
   selector: 'app-all',
@@ -29,27 +28,21 @@ export class AllComponent implements OnInit,OnDestroy {
   constructor(private route: ActivatedRoute,
     private router: Router,
     private ps: ProductsService,
+    private authService:AuthenticateService,
     private progressService:NgProgress,
     private cartService: ShoppingCartService) {
       
   }
 
-  totalQuantity(){
-    return this.filteredProduct.length;
-  }
-
   async ngOnInit() {
     this.progressService.start();
-   
-    
-   this.productsubscription = this.ps.getAll().switchMap(
+    this.productsubscription = this.ps.getAll().switchMap(
       p => {
         if(p)
         this.product = p.listing;
         return this.route.queryParamMap
       })
       .subscribe(
-        
         params => {
           this.progressService.set(0.1);
           this.progressService.inc(0.2);
@@ -57,12 +50,7 @@ export class AllComponent implements OnInit,OnDestroy {
           this.loader=false;
           this.type = params.get('type');
           this.searchProduct= this.filteredProduct = (this.type) ?
-            this.product.filter(p => p.type === this.type) : this.product;             
-            for(let p in this.filteredProduct){     
-              if(this.filteredProduct[p].quantity<=0){
-               this.filteredProduct.shift()
-                }
-            }
+          this.product.filter(p => p.type === this.type) : this.product;
         });
       
    this.subscription= (await this.cartService.getCart()).valueChanges().subscribe(

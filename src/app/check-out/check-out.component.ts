@@ -26,26 +26,28 @@ export class CheckOutComponent implements OnInit,OnDestroy {
        this.cart$=cart
        if(cart&& cart.items)
        this.product_ids=Object.keys(cart.items)
-      //  console.log(this.product_ids!==undefined)
        this.count=this.cartService.totalCount(cart)
-      //  console.log(this.cart$!==null);
       })
   }
   openVerticallyCentered(content) {
     this.modalService.open(content, { centered: true });
+    
+   
+    let data = [];
+    
+   for(let product in this.product_ids)
+    data.push(this.cart$.items[this.product_ids[product]])
+
+   
     let order={
       time_stamp:new Date().getTime(),
-     orders:this.cart$.items
-    } 
-    for(let product in this.product_ids){
-      order.orders
+     orders:data
     }
-   console.log(order)
-  this.ordersubsc=  this.os.storeOrder(order).take(1).subscribe(res=>{
+    console.log(order)
+    this.ordersubsc =  this.os.storeOrder(order).take(1).subscribe(res=>{
       console.log(res);
       this.cartService.clearCart();
-    });
-    
+    }); 
     } 
  
   ngOnDestroy(){

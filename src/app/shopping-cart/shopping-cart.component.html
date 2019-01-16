@@ -1,4 +1,3 @@
-
 <div class="container p-4">
   <div class="card">
     <div class="card-body">
@@ -19,7 +18,7 @@
               <p class="lead">
                 {{cart$.items[product_id].product.description}}
               </p>
-              
+
               <p class="lead">
                 <span style="color: green">In Stock</span>
                 <!-- <span style="color: red" >Out Stock</span>  -->
@@ -29,7 +28,7 @@
             </div>
             <div *ngIf="cart$.items" class="col-md-4 lead" style="text-align:center">
               <span class="px-1" style="cursor: pointer;" *ngIf="cart$.items">
-                <button class="fa fa-lg fa-plus-circle custom-style" [disabled]="cart$.items[product_id].product.quantity === cart$.items[product_id].quantity"
+                <button class="fa fa-lg fa-plus-circle custom-style" [disabled]="cart$.items[product_id].quantity >= cart$.items[product_id].product.quantity"
                   (click)="addToCart(cart$.items[product_id].product)"></button>
               </span>
               {{cart$.items[product_id].quantity}}
