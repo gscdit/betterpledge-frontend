@@ -74,3 +74,7 @@
     100% { -webkit-transform: rotate(360deg); }
   }
   
+/* for overriding the default btn z-index */
+.btindex{
+    z-index: 0;
+}
