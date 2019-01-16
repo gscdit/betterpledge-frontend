@@ -56,15 +56,9 @@
               <span class="help-block" *ngIf="email.touched && email.invalid  && !email.errors?.required" style="color:red">Please
                 enter valid address</span>
             </div> -->
-            <div class="col  form-group">
+            <div hidden class="col  form-group">
               <label for="type">Type</label>
-              <select type="type" id="type" name="type" ngModel class="form-control" required #type="ngModel">
-                <option value="donor">Donor</option>
-              </select>
-              <span class="help-block" *ngIf="type.touched && type.errors?.required" style="color:red">type is
-                required</span>
-              <span class="help-block" *ngIf="type.touched && type.invalid  && !type.errors?.required" style="color:red">Please
-                enter valid type</span>
+              <input type="text" name="type" id="type" [(ngModel)]="type"/>
             </div>
             <div class="col  form-group">
               <label for="phone_no">Phone No</label>
@@ -95,7 +89,7 @@
               <span class="help-block" *ngIf="password2.touched && password2.invalid  && !password2.errors?.required"
                 style="color:red">Please enter valid password</span>
             </div>
-            <button type="submit" class="col btn btn-primary" [disabled]="!f.valid">Sign Up</button>
+            <button type="submit" class="col btn btn-primary" [disabled]="!f.valid">{{message}}</button>
           </form>
         </div>
       </div>

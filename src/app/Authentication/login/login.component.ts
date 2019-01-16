@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   invalidLogin: boolean;
-
+  message = "Login"
   constructor(private authService:AuthenticateService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit() {
@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
   
   onSubmit(form:NgForm){
     console.log(form.value);
+
+    this.message = "Loading ..."
     this.authService.login(form.value).subscribe(
       response=>{console.log(response)
         let returnUrl=this.route.snapshot.queryParamMap.get('returnUrl')
