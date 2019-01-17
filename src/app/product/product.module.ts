@@ -6,6 +6,8 @@ import { LightningFastDealComponent } from "./lightning-fast-deal/lightning-fast
 import { CommonModule } from "@angular/common";
 import { ProductRoutingModule } from "./product-routing.module";
 import { ProductHeaderComponent } from "./product-header/product-header.component";
+import { NgProgressModule, NgProgressBrowserXhr } from "ngx-progressbar";
+import { BrowserXhr } from "@angular/http";
 
 @NgModule({
     declarations: [
@@ -17,7 +19,11 @@ import { ProductHeaderComponent } from "./product-header/product-header.componen
     ],
     imports: [
         CommonModule,
+        NgProgressModule,
         ProductRoutingModule
+    ],
+    providers:[
+        {provide: BrowserXhr, useClass: NgProgressBrowserXhr}
     ]
 })
 export class ProductModule { }

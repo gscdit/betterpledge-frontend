@@ -2,7 +2,7 @@
 <div class="container d2">
   <div class="row">
     <div class="col-lg-8 align-self-start">
-      <h6>Showing {{totalQuantity()}} results</h6>
+      <h6>Showing  results</h6>
     </div>
     <div class="col-lg align-self-end">
       <div class="input-group">
@@ -47,13 +47,14 @@
         <ng-template #showproducts>
           <div class="card-deck">
             <ng-container *ngFor="let p of filteredProduct; let i=index;">
-              <div *ngIf="p.quantity>0" class="card col-md-4 col-sm-12 product" style="width: 92vw; margin-bottom: 15px;">
+              <div *ngIf="p.quantity" class="card col-md-4 col-sm-12 product" style="width: 92vw; margin-bottom: 15px;">
                 <img class="card-img-top px-0" height="200px" src="{{p.image}}" (click)="detailPage(p)">
                 <div class="card-body" (click)="detailPage(p)">
                   <h5 class="card-title lead">{{p.description}}</h5>
                   <p class="badge badge-dark pull-right">{{p.type | uppercase}}</p>
                   <hr>
                   <p class="card-text">Quantity - {{p.quantity}}</p>
+                  <p class="card-text">Address - {{p.street}} ,{{p.landmark}} <br> {{p.city}}</p>
                 </div>
                 <div class="card-footer py-1" style="opacity: 1;">
                   <div *ngIf="!getQuantity(p);else updateQuantity">
@@ -64,11 +65,11 @@
                   <ng-template #updateQuantity>
                     <div class="row no-gutters text-center">
                       <div class="col-2">
-                        <button class="btn btn-secondary btn-sm" (click)="removeFromCart(p)" [disabled]="getQuantity(p)===0">-</button>
+                        <button class="btn btn-secondary btn-sm" (click)="removeFromCart(p)" >-</button>
                       </div>
                       <div class="col text-center">{{ getQuantity(p) }} in cart</div>
                       <div class="col-2">
-                        <button class="btn btn-secondary btn-sm" (click)="addToCart(p)" [disabled]="p.quantity===getQuantity(p)">+</button>
+                        <button class="btn btn-secondary btn-sm" (click)="addToCart(p)" [disabled]="p.quantity===getQuantity(p) ">+</button>
                       </div>
                     </div>
                   </ng-template>
@@ -83,3 +84,13 @@
   </div>
 </div>
 <br>
+
+<!-- progress-bar -->
+<ng-progress
+    [positionUsing]="'marginLeft'"
+    [direction]="'leftToRightIncreased'"
+    [color]="'red'"
+    [trickleSpeed]="500" 
+    [thick]="true" 
+    [ease]="'easeInSine'"
+></ng-progress>

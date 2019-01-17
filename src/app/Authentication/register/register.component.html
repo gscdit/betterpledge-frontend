@@ -60,20 +60,48 @@
                 style="color:red">Please
                 enter valid phone no</span>
             </div>
+              <div class="col  form-group">
+                  <label for="street">Street</label>
+                  <input type="text" id="street" name="street" ngModel class="form-control"
+                    required #street="ngModel">
+                  <span class="help-block" *ngIf="street.touched && street.errors?.required" style="color:red">Street
+                    is required</span>
+                </div>
+                <div class="col  form-group">
+                    <label for="landmark">Landmark</label>
+                    <input type="text" id="landmark" name="landmark" ngModel class="form-control"
+                      required #landmark="ngModel">
+                    <span class="help-block" *ngIf="landmark.touched && landmark.errors?.required" style="color:red">Landmark
+                      is required</span>
+                  </div>
+                  <div class="col  form-group">
+                      <label for="city">City</label>
+                      <select type="text" id="city" name="city" ngModel class="form-control"
+                        required  #city="ngModel">
+                      <option value="Dehradun">Dehradun</option>
+                      </select>
+                      <span class="help-block" *ngIf="city.touched && city.errors?.required" style="color:red">City
+                        is required</span>
+                    </div>
+                    <div hidden class="col  form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" [(ngModel)]="country" class="form-control"
+                          required >
+                      </div> 
             <div class="col  form-group">
               <label for="password">Password</label>
-              <input type="password" id="password" name="password" minlength="8" maxlength="32" ngModel class="form-control"
+              <input type="password" id="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" ngModel class="form-control"
                 required #password="ngModel">
               <span class="help-block" *ngIf="password.touched && password.errors?.required" style="color:red">Password
                 is required</span>
               <span class="help-block" *ngIf="password.touched && password.invalid  && !password.errors?.required"
                 style="color:red">Please
                 enter valid password</span>
-            </div>
+            </div> 
             <div class="col  form-group">
               <label for="password2">Confirm Password</label>
-              <input type="password" id="password2" confirmPassword="password" name="password2" ngModel class="form-control"
-                required minlength="8" maxlength="32" #password2="ngModel">
+              <input type="password" id="password2" confirmPassword="password" name="password2" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" ngModel class="form-control"
+                required #password2="ngModel">
               <span class="help-block" *ngIf="password2.touched && password2.errors?.required" style="color:red">Confirm
                 Password is required</span>
               <span class="help-block" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required"

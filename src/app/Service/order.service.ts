@@ -12,6 +12,9 @@ export class OrderService {
   storeOrder(order){
   return this.http.post('https://obv53599.pythonanywhere.com/order',order);
   }
+  showbeneficiaryOrder(){
+    return this.http.get('https://obv53599.pythonanywhere.com/beneficiary/orders');
+  }
 }
 
 

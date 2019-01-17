@@ -8,13 +8,15 @@ import { AuthenticateService } from "../Service/authentication.service";
 import { AuthenticationRoutingModule } from "./authentication-routing.module";
 import { CommonModule } from "@angular/common";
 import { RegisterDonorComponent } from './register-donor/register-donor.component';
+import { LoginDonorComponent } from '../Authentication/login-donor/login-donor.component';
 
 @NgModule({
     declarations:[
         LoginComponent,
         RegisterComponent,
         ConfirmPassword,
-        RegisterDonorComponent  
+        RegisterDonorComponent,
+        LoginDonorComponent  
     ],
     imports:[
         CommonModule,

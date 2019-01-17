@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class RegisterDonorComponent implements OnInit {
   message = "Sign Up";
   type = "donor";
+  country="India";
+  
   constructor(private authService:AuthenticateService,private router:Router) { }
 
   ngOnInit() {

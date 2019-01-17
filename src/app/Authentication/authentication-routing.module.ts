@@ -3,9 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterDonorComponent } from './register-donor/register-donor.component';
+import { LoginDonorComponent } from './login-donor/login-donor.component';
 
 const recipesRoutes: Routes = [
   {path:'login',component:LoginComponent},
+  {path:'login-donor',component:LoginDonorComponent},
   {path:'register-beneficiary',component:RegisterComponent},
   {path:'register-donor',component:RegisterDonorComponent}
 ];

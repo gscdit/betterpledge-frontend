@@ -60,7 +60,7 @@
 								</div>
 								<div class="col text-center">{{ getQuantity(p) }} in cart</div>
 								<div class="col-2">
-									<button class="btn btn-secondary btn-sm" (click)="addToCart()" [disabled]="product.quantity===getQuantity()">+</button>
+									<button class="btn btn-secondary btn-sm" (click)="addToCart()" [disabled]="product.quantity===getQuantity() || getQuantity() > product.quantity">+</button>
 								</div>
 							</div>
 						</ng-template>
