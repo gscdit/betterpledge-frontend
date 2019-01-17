@@ -10,7 +10,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   invalidLogin: boolean;
-  message = "Login"
+  beneficiary = "beneficiary"
+  donor = "donor";
+  message = "Login";
   constructor(private authService:AuthenticateService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit() {

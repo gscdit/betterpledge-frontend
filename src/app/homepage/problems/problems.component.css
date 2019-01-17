@@ -1,5 +1,9 @@
-.container-fluid{
-    background-color: #ffda79;
-    background-image: linear-gradient(135deg, #ffda79 0%, #ffffff 50%, #a4ffaf 100%);
-    
+.container-image{
+    background-image: url('/assets/steps.jpg');
+    /* top: 200px; */
+    height: 40vw;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

@@ -4,10 +4,11 @@ body {
     padding-top: 4.5rem;
 }
 
-.navbar{
-    background-color: #21D4FD;
-background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+
+.nav.navbar-nav.navbar-right li a {
+    color: black;
 }
+
 
 .dropdown-menu{
     opacity: 1;
@@ -22,7 +23,6 @@ box-shadow: 0px 2px 18px -3px rgba(0,0,0,0.75);
 
 @media screen and (max-width: 600px){
     .nav-link{
-        border-top: 1px solid #ffffff; 
-        padding-top: 1px;
+        
     }
 }
