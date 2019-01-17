@@ -27,18 +27,17 @@ export class CheckOutComponent implements OnInit,OnDestroy {
        if(cart&& cart.items)
        this.product_ids=Object.keys(cart.items)
        this.count=this.cartService.totalCount(cart)
+       for(let product_id in this.product_ids){
+        if(this.cart$ && this.cart$.items[this.product_ids[product_id]].product.quantity<this.cart$.items[this.product_ids[product_id]].quantity)
+        this.delete(this.cart$.items[this.product_ids[product_id]].product)
+      }
       })
   }
   openVerticallyCentered(content) {
     this.modalService.open(content, { centered: true });
-    
-   
     let data = [];
-    
    for(let product in this.product_ids)
     data.push(this.cart$.items[this.product_ids[product]])
-
-   
     let order={
       time_stamp:new Date().getTime(),
      orders:data
@@ -49,6 +48,10 @@ export class CheckOutComponent implements OnInit,OnDestroy {
       this.cartService.clearCart();
     }); 
     } 
+
+    delete(product) {
+      this.cartService.delete(product);
+    }
  
   ngOnDestroy(){
     this.subscription.unsubscribe();

@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row mx-auto my-5">
+      <div class="col-md-8 mx-auto">
+        <div class="card rounded-0">
+          <div class="card-header">
+            <h3 class="mb-0 lead">
+              Login
+            </h3>
+          </div>
+          <div class="card-body"> 
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+              <div *ngIf="invalidLogin" class="alert alert-danger" style="text-align:center">Invalid username or password.</div>
+              <div class="col  form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" ngModel class="form-control" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]+)$">
+                <!-- <span class="help-block" *ngIf="email.touched && email.errors?.required" style="color:red">Email is required</span>
+                    <span class="help-block" *ngIf="email.touched && email.invalid  && !email.errors?.required" style="color:red">Please enter valid email</span> -->
+              </div>
+              <div hidden class="col  form-group">
+                <label for="type">Type</label>
+                <input type="text" id="type" name="type" [(ngModel)]="type" class="form-control" required >
+              </div>
+              <div class="col  form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" ngModel class="form-control" required />
+              </div>
+              <button type="submit" class="pull-right btn btn-primary" [disabled]="!f.valid">{{message}}</button><br><br>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  

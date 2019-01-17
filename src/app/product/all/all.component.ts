@@ -28,7 +28,6 @@ export class AllComponent implements OnInit,OnDestroy {
   constructor(private route: ActivatedRoute,
     private router: Router,
     private ps: ProductsService,
-    private authService:AuthenticateService,
     private progressService:NgProgress,
     private cartService: ShoppingCartService) {
       
