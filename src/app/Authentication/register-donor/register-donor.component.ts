@@ -23,7 +23,7 @@ export class RegisterDonorComponent implements OnInit {
     this.message = "Loading ..."
     this.authService.registerdonor(form.value).subscribe(
       response=>{ console.log(response)
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login-donor'])
       },
       error=>{console.log(error)}
     )

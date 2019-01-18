@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/Service/products.service';
 import { HttpClient } from '@angular/common/http';
+import { AuthenticateService } from './../../Service/authentication.service';
 
 @Component({
   selector: 'app-add-product',
@@ -18,9 +19,10 @@ export class AddProductComponent implements OnInit {
     id;
   constructor(private route:ActivatedRoute,
     private router:Router,private ps:ProductsService,
-    private http:HttpClient) {}
+    private http:HttpClient,public AuthService:AuthenticateService) {}
 
     ngOnInit() {
+      console.log(this.AuthService.currentUser())
       this.id=this.route.snapshot.paramMap.get('id')   //to get :id from url
      if(this.id)
       {this.ps.getSingleProduct(this.id).take(1)
@@ -34,10 +36,6 @@ export class AddProductComponent implements OnInit {
       this.router.navigate(['/donor/donatedProduct'])
     );}
   }
-
-  // onFileSelected(event){
-  //  this.http.post('',event.target.files[0])
-  // }
 
   onSave(value:NgForm){
     if(this.id){

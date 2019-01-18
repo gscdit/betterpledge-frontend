@@ -54,7 +54,7 @@
                   <p class="badge badge-dark pull-right">{{p.type | uppercase}}</p>
                   <hr>
                   <p class="card-text">Quantity - {{p.quantity}}</p>
-                  <p class="card-text">Address - {{p.street}} ,{{p.landmark}} <br> {{p.city}}</p>
+                  <p class="card-text">{{authService.currentUser().organisation}}</p>
                 </div>
                 <div class="card-footer py-1" style="opacity: 1;">
                   <div *ngIf="!getQuantity(p);else updateQuantity">
@@ -69,7 +69,7 @@
                       </div>
                       <div class="col text-center">{{ getQuantity(p) }} in cart</div>
                       <div class="col-2">
-                        <button class="btn btn-secondary btn-sm" (click)="addToCart(p)" [disabled]="p.quantity===getQuantity(p) ">+</button>
+                        <button class="btn btn-secondary btn-sm" (click)="addToCart(p)" [disabled]="getQuantity(p) >= p.quantity">+</button>
                       </div>
                     </div>
                   </ng-template>

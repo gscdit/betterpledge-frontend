@@ -60,6 +60,13 @@
                 style="color:red">Please enter valid phone no</span>
             </div>
             <div class="col  form-group">
+                <label for="organisation">Organisation</label>
+                <input type="text" id="organisation" name="organisation" ngModel class="form-control"
+                  required #organisation="ngModel">
+                <span class="help-block" *ngIf="organisation.touched && organisation.errors?.required" style="color:red">Organisation
+                  is required</span>
+              </div>
+            <div class="col  form-group">
                 <label for="street">Street</label>
                 <input type="text" id="street" name="street" ngModel class="form-control"
                   required #street="ngModel">

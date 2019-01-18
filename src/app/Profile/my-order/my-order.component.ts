@@ -7,13 +7,14 @@ import { OrderService } from 'src/app/Service/order.service';
   styleUrls: ['./my-order.component.css']
 })
 export class MyOrderComponent implements OnInit {
-
+  orders=[];
   constructor(private profileService:OrderService) { }
-
+   
   ngOnInit() {
     this.profileService.showbeneficiaryOrder().subscribe(
       res=>{
-        console.log(res)
+        this.orders=res['orders']
+        console.log(this.orders)
       }
     )
 

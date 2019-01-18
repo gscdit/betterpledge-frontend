@@ -60,33 +60,33 @@
                 style="color:red">Please
                 enter valid phone no</span>
             </div>
-              <div class="col  form-group">
+              <div class="col  form-group" hidden>
                   <label for="street">Street</label>
                   <input type="text" id="street" name="street" ngModel class="form-control"
-                    required #street="ngModel">
+                     #street="ngModel">
                   <span class="help-block" *ngIf="street.touched && street.errors?.required" style="color:red">Street
                     is required</span>
                 </div>
-                <div class="col  form-group">
+                <div class="col  form-group" hidden>
                     <label for="landmark">Landmark</label>
                     <input type="text" id="landmark" name="landmark" ngModel class="form-control"
-                      required #landmark="ngModel">
+                       #landmark="ngModel">
                     <span class="help-block" *ngIf="landmark.touched && landmark.errors?.required" style="color:red">Landmark
                       is required</span>
                   </div>
-                  <div class="col  form-group">
+                  <div class="col  form-group" hidden>
                       <label for="city">City</label>
                       <select type="text" id="city" name="city" ngModel class="form-control"
-                        required  #city="ngModel">
+                          #city="ngModel">
                       <option value="Dehradun">Dehradun</option>
                       </select>
                       <span class="help-block" *ngIf="city.touched && city.errors?.required" style="color:red">City
                         is required</span>
                     </div>
-                    <div hidden class="col  form-group">
+                    <div hidden class="col  form-group" hidden>
                         <label for="country">Country</label>
                         <input type="text" id="country" name="country" [(ngModel)]="country" class="form-control"
-                          required >
+                           >
                       </div> 
             <div class="col  form-group">
               <label for="password">Password</label>

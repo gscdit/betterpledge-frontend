@@ -24,13 +24,14 @@ export class CheckOutComponent implements OnInit,OnDestroy {
  async ngOnInit() {
     this.subscription=  (await this.cartService.getCart()).valueChanges().subscribe(cart=>{
        this.cart$=cart
-       if(cart&& cart.items)
+       if(cart&& cart.items){
        this.product_ids=Object.keys(cart.items)
        this.count=this.cartService.totalCount(cart)
-       for(let product_id in this.product_ids){
-        if(this.cart$ && this.cart$.items[this.product_ids[product_id]].product.quantity<this.cart$.items[this.product_ids[product_id]].quantity)
-        this.delete(this.cart$.items[this.product_ids[product_id]].product)
-      }
+      //  for(let product_id in this.product_ids){
+      //   if( this.cart$.items[this.product_ids[product_id]].product.quantity<this.cart$.items[this.product_ids[product_id]].quantity)
+      //   this.delete(this.cart$.items[this.product_ids[product_id]].product)
+      // }
+    }
       })
   }
   openVerticallyCentered(content) {

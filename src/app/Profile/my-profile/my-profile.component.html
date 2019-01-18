@@ -40,11 +40,11 @@
               <div class="card-body">
                 <h5> <span> <i class="fa fa-user"></i> &nbsp; Personal Information </span></h5>
                 <hr>
-                <input class="form-control" type="text" *ngIf="!edit" placeholder="First Name: {{title.name}}" readonly>
-                <input class="form-control" type="text" name="name" [(ngModel)]="title.name" *ngIf="edit" placeholder="First Name"
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="First Name: {{title.first_name}}" readonly>
+                <input class="form-control" type="text" name="first_name" [(ngModel)]="title.first_name" *ngIf="edit" placeholder="First Name"
                   ngModel><br>
-                <input class="form-control" type="text" *ngIf="!edit" placeholder="Last Name: {{title.name}}" readonly>
-                <input class="form-control" type="text" name="name" [(ngModel)]="title.name" *ngIf="edit" placeholder="Last Name"
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="Last Name: {{title.last_name}}" readonly>
+                <input class="form-control" type="text" name="last_name" [(ngModel)]="title.last_name" *ngIf="edit" placeholder="Last Name"
                   ngModel>
               </div>
             </div>
@@ -54,7 +54,7 @@
                 <hr>
                 <input class="form-control" type="text" *ngIf="!edit" placeholder="{{title.username}}" readonly>
                 <input class="form-control" type="text" name="username" [(ngModel)]="title.username" *ngIf="edit"
-                  placeholder="Username" ngModel>
+                  placeholder="Username" ngModel readonly>
               </div>
             </div>
             <div class="card d3">
@@ -79,10 +79,23 @@
               <div class="card-body">
                 <h5> <span> <i class="fa fa-map-marker"></i> &nbsp; Address</span> </h5>
                 <hr>
-                <input class="form-control" type="text" *ngIf="!edit" placeholder="{{authenticateService.currentUser().username}}"
-                  readonly>
-                <textarea class="form-control" *ngIf="edit" name="address" id="exampleFormControlTextarea1" [(ngModel)]="title.address"
-                  rows="3" ngModel placeholder="Address..."></textarea>
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="Strret: {{title.street}}"
+                  readonly> <br *ngIf="!edit">
+                  <input class="form-control" type="text" *ngIf="!edit" placeholder="Landmark: {{title.landmark}}"
+                  readonly> <br *ngIf="!edit">
+                  <input class="form-control" type="text" *ngIf="!edit" placeholder="City: {{title.city}}"
+                  readonly> <br *ngIf="!edit">
+                  <input class="form-control" type="text" *ngIf="!edit" placeholder="Country: {{title.country}}"
+                  readonly> <br *ngIf="!edit">
+
+                  <input class="form-control" name="street" [(ngModel)]="title.street" type="text" *ngIf="edit" placeholder="Street"
+                  > <br *ngIf="edit">
+                  <input class="form-control" name="landmark" [(ngModel)]="title.landmark" type="text" *ngIf="edit" placeholder="Landmark"
+                  > <br *ngIf="edit">
+                  <input class="form-control" name="city" [(ngModel)]="title.city" type="text" *ngIf="edit" placeholder="City"
+                  > <br *ngIf="edit">
+                  <input class="form-control" name="country" [(ngModel)]="title.country" type="text" *ngIf="edit" placeholder="Country"
+                  > <br *ngIf="edit">
               </div>
             </div><br>
             <Button class="btn btn-success" *ngIf="edit" type="submit">Save Change</Button>

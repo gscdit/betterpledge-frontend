@@ -51,7 +51,7 @@ export class ShoppingCartService {
 
   async getCart(): Promise<AngularFireObject<ShoppingCart>> {
     let cart_id = await this.getorcreateCartId();
-    return this.db.object('/shopping-cart/' + cart_id)
+    return this.db.object('/shopping-cart/' + cart_id);
   }
 
   private async getorcreateCartId(): Promise<string> {

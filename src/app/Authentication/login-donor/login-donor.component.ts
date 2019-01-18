@@ -29,7 +29,7 @@ export class LoginDonorComponent implements OnInit {
           this.invalidLogin = true;
           return;
         }else{
-        localStorage.setItem('token',response.token)//(key,value)
+        sessionStorage.setItem('token',response.token)//(key,value)
          this.router.navigate([returnUrl || '/'])}
       },
       error=>{

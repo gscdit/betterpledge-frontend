@@ -14,7 +14,7 @@ export class DonorGuard implements CanActivate {
       return true;
     }else{
         this.authService.logout();
-      this.router.navigate(['/login'],{queryParams:{returnUrl:state.url}})
+      this.router.navigate(['/login-donor'],{queryParams:{returnUrl:state.url}})
       return false
     }
   }

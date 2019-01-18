@@ -29,8 +29,8 @@ export class AllComponent implements OnInit,OnDestroy {
     private router: Router,
     private ps: ProductsService,
     private progressService:NgProgress,
-    private cartService: ShoppingCartService) {
-      
+    private cartService: ShoppingCartService,
+    public authService:AuthenticateService) {  
   }
 
   async ngOnInit() {

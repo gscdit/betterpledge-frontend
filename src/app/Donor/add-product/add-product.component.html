@@ -21,16 +21,6 @@
             class="form-control" required>
         </div>
         <div class="form-group">
-          <label id="Organization" for="Organization">Organization</label>
-          <input #company="ngModel" type="text" [(ngModel)]="product.description" name="company" id="Organization"
-            class="form-control" required>
-        </div>
-        <div class="form-group">
-          <label id="Organization" for="Organization">Time Limit</label>
-          <input #company="ngModel" type="text" [(ngModel)]="product.description" name="expiry" id="Organization" class="form-control"
-            required>
-        </div>
-        <div class="form-group">
           <label id="Category" for="">Category</label>
           <select #category="ngModel" [(ngModel)]="product.type" name="type" id="Category" class="form-control"
             required>
@@ -40,7 +30,7 @@
         </div>
         <div class="form-group">
           <label id="quantity" for="quantity">Quantity</label>
-          <input #imageUrl="ngModel" type="text" [(ngModel)]="product.quantity" name="quantity" id="quantity" class="form-control"
+          <input #quantity="ngModel" type="text" [(ngModel)]="product.quantity" name="quantity" id="quantity" class="form-control"
             required>
         </div>
         <div class="form-group">
@@ -48,7 +38,7 @@
           <input #imageUrl="ngModel" type="text" [(ngModel)]="product.image" name="image" id="url" class="form-control"
             required>
         </div>
-        <button class="btn btn-success" [disabled]="!f.valid">Save</button>
+        <button class="btn btn-success" [disabled]="!f.valid">Save</button>&nbsp;&nbsp;&nbsp;
         <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
       </div>
       <div class="col-md-5">
@@ -62,8 +52,9 @@
             <div class="card-body">
               <span class="card-title display-6">{{ productName.value }}</span>
               <p class="card-text pull-right badge badge-light">{{ category.value | uppercase }}</p>
+              <p class="card-text">{{ AuthService.currentUser().organisation | uppercase}}</p>
               <hr>
-              <p class="card-text">{{ company.value | uppercase }}</p>
+              <p class="card-text">Quantity:- {{ quantity.value  }}</p>
             </div>
           </div>
         </div>
