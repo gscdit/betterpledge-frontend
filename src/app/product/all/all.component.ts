@@ -24,6 +24,9 @@ export class AllComponent implements OnInit,OnDestroy {
   productsubscription: Subscription;
   show=true;
   loader=true;
+  product_ids;
+  productSubscription: Subscription;
+  prod: Object;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -37,6 +40,7 @@ export class AllComponent implements OnInit,OnDestroy {
     this.progressService.start();
     this.productsubscription = this.ps.getAll().switchMap(
       p => {
+        console.log(p)
         if(p)
         this.product = p.listing;
         return this.route.queryParamMap
@@ -55,10 +59,25 @@ export class AllComponent implements OnInit,OnDestroy {
    this.subscription= (await this.cartService.getCart()).valueChanges().subscribe(
       cart => { 
         this.shoppingCart = cart;
-      }
-    );   
+        if (cart && cart.items){
+          console.log(cart.items)
+          this.product_ids = Object.keys(cart.items);
+          for(let product in this.filteredProduct ){
+            console.log(this.filteredProduct[product].quantity);
+            if(this.getQuantity(this.filteredProduct[product])>this.filteredProduct[product].quantity){
+                this.delete(this.filteredProduct[product]);
+            }}  
+          }});      
   }
 
+  delete(product) {
+    this.cartService.delete(product);
+  }
+  
+  totalQuantity(){
+    if(this.filteredProduct)
+   return this.filteredProduct.length
+  }
   removeFromCart(product) {
     this.cartService.removeFromCart(product)
   }

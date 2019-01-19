@@ -15,6 +15,8 @@ export class OrderService {
   showbeneficiaryOrder(){
     return this.http.get('https://obv53599.pythonanywhere.com/beneficiary/orders');
   }
+  //donor/orders
+  
 }
 
 
