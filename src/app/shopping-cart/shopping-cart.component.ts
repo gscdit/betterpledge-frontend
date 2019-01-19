@@ -65,6 +65,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    if(this.cart$ && this.cart$.items)
     this.productSubscription.unsubscribe();
   }
 

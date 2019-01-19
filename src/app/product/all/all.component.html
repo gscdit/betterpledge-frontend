@@ -67,7 +67,7 @@
                       <div class="col-2">
                         <button class="btn btn-secondary btn-sm" (click)="removeFromCart(p)" >-</button>
                       </div>
-                        <div class="col text-center" *ngIf="p.quantity >= getQuantity(p)">{{ getQuantity(p) }} in cart</div>
+                        <div class="col text-center" >{{ getQuantity(p) }} in cart</div>
                     
                       <div class="col-2">
                         <button class="btn btn-secondary btn-sm" (click)="addToCart(p)" [disabled]="getQuantity(p) >= p.quantity">+</button>

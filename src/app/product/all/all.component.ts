@@ -8,6 +8,7 @@ import { Product } from './../../Models/product';
 import { Subscription } from 'rxjs';
 import { NgProgress } from 'ngx-progressbar';
 import { AuthenticateService } from 'src/app/Service/authentication.service';
+import { ShoppingCart } from './../../Models/shoppingCart';
 
 @Component({
   selector: 'app-all',
@@ -54,26 +55,25 @@ export class AllComponent implements OnInit,OnDestroy {
           this.type = params.get('type');
           this.searchProduct= this.filteredProduct = (this.type) ?
           this.product.filter(p => p.type === this.type) : this.product;
+          if (this.shoppingCart && this.shoppingCart.items){
+            console.log(this.shoppingCart.items)
+            this.product_ids = Object.keys(this.shoppingCart.items);
+            for(let product in this.filteredProduct ){
+              console.log(this.filteredProduct[product].quantity);
+              if(this.getQuantity(this.filteredProduct[product])>this.filteredProduct[product].quantity){
+                  this.delete(this.filteredProduct[product]);
+              }}  
+            }
         });
       
    this.subscription= (await this.cartService.getCart()).valueChanges().subscribe(
       cart => { 
         this.shoppingCart = cart;
-        if (cart && cart.items){
-          console.log(cart.items)
-          this.product_ids = Object.keys(cart.items);
-          for(let product in this.filteredProduct ){
-            console.log(this.filteredProduct[product].quantity);
-            if(this.getQuantity(this.filteredProduct[product])>this.filteredProduct[product].quantity){
-                this.delete(this.filteredProduct[product]);
-            }}  
-          }});      
+        });      
   }
-
   delete(product) {
     this.cartService.delete(product);
   }
-  
   totalQuantity(){
     if(this.filteredProduct)
    return this.filteredProduct.length
