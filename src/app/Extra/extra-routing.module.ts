@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { FaqsComponent } from './faqs/faqs.component';
 
 const recipesRoutes: Routes = [
     { path:'About',component:AboutComponent},
 { path:'Contact',component:ContactComponent},
+{path:'faqs',component:FaqsComponent}
 ];
 
 @NgModule({

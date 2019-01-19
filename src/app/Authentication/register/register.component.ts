@@ -10,18 +10,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  
   registerUserData: any={};
+  type="beneficiary";
+  message = "Sign Up";
+  country="India"
+
   constructor(private httpService:HttpService,private authService:AuthenticateService,private router:Router) { }
   ngOnInit() {
+    
   }
   response1:any;
   onSubmit(form:NgForm){
-   console.log(form.value); 
+   console.log(form.value);
     this.authService.register(form.value).subscribe(
       response=>{ console.log(response)
       this.router.navigate(['/login'])
       }
     )
-  }
-    
+  }    
 }

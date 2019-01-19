@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpService } from './Service/http.service';
-import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthenticateService } from './Service/authentication.service';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './Service/token-interceptor.service';
@@ -19,13 +19,16 @@ import { DonorModule } from './Donor/donor.module';
 import { ShoppingCartService } from './Service/shopping-cart.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { HttpModule } from '@angular/http';
-import {  AngularFireModule } from 'angularfire2';
-import {  AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderService } from './Service/order.service';
 import { MyOrderComponent } from './Profile/my-order/my-order.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DonorGuard } from './donor.guard';
+import { BeneficiaryGuard } from './beneficiary.guard';
+import { NgProgressModule } from 'ngx-progressbar';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule, 
+    NgProgressModule,
+    AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     AuthenticateModule,
@@ -53,13 +57,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule
   ],
- 
-  providers: [HttpService,OrderService,AuthenticateService,AuthGuard,ShoppingCartService,{
-    provide:HTTP_INTERCEPTORS,
-    useClass:TokenInterceptorService,
-    multi:true
+
+  providers: [HttpService, OrderService, AuthenticateService, AuthGuard, DonorGuard, BeneficiaryGuard, ShoppingCartService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
   }
-],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

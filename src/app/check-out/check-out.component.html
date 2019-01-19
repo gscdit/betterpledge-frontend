@@ -1,4 +1,4 @@
-<h2  style="margin-left:60px ">Booking</h2>
+<h2 style="margin-left:60px ">Booking</h2>
 <div class="row px-5">
   <div class="col-6">
     <form #f="ngForm">
@@ -7,37 +7,33 @@
         <input #name="ngModel" name="name" [(ngModel)]="shipping.name" type="text" class="form-control" required>
         <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
           <div *ngIf="name.errors.required">Name is required.</div>
-        </div></div>
-        <div class="col form-group">
-          <label for="">Phone</label>
-          <input #phone="ngModel" name="phone" [(ngModel)]="shipping.phone" type="text" class="form-control" required>
-          <div class="alert alert-danger" *ngIf="phone.touched && phone.invalid">
-            <div *ngIf="phone.errors.required">Phone is required.</div>
-          </div>
         </div>
-      
-      
+      </div>
+      <div class="col form-group">
+        <label for="">Phone</label>
+        <input #phone="ngModel" name="phone" [(ngModel)]="shipping.phone" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="phone.touched && phone.invalid">
+          <div *ngIf="phone.errors.required">Phone is required.</div>
+        </div>
+      </div>
       <div class="col  form-group">
-          <label for="type">City</label>
-          <select type="type" id="type" name="City" [(ngModel)]="shipping.City" class="form-control" required #type="ngModel">
-    
-            <option value="Dehradun">Dehradun</option>
-          </select>
-          <span class="help-block" *ngIf="type.touched && type.errors?.required" style="color:red">City is
-            required</span>
-        </div>
-    <div class="col  form-group">
+        <label for="type">City</label>
+        <select type="type" id="type" name="City" [(ngModel)]="shipping.City" class="form-control" required #type="ngModel">
+          <option value="Dehradun">Dehradun</option>
+        </select>
+        <span class="help-block" *ngIf="type.touched && type.errors?.required" style="color:red">City is
+          required</span>
+      </div>
+      <div class="col  form-group">
         <label for="email">Address</label>
-        <textarea rows="3" type="text" id="email" [(ngModel)]="shipping.address"  name="address"
-          ngModel class="form-control" required #address="ngModel"></textarea>
-          </div>
-          <button class="btn btn-success " style="margin-left:15px "  (click)="openVerticallyCentered(content)">Book Now</button>
+        <textarea rows="3" type="text" id="email" [(ngModel)]="shipping.address" name="address" ngModel class="form-control"
+          required #address="ngModel"></textarea>
+      </div>
+      <button class="btn btn-success " style="margin-left:15px " (click)="openVerticallyCentered(content)">Book Now</button>
       <br>
       <br>
       <br>
-     
     </form>
-
     <ng-template #content let-modal>
       <div class="modal-header">
         <h4 class="modal-title">Modal title</h4>
@@ -55,22 +51,18 @@
 
   </div>
   <div class="col-4" style="margin-top:30px ">
-      <div class="card" >
-          
-          <div class="card-body">
-            <h5 class="card-title">Order Summary</h5>
-            <p class="card-text" *ngIf="count">You have {{count}} items in your shopping cart</p>
-           <ul class="list-group list-group-flush" *ngIf="this.product_ids!==undefined && this.cart$!==null">
-             <li *ngFor="let product_id of product_ids" class="list-group-item">
-                {{cart$.items[product_id].quantity}} x {{cart$.items[product_id].product.description}} 
-             </li>
-           </ul>
-          </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Order Summary</h5>
+        <p class="card-text" *ngIf="count">You have {{count}} items in your shopping cart</p>
+        <ul class="list-group list-group-flush" *ngIf="this.product_ids!==undefined && this.cart$!==null">
+        <div *ngIf="cart$.items && product_ids.length">
+          <li  *ngFor="let product_id of product_ids" class="list-group-item">
+            {{cart$.items[product_id].quantity}} x {{cart$.items[product_id].product.description}}
+          </li>
         </div>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
-
-   
-          
-       
-        

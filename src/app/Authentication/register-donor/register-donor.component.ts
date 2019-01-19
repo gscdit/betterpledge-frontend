@@ -9,20 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./register-donor.component.css']
 })
 export class RegisterDonorComponent implements OnInit {
-
+  message = "Sign Up";
+  type = "donor";
+  country="India";
+  
   constructor(private authService:AuthenticateService,private router:Router) { }
 
   ngOnInit() {
   }
   onSubmit(form:NgForm){
-    // this.httpService.sendData(this.registerUserData).subscribe(
-    //    response=>console.log('Whats'+response),
-    //    error=>console.error('Error'+error))
     console.log(form.value); 
+
+    this.message = "Loading ..."
     this.authService.registerdonor(form.value).subscribe(
       response=>{ console.log(response)
-      // localStorage.setItem('token', response.token)
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login-donor'])
       },
       error=>{console.log(error)}
     )

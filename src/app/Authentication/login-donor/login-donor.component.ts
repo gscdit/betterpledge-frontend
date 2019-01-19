@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthenticateService } from '../../Service/authentication.service';
+import { AuthenticateService } from 'src/app/Service/authentication.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-login-donor',
+  templateUrl: './login-donor.component.html',
+  styleUrls: ['./login-donor.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginDonorComponent implements OnInit {
+
   invalidLogin: boolean;
-  message = "Login";
-  type="beneficiary"
+  message = "Login"
+  type="donor"
   constructor(private authService:AuthenticateService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit() {
@@ -39,5 +40,6 @@ export class LoginComponent implements OnInit {
   }
   
   
+
 
 }

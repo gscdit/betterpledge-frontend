@@ -11,8 +11,7 @@ import { HttpService } from '../../Service/http.service';
 })
 export class MyProfileComponent implements OnInit {
 
-   title={
-     
+   title={ 
    };
   
 
@@ -29,11 +28,10 @@ export class MyProfileComponent implements OnInit {
     }
     errorshow=false;
   onSave(form:NgForm){
-    
     console.log(form.value);
     this.httpService.changeProfile(form.value).subscribe(res=>{
       console.log(res)
-      localStorage.setItem('token',res['token'])
+      sessionStorage.setItem('token',res['token'])
       if(res['message']===0)
       {
         this.errorshow=true;

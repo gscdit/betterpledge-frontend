@@ -25,6 +25,9 @@ export class ProductDetailComponent implements OnInit,OnDestroy {
     this.subscription= (await this.cartService.getCart()).snapshotChanges().subscribe(
       cart => {
         this.shoppingCart = cart.payload.val();
+        if(this.getQuantity()>this.product.quantity){
+           this.delete();
+        } 
       }
     );
   }
@@ -32,6 +35,8 @@ export class ProductDetailComponent implements OnInit,OnDestroy {
   addToCart(){
     this.cartService.addToCart(this.product);
   }
+  
+  
 
   checkout(){
     this.addToCart();
@@ -44,7 +49,9 @@ export class ProductDetailComponent implements OnInit,OnDestroy {
    let item=this.shoppingCart.items[this.product['listing_id']]
    return item? item.quantity:null;
   }}
-
+  delete(){
+    this.cartService.delete(this.product);
+  }
   removeFromCart() {
     this.cartService.removeFromCart(this.product)
   }

@@ -1,18 +1,18 @@
 <div class="container">
   <div class="row mx-auto my-5">
     <div class="col-md-8 mx-auto">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link active" routerLink="#">Login </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/login-donor">Are you a donor?</a>
-            </li>
-          </ul>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Login </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="#">Are you a donor?</a>
+        </li>
+      </ul>
       <div class="card rounded-0">
         <div class="card-header">
           <h3 class="mb-0 lead">
-              Start accepting donations 🙂
+            Take your pledge for a better tomorrow. Start donating, today! 🎉
           </h3>
         </div>
         <div class="card-body">
@@ -23,12 +23,12 @@
               <label for="email">Email</label>
               <input type="email" id="email" name="email" ngModel class="form-control" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]+)$">
               <!-- <span class="help-block" *ngIf="email.touched && email.errors?.required" style="color:red">Email is required</span>
-                  <span class="help-block" *ngIf="email.touched && email.invalid  && !email.errors?.required" style="color:red">Please enter valid email</span> -->
+                    <span class="help-block" *ngIf="email.touched && email.invalid  && !email.errors?.required" style="color:red">Please enter valid email</span> -->
             </div>
             <div hidden class="col  form-group">
-                <label for="type">Type</label>
-                <input type="text" id="type" name="type" [(ngModel)]="type" class="form-control" required >
-              </div>
+              <label for="type">Type</label>
+              <input type="text" id="type" name="type" [(ngModel)]="type" class="form-control" required>
+            </div>
             <div class="col  form-group">
               <label for="password">Password</label>
               <input type="password" id="password" name="password" ngModel class="form-control" required />

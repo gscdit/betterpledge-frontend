@@ -9,47 +9,49 @@ import { ShoppingCart } from './../Models/shoppingCart';
   providedIn: 'root'
 })
 export class ShoppingCartService {
+  constructor(private http: HttpClient, private db: AngularFireDatabase) { }
+
   async delete(product) {
-    let cart_id= await this.getorcreateCartId();
-    this.db.object('/shopping-cart/'+cart_id+'/items/'+product.listing_id).remove()
-  }
-  async clearCart() {
-    let cart_id= await this.getorcreateCartId();
-    this.db.object('/shopping-cart/'+cart_id+'/items/').remove()
+    let cart_id = await this.getorcreateCartId();
+    this.db.object('/shopping-cart/' + cart_id + '/items/' + product.listing_id).remove()
   }
 
-  constructor(private http: HttpClient, private db: AngularFireDatabase) { }
+  async clearCart() {
+    let cart_id = await this.getorcreateCartId();
+    this.db.object('/shopping-cart/' + cart_id + '/items/').remove()
+  }
 
   private create() {
     return this.db.list('/shopping-cart').push({
       DateCreated: new Date().getTime()
     })
   }
-   totalCount(cart){
-    if(!cart) return 0;
+
+  totalCount(cart) {
+    if (!cart) return 0;
     let count = 0;
     for (let listingid in cart.items) {
       count += cart.items[listingid].quantity;
     }
-    return cart.items?count:0;
-}
+    return cart.items ? count : 0;
+  }
 
- async removeFromCart(product) {
-    let cart_id= await this.getorcreateCartId();
-    let item$=this.db.object('/shopping-cart/'+cart_id+'/items/'+product.listing_id);
-    item$.snapshotChanges().take(1).subscribe(item=>{
-      let quantity= (item.payload.exists() ? item.payload.val()['quantity'] : 0) - 1
-     if(quantity===0) item$.remove(); 
-     else item$.update({
+  async removeFromCart(product) {
+    let cart_id = await this.getorcreateCartId();
+    let item$ = this.db.object('/shopping-cart/' + cart_id + '/items/' + product.listing_id);
+    item$.snapshotChanges().take(1).subscribe(item => {
+      let quantity = (item.payload.exists() ? item.payload.val()['quantity'] : 0) - 1
+      if (quantity === 0) item$.remove();
+      else item$.update({
         product: product,
-        quantity:quantity
+        quantity: quantity
       });
     });
   }
 
-  async getCart():Promise<AngularFireObject<ShoppingCart>> {
-    let cart_id= await this.getorcreateCartId();
-    return this.db.object('/shopping-cart/' + cart_id)
+  async getCart(): Promise<AngularFireObject<ShoppingCart>> {
+    let cart_id = await this.getorcreateCartId();
+    return this.db.object('/shopping-cart/' + cart_id);
   }
 
   private async getorcreateCartId(): Promise<string> {
@@ -61,18 +63,16 @@ export class ShoppingCartService {
   }
 
   async addToCart(product) {
-    let cart_id= await this.getorcreateCartId();
-    let item$=this.db.object('/shopping-cart/'+cart_id+'/items/'+product.listing_id);
-    item$.snapshotChanges().take(1).subscribe(item=>{
-     let quantity= (item.payload.exists() ? item.payload.val()['quantity'] : 0) + 1
-     if(quantity===0) item$.remove(); 
-     else item$.update({
+    let cart_id = await this.getorcreateCartId();
+    let item$ = this.db.object('/shopping-cart/' + cart_id + '/items/' + product.listing_id);
+    item$.snapshotChanges().take(1).subscribe(item => {
+      let quantity = (item.payload.exists() ? item.payload.val()['quantity'] : 0) + 1
+      if (quantity === 0) item$.remove();
+      else item$.update({
         product: product,
-        quantity:quantity
+        quantity: quantity
       });
     });
   }
-
-
 
 }

@@ -1,34 +1,38 @@
 <div class="container-fluid jumbotron m-0 p-0">
-    <div class="container jumbotron">
-        <h4 class="display-4">Manage Donations</h4>
-        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet impedit, voluptas culpa eaque repellendus facere enim autem. Illum ipsa nobis magni reprehenderit soluta rerum doloribus a totam deserunt, culpa dolore?</span>
-        <a style="bottom:25px;right:25px;position:fixed; color:white; z-index: 1 " (click)="donate()" class="btn btn-success"><i class="fa fa-plus " title="Donate"></i> </a>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <table class="table">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Modify/Change</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let p of products$; let i =index ">
-                <td>
-                {{p[i].description}}
-                </td>
-                <td>
-                 {{p[i].type | uppercase}}
-                </td>
-                <td>
-                  <a [routerLink]="['/donor/editProduct/',p[i].listing_id]">Edit</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-    </div>
+  <div class="container jumbotron">
+    <h4 class="display-4">Manage Donations</h4>
+    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet impedit, voluptas culpa eaque repellendus
+      facere enim autem. Illum ipsa nobis magni reprehenderit soluta rerum doloribus a totam deserunt, culpa dolore?</span>
+    <a style="bottom:25px;right:25px;position:fixed; color:white; z-index: 1 " (click)="donate()" class="btn btn-success"><i
+        class="fa fa-plus " title="Donate"></i> </a>
   </div>
+</div>
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Modify/Change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of products$; let i =index ">
+          <td>
+            {{p[i].description}}
+          </td>
+          <td>
+            {{p[i].type | uppercase}}
+          </td>
+          <td *ngIf="p[i].quantity>0;">
+            <a [routerLink]="['/donor/editProduct/',p[i].listing_id]">Edit</a>
+          </td>
+          <td *ngIf="p[i].quantity===0">
+            <p style="color:green">Booked</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

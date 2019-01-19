@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="row mx-auto my-5">
     <div class="col-md-8 mx-auto">
       <ul class="nav nav-tabs">
@@ -20,18 +19,22 @@
           <form (ngSubmit)="onSubmit(f)" #f="ngForm">
             <div class="col  form-group" [class.has-error]="first_name.invalid && first_name.touched">
               <label for="first_name" class="control-label">First Name</label>
-              <input type="text" id="first_name" pattern="^[A-Z]+[a-z]*$" minlength="3" maxlength="10" name="first_name" ngModel
-                class="form-control" required #first_name="ngModel">
-              <span class="help-block" *ngIf="first_name.touched && first_name.errors?.required" style="color:red">Name is required</span>
-              <span class="help-block" *ngIf="first_name.touched && first_name.invalid  && !first_name.errors?.required" style="color:red">Please
+              <input type="text" id="first_name" pattern="^[A-Z]+[a-z]*$" minlength="3" maxlength="10" name="first_name"
+                ngModel class="form-control" required #first_name="ngModel">
+              <span class="help-block" *ngIf="first_name.touched && first_name.errors?.required" style="color:red">Name
+                is required</span>
+              <span class="help-block" *ngIf="first_name.touched && first_name.invalid  && !first_name.errors?.required"
+                style="color:red">Please
                 enter valid name</span>
             </div>
             <div class="col  form-group" [class.has-error]="last_name.invalid && last_name.touched">
               <label for="last_name" class="control-label">Last Name</label>
-              <input type="text" id="last_name" pattern="^[A-Z]+[a-z]*$" minlength="3" maxlength="10" name="last_name" ngModel
-                class="form-control" required #last_name="ngModel">
-              <span class="help-block" *ngIf="last_name.touched && last_name.errors?.required" style="color:red">Name is required</span>
-              <span class="help-block" *ngIf="last_name.touched && last_name.invalid  && !last_name.errors?.required" style="color:red">Please
+              <input type="text" id="last_name" pattern="^[A-Z]+[a-z]*$" minlength="3" maxlength="10" name="last_name"
+                ngModel class="form-control" required #last_name="ngModel">
+              <span class="help-block" *ngIf="last_name.touched && last_name.errors?.required" style="color:red">Name
+                is required</span>
+              <span class="help-block" *ngIf="last_name.touched && last_name.invalid  && !last_name.errors?.required"
+                style="color:red">Please
                 enter valid name</span>
             </div>
             <div class="col  form-group">
@@ -40,20 +43,12 @@
                 ngModel class="form-control" required #email="ngModel">
               <span class="help-block" *ngIf="email.touched && email.errors?.required" style="color:red">Email is
                 required</span>
-
               <span class="help-block" *ngIf="email.touched && email.invalid  && !email.errors?.required" style="color:red">Please
                 enter valid email</span>
             </div>
-            <div class="col  form-group">
+            <div hidden class="col  form-group">
               <label for="type">Type</label>
-              <select type="type" id="type" name="type" ngModel class="form-control" required #type="ngModel">
-
-                <option value="donor">Donor</option>
-              </select>
-              <span class="help-block" *ngIf="type.touched && type.errors?.required" style="color:red">type is
-                required</span>
-              <span class="help-block" *ngIf="type.touched && type.invalid  && !type.errors?.required" style="color:red">Please
-                enter valid type</span>
+              <input type="text" name="type" id="type" [(ngModel)]="type"/>
             </div>
             <div class="col  form-group">
               <label for="phone_no">Phone No</label>
@@ -61,33 +56,65 @@
                 required minlength="10" maxlength="10" #phone_no="ngModel">
               <span class="help-block" *ngIf="phone_no.touched && phone_no.errors?.required" style="color:red">Phone No
                 is required</span>
-
               <span class="help-block" *ngIf="phone_no.touched && phone_no.invalid  && !phone_no.errors?.required"
                 style="color:red">Please enter valid phone no</span>
             </div>
             <div class="col  form-group">
+                <label for="organisation">Organisation</label>
+                <input type="text" id="organisation" name="organisation" ngModel class="form-control"
+                  required #organisation="ngModel">
+                <span class="help-block" *ngIf="organisation.touched && organisation.errors?.required" style="color:red">Organisation
+                  is required</span>
+              </div>
+            <div class="col  form-group">
+                <label for="street">Street</label>
+                <input type="text" id="street" name="street" ngModel class="form-control"
+                  required #street="ngModel">
+                <span class="help-block" *ngIf="street.touched && street.errors?.required" style="color:red">Street
+                  is required</span>
+              </div>
+              <div class="col  form-group">
+                  <label for="landmark">Landmark</label>
+                  <input type="text" id="landmark" name="landmark" ngModel class="form-control"
+                    required #landmark="ngModel">
+                  <span class="help-block" *ngIf="landmark.touched && landmark.errors?.required" style="color:red">Landmark
+                    is required</span>
+                </div>
+                <div class="col  form-group">
+                    <label for="city">City</label>
+                    <select type="text" id="city" name="city" ngModel class="form-control"
+                      required  #city="ngModel">
+                    <option value="Dehradun">Dehradun</option>
+                    </select>
+                    <span class="help-block" *ngIf="city.touched && city.errors?.required" style="color:red">City
+                      is required</span>
+                  </div>
+                  <div hidden class="col  form-group">
+                      <label for="country">Country</label>
+                      <input type="text" id="country" name="country" [(ngModel)]="country" class="form-control"
+                        required >
+                    </div> 
+            <div class="col  form-group">
               <label for="password">Password</label>
-              <input type="password" id="password" name="password" minlength="8" maxlength="32" ngModel class="form-control"
+              <input type="password" id="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" name="password" ngModel class="form-control"
                 required #password="ngModel">
               <span class="help-block" *ngIf="password.touched && password.errors?.required" style="color:red">Password
                 is required</span>
-
               <span class="help-block" *ngIf="password.touched && password.invalid  && !password.errors?.required"
                 style="color:red">Please enter valid password</span>
             </div>
             <div class="col  form-group">
               <label for="password2">Confirm Password</label>
-              <input type="password" id="password2" confirmPassword="password" name="password2" ngModel class="form-control"
-                required minlength="8" maxlength="32" #password2="ngModel">
+              <input type="password" id="password2" confirmPassword="password" name="password2" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" ngModel class="form-control"
+                required #password2="ngModel">
               <span class="help-block" *ngIf="password2.touched && password2.errors?.required" style="color:red">Confirm
                 Password is required</span>
               <span class="help-block" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required"
                 style="color:red">Password and Confirm Password does not match</span>
-
               <span class="help-block" *ngIf="password2.touched && password2.invalid  && !password2.errors?.required"
                 style="color:red">Please enter valid password</span>
             </div>
-            <button type="submit" class="col btn btn-primary" [disabled]="!f.valid">Sign Up</button>
+            <button type="submit" class="col btn btn-primary" [disabled]="!f.valid">{{message}}</button>
           </form>
         </div>
       </div>

@@ -6,6 +6,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ShoppingCartService } from './../../Service/shopping-cart.service';
 import { Product } from './../../Models/product';
 import { Subscription } from 'rxjs';
+import { NgProgress } from 'ngx-progressbar';
+import { AuthenticateService } from 'src/app/Service/authentication.service';
+
 @Component({
   selector: 'app-all',
   templateUrl: './all.component.html',
@@ -20,39 +23,61 @@ export class AllComponent implements OnInit,OnDestroy {
   subscription:Subscription
   productsubscription: Subscription;
   show=true;
+  loader=true;
+  product_ids;
+  productSubscription: Subscription;
+  prod: Object;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
     private ps: ProductsService,
-    private cartService: ShoppingCartService) {
-  }
-
-  totalQuantity(){
-    return this.filteredProduct.length;
+    private progressService:NgProgress,
+    private cartService: ShoppingCartService,
+    public authService:AuthenticateService) {  
   }
 
   async ngOnInit() {
-   this.productsubscription =this.ps.getAll().switchMap(
+    this.progressService.start();
+    this.productsubscription = this.ps.getAll().switchMap(
       p => {
+        console.log(p)
         if(p)
         this.product = p.listing;
         return this.route.queryParamMap
       })
       .subscribe(
         params => {
+          this.progressService.set(0.1);
+          this.progressService.inc(0.2);
+          this.progressService.done();
+          this.loader=false;
           this.type = params.get('type');
           this.searchProduct= this.filteredProduct = (this.type) ?
-            this.product.filter(p => p.type === this.type) : this.product;     
+          this.product.filter(p => p.type === this.type) : this.product;
         });
-
+      
    this.subscription= (await this.cartService.getCart()).valueChanges().subscribe(
       cart => { 
         this.shoppingCart = cart;
-      }
-    );
+        if (cart && cart.items){
+          console.log(cart.items)
+          this.product_ids = Object.keys(cart.items);
+          for(let product in this.filteredProduct ){
+            console.log(this.filteredProduct[product].quantity);
+            if(this.getQuantity(this.filteredProduct[product])>this.filteredProduct[product].quantity){
+                this.delete(this.filteredProduct[product]);
+            }}  
+          }});      
+  }
+
+  delete(product) {
+    this.cartService.delete(product);
   }
   
-
+  totalQuantity(){
+    if(this.filteredProduct)
+   return this.filteredProduct.length
+  }
   removeFromCart(product) {
     this.cartService.removeFromCart(product)
   }
@@ -65,25 +90,28 @@ export class AllComponent implements OnInit,OnDestroy {
     this.cartService.addToCart(product)
   }
 
-  ngOnDestroy(){
-    this.subscription.unsubscribe();
-    this.productsubscription.unsubscribe();
-  }
-
   filter(query:string){
   let q= query.toLowerCase();
     this.filteredProduct=this.searchProduct;
     this.filteredProduct=(query) ?
     this.filteredProduct.filter(p=>p.description.toLowerCase().includes(q)) : this.searchProduct;
   }
+
   checkout(product){
     this.addToCart(product);
     this.router.navigate(['/check-out'])
   }
+
   getQuantity(prod:Product){
    if(!this.shoppingCart) return null ;
    if(this.shoppingCart && this.shoppingCart.items){
    let item=this.shoppingCart.items[prod.listing_id]
    return item? item.quantity:null;
   }}
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+    this.productsubscription.unsubscribe();
+  }  
+
 }

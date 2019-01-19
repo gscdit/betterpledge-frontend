@@ -21,17 +21,17 @@ private _loginUrl="https://obv53599.pythonanywhere.com/login"
    return this.http.post<any>(this._loginUrl,user) 
   }
   loggedin(){
-    return !!localStorage.getItem('token')
+    return !!sessionStorage.getItem('token')
   }
   getToken(){
-    return localStorage.getItem('token')
+    return sessionStorage.getItem('token')
   }
   logout(){
-     localStorage.removeItem('token')
+     sessionStorage.removeItem('token')
     this.router.navigate(['/'])
   }
    currentUser(){
-    let token=localStorage.getItem('token')
+    let token=sessionStorage.getItem('token')
     let jwthelper=new JwtHelperService();
     return jwthelper.decodeToken(token)
   }
