@@ -90,8 +90,9 @@
                       </div> 
             <div class="col  form-group">
               <label for="password">Password</label>
-              <input type="password" id="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" ngModel class="form-control"
-                required #password="ngModel">
+              <input type="password" id="password" name="password" minlength="8" maxlength="32" ngModel class="form-control"
+                required #password="ngModel" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+			         	title="Password minimum length should be 8 characters with atleast one uppercase, one lowercase,one number and one special character(eg. Abc@12345)">
               <span class="help-block" *ngIf="password.touched && password.errors?.required" style="color:red">Password
                 is required</span>
               <span class="help-block" *ngIf="password.touched && password.invalid  && !password.errors?.required"
