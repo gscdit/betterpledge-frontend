@@ -32,8 +32,8 @@ export class AddProductComponent implements OnInit {
 
   delete(){
     if(!confirm("Are you sure you want to delete this product?")) return;{
-    this.ps.deleteProduct(this.id).subscribe(res=>
-      this.router.navigate(['/donor/donatedProduct'])
+    this.ps.deleteProduct(this.id).subscribe(res=>{
+      this.router.navigate(['/donor/donatedProduct'])}
     );}
   }
 
