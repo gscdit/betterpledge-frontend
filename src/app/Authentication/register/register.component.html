@@ -24,8 +24,7 @@
               <span class="help-block" *ngIf="first_name.touched && first_name.errors?.required" style="color:red">Name
                 is required</span>
               <span class="help-block" *ngIf="first_name.touched && first_name.invalid  && !first_name.errors?.required"
-                style="color:red">Please
-                enter valid name</span>
+                style="color:red">First Name must include first character capital.</span>
             </div>
             <div class="col  form-group" [class.has-error]="last_name.invalid && last_name.touched">
               <label for="last_name" class="control-label">Last Name</label>
@@ -43,8 +42,7 @@
                 ngModel class="form-control" required #email="ngModel">
               <span class="help-block" *ngIf="email.touched && email.errors?.required" style="color:red">Email is
                 required</span>
-              <span class="help-block" *ngIf="email.touched && email.invalid  && !email.errors?.required" style="color:red">Please
-                enter valid email</span>
+              <span class="help-block" *ngIf="email.touched && email.invalid  && !email.errors?.required" style="color:red">Last Name must include first character capital.</span>
             </div>
             <div hidden class="col  form-group">
               <label for="type">Type</label>
@@ -57,8 +55,7 @@
               <span class="help-block" *ngIf="phone_no.touched && phone_no.errors?.required" style="color:red">Phone No
                 is required</span>
               <span class="help-block" *ngIf="phone_no.touched && phone_no.invalid  && !phone_no.errors?.required"
-                style="color:red">Please
-                enter valid phone no</span>
+                style="color:red">Phone no must include 10 characters</span>
             </div>
               <div class="col  form-group" hidden>
                   <label for="street">Street</label>
@@ -95,8 +92,7 @@
               <span class="help-block" *ngIf="password.touched && password.errors?.required" style="color:red">Password
                 is required</span>
               <span class="help-block" *ngIf="password.touched && password.invalid  && !password.errors?.required"
-                style="color:red">Please
-                enter valid password</span>
+                style="color:red">Password must include one symbol,one capital character,one small character,one numerical value</span>
             </div> 
             <div class="col  form-group">
               <label for="password2">Confirm Password</label>
@@ -106,7 +102,7 @@
                 Password is required</span>
               <span class="help-block" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required"
                 style="color:red">Password and Confirm Password does not match</span>
-              <span class="help-block" *ngIf="password2.touched && password2.invalid  && !password2.errors?.required"
+              <span class="help-block" *ngIf="password2.touched && password2.invalid  && !password2.errors?.required && !password2.errors?.notEqual"
                 style="color:red">Please enter valid password</span>
             </div>
             <button type="submit" class="col btn btn-primary" [disabled]="!f.valid">{{message}}</button>

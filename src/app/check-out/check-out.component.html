@@ -29,7 +29,7 @@
         <textarea rows="3" type="text" id="email" [(ngModel)]="shipping.address" name="address" ngModel class="form-control"
           required #address="ngModel"></textarea>
       </div>
-      <button class="btn btn-success " style="margin-left:15px " (click)="openVerticallyCentered(content)">Book Now</button>
+      <button class="btn btn-success " style="margin-left:15px " (click)="openVerticallyCentered(content)" [disabled]="!f.valid">Book Now</button>
       <br>
       <br>
       <br>
