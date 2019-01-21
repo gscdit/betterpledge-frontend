@@ -1,4 +1,4 @@
-# BetterPledge
+<img src="https://betterpledgegsc.firebaseapp.com/assets/logo.png" style="padding-left:100px;"/>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
 
