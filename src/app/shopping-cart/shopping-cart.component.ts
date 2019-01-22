@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy,  AfterContentInit } from '@angular/core';
 import { ShoppingCartService } from './../Service/shopping-cart.service';
 import { Subscription } from 'rxjs';
 import { ProductsService } from '../Service/products.service';
@@ -10,7 +10,7 @@ import { NgProgress } from 'ngx-progressbar';
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.css']
 })
-export class ShoppingCartComponent implements OnInit, OnDestroy {
+export class ShoppingCartComponent implements OnInit, OnDestroy,AfterContentInit {
   cart$;
   count;
   product;
@@ -38,7 +38,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
       ) 
   }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.router.events
       .subscribe((event) => {
         if (event instanceof NavigationStart) {

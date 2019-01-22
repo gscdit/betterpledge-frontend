@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { ProductsService } from 'src/app/Service/products.service';
@@ -11,7 +11,7 @@ import { NgProgress } from 'ngx-progressbar';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
-export class AddProductComponent implements OnInit,AfterViewInit {
+export class AddProductComponent implements OnInit,AfterContentInit {
   product = {
     'description': null,
     'type': null,
@@ -39,8 +39,12 @@ export class AddProductComponent implements OnInit,AfterViewInit {
   }
 
   delete() {
+    this.progressService.start();
     if (!confirm("Are you sure you want to delete this product?")) return; {
       this.ps.deleteProduct(this.id).subscribe(res => {
+        this.progressService.set(0.1);
+        this.progressService.inc(0.2);
+        this.progressService.done();
         this.router.navigate(['/donor/donatedProduct'])
       }
       );
@@ -51,6 +55,7 @@ export class AddProductComponent implements OnInit,AfterViewInit {
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
     if (event.target.files[0]) {
+      this.progressService.start();
       if (this.selectedFile.size >= 10000000 ) {
         this.size = true;
         if(this.selectedFile.type==='image/png'){
@@ -72,6 +77,9 @@ export class AddProductComponent implements OnInit,AfterViewInit {
         this.http.post('https://obv53599.pythonanywhere.com/uploadimage', uploadData)
         .subscribe(
           res => {
+            this.progressService.set(0.1);
+          this.progressService.inc(0.2);
+          this.progressService.done();
             console.log(res);
             this.product.image = res['url'];
             this.res = true;
@@ -81,7 +89,7 @@ export class AddProductComponent implements OnInit,AfterViewInit {
     }
   }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.router.events
       .subscribe((event) => {
         if (event instanceof NavigationStart) {
@@ -100,16 +108,19 @@ export class AddProductComponent implements OnInit,AfterViewInit {
 
 
   onSave(value: NgForm) {
-
+    this.progressService.start();
   let  product={
        description:value['description'],
        type:value['type'],
        quantity:value['quantity'],
        image:this.product.image
     }
-    console.log(product)
+    console.log(product);
     if (this.id) {
       this.ps.updateProduct(product, this.id).subscribe(res => {
+        this.progressService.set(0.1);
+          this.progressService.inc(0.2);
+          this.progressService.done();
         this.router.navigate(['/donor/donatedProduct']);
       },
         error => {
@@ -117,6 +128,9 @@ export class AddProductComponent implements OnInit,AfterViewInit {
         });
     } else {
       this.ps.addProduct(product).subscribe(res => {
+        this.progressService.set(0.1);
+          this.progressService.inc(0.2);
+          this.progressService.done();
         this.router.navigate(['/donor/donatedProduct']);
       },
         error => {

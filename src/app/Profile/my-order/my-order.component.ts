@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit,  AfterContentInit } from '@angular/core';
 import { OrderService } from 'src/app/Service/order.service';
 import { NgProgress } from 'ngx-progressbar';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
@@ -8,7 +8,7 @@ import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angul
   templateUrl: './my-order.component.html',
   styleUrls: ['./my-order.component.css']
 })
-export class MyOrderComponent implements OnInit,AfterViewInit {
+export class MyOrderComponent implements OnInit,AfterContentInit {
   orders=[];
   constructor(private profileService:OrderService,private progressService:NgProgress,private router:Router) { }
    
@@ -21,7 +21,7 @@ export class MyOrderComponent implements OnInit,AfterViewInit {
     )
   }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.router.events
         .subscribe((event) => {
             if(event instanceof NavigationStart) {

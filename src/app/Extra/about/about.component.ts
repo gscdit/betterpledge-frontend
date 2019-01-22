@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
 
@@ -7,14 +7,14 @@ import { NgProgress } from 'ngx-progressbar';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent implements OnInit,AfterContentInit {
 
   constructor(private router:Router,private progressService:NgProgress) { }
 
   ngOnInit() {
   }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.router.events
       .subscribe((event) => {
         if (event instanceof NavigationStart) {

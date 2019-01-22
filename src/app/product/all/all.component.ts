@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy,  AfterContentInit } from '@angular/core';
 import { ProductsService } from './../../Service/products.service';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
@@ -15,7 +15,7 @@ import { ShoppingCart } from './../../Models/shoppingCart';
   templateUrl: './all.component.html',
   styleUrls: ['./all.component.css']
 })
-export class AllComponent implements OnInit, OnDestroy,AfterViewInit {
+export class AllComponent implements OnInit, OnDestroy, AfterContentInit {
   product = [];
   filteredProduct = [];
   searchProduct = [];
@@ -37,22 +37,22 @@ export class AllComponent implements OnInit, OnDestroy,AfterViewInit {
     public authService: AuthenticateService) {
   }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.router.events
-        .subscribe((event) => {
-            if(event instanceof NavigationStart) {
-                this.progressService.start();
-            }
-            else if (
-                event instanceof NavigationEnd || 
-                event instanceof NavigationCancel
-                ) {     
+      .subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          this.progressService.start();
+        }
+        else if (
+          event instanceof NavigationEnd ||
+          event instanceof NavigationCancel
+        ) {
           this.progressService.set(0.1);
           this.progressService.inc(0.2);
           this.progressService.done();
-            }
-        });
-}
+        }
+      });
+  }
 
   async ngOnInit() {
     this.productsubscription = this.ps.getAll().switchMap(
@@ -66,8 +66,6 @@ export class AllComponent implements OnInit, OnDestroy,AfterViewInit {
         params => {
           //loader
           this.loader = false;
-
-              
           this.type = params.get('type');
           this.searchProduct = this.filteredProduct = (this.type) ?
             this.product.filter(p => p.type === this.type) : this.product;

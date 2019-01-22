@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { ProductsService } from 'src/app/Service/products.service';
 import { NgProgress } from 'ngx-progressbar';
@@ -8,7 +8,7 @@ import { NgProgress } from 'ngx-progressbar';
   templateUrl: './donor-product.component.html',
   styleUrls: ['./donor-product.component.css']
 })
-export class DonorProductComponent implements OnInit,AfterViewInit {
+export class DonorProductComponent implements OnInit,AfterContentInit {
   products$: {};
   
   constructor(private router:Router,private ps:ProductsService,private progressService:NgProgress) {
@@ -21,7 +21,7 @@ export class DonorProductComponent implements OnInit,AfterViewInit {
       )
   }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.router.events
       .subscribe((event) => {
         if (event instanceof NavigationStart) {
@@ -38,7 +38,7 @@ export class DonorProductComponent implements OnInit,AfterViewInit {
       });}
       
   donate(){
-    this.router.navigate(['/donor/addProduct'])
+    this.router.navigate(['/donor/addProduct']); 
   }
   
 }

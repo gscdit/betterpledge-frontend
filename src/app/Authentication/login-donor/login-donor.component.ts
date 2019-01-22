@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthenticateService } from 'src/app/Service/authentication.service';
 import { Router, ActivatedRoute, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
@@ -9,7 +9,7 @@ import { NgProgress } from 'ngx-progressbar';
   templateUrl: './login-donor.component.html',
   styleUrls: ['./login-donor.component.css']
 })
-export class LoginDonorComponent implements OnInit,AfterViewInit {
+export class LoginDonorComponent implements OnInit,AfterContentInit {
 
   invalidLogin: boolean;
   message = "Login"
@@ -18,7 +18,7 @@ export class LoginDonorComponent implements OnInit,AfterViewInit {
 
   ngOnInit() {
   }
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.router.events
       .subscribe((event) => {
         if (event instanceof NavigationStart) {
@@ -36,10 +36,13 @@ export class LoginDonorComponent implements OnInit,AfterViewInit {
   
   onSubmit(form:NgForm){
     console.log(form.value);
-
+   this.progressService.start();
    
     this.authService.login(form.value).subscribe(
       response=>{console.log(response)
+        this.progressService.set(0.1);
+        this.progressService.inc(0.2);
+        this.progressService.done();
         let returnUrl=this.route.snapshot.queryParamMap.get('returnUrl')
         if( response===null){
           this.invalidLogin = true;

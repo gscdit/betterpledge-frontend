@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterContentInit } from '@angular/core';
 import { ProductsService } from 'src/app/Service/products.service';
 import { ActivatedRoute, Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { ShoppingCartService } from 'src/app/Service/shopping-cart.service';
@@ -10,29 +10,26 @@ import { NgProgress } from 'ngx-progressbar';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent implements OnInit, OnDestroy,AfterViewInit {
+export class ProductDetailComponent implements OnInit, OnDestroy, AfterContentInit {
   id
   product = { image: null, description: null, quantity: null, type: null }
   shoppingCart;
   subscription: Subscription
-  constructor(private ps: ProductsService, private route: ActivatedRoute, private cartService: ShoppingCartService, private router: Router,private progressService:NgProgress) { }
+  constructor(private ps: ProductsService, private route: ActivatedRoute, private cartService: ShoppingCartService, private router: Router, private progressService: NgProgress) { }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.router.events
-        .subscribe((event) => {
-            if(event instanceof NavigationStart) {
-                this.progressService.start();
-            }
-            else if (
-                event instanceof NavigationEnd || 
-                event instanceof NavigationCancel
-                ) {     
+      .subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          this.progressService.start();
+        }
+        else if (event instanceof NavigationEnd || event instanceof NavigationCancel) {
           this.progressService.set(0.1);
           this.progressService.inc(0.2);
           this.progressService.done();
-            }
-        });
-}
+        }
+      });
+  }
 
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id')

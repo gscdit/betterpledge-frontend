@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { NgProgress } from 'ngx-progressbar';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 
@@ -7,14 +7,14 @@ import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angul
   templateUrl: './lightning-fast-deal.component.html',
   styleUrls: ['./lightning-fast-deal.component.css']
 })
-export class LightningFastDealComponent implements OnInit,AfterViewInit {
+export class LightningFastDealComponent implements OnInit,AfterContentInit {
 
   constructor(private progressService: NgProgress,private router:Router) { }
 
   ngOnInit() {
 
   }
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.router.events
         .subscribe((event) => {
             if(event instanceof NavigationStart) {

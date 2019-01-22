@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterContentInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ShoppingCartService } from 'src/app/Service/shopping-cart.service';
 import { Subscription } from 'rxjs';
@@ -15,7 +15,7 @@ import { NgProgress } from 'ngx-progressbar';
   templateUrl: './check-out.component.html',
   styleUrls: ['./check-out.component.css']
 })
-export class CheckOutComponent implements OnInit, AfterViewInit {
+export class CheckOutComponent implements OnInit, AfterContentInit {
   shipping = { name: null, phone: null, City: null, address: null }
   subscription: Subscription;
   cart$;
@@ -33,21 +33,18 @@ export class CheckOutComponent implements OnInit, AfterViewInit {
       if (cart && cart.items) {
         this.product_ids = Object.keys(cart.items);
         this.productSubscription = this.ps.getAllWithZero().subscribe(res => {
-
           for (let product in res) {
             console.log(res[product].quantity);
             if (this.getQuantity(res[product]) > res[product].quantity) {
               this.delete(res[product]);
             }
           }
-        }
-        )
+        })
       }
-    }
-    )
+    })
   }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.router.events
       .subscribe((event) => {
         if (event instanceof NavigationStart) {

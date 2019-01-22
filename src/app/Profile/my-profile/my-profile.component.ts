@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { AuthenticateService } from '../../Service/authentication.service';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -10,7 +10,7 @@ import { NgProgress } from 'ngx-progressbar';
   templateUrl: './my-profile.component.html',
   styleUrls: ['./my-profile.component.css']
 })
-export class MyProfileComponent implements OnInit {
+export class MyProfileComponent implements OnInit,AfterContentInit {
 
   title = {
   };
@@ -18,7 +18,7 @@ export class MyProfileComponent implements OnInit {
 
   constructor(public authenticateService: AuthenticateService, private router: Router, private httpService: HttpService, private progressService: NgProgress) { }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.router.events
       .subscribe((event) => {
         if (event instanceof NavigationStart) {

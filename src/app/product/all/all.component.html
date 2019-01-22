@@ -56,7 +56,7 @@
                   <p class="card-text">Quantity - {{p.quantity}}</p>
                   <p class="card-text">{{authService.currentUser().organisation}}</p>
                 </div>
-                <div class="card-footer p-1" style="opacity: 1;">
+                <div class="card-footer p-1 text-center" style="opacity: 1;">
                   <div *ngIf="!getQuantity(p);else updateQuantity">
                     <button class="btn btn-secondary pull-left btn-sm" type="button" (click)="addToCart(p)" style="color: white;margin-right: 10px">Add
                       to cart</button>

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { AuthenticateService } from 'src/app/Service/authentication.service';
 import { NgForm } from '@angular/forms';
 import { Router, NavigationEnd, NavigationCancel, NavigationStart } from '@angular/router';
@@ -9,8 +9,8 @@ import { NgProgress } from 'ngx-progressbar';
   templateUrl: './register-donor.component.html',
   styleUrls: ['./register-donor.component.css']
 })
-export class RegisterDonorComponent implements OnInit,AfterViewInit {
-  message = "Sign Up";
+export class RegisterDonorComponent implements OnInit,AfterContentInit {
+
   type = "donor";
   country="India";
   
@@ -18,7 +18,7 @@ export class RegisterDonorComponent implements OnInit,AfterViewInit {
 
   ngOnInit() {
   }
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.router.events
       .subscribe((event) => {
         if (event instanceof NavigationStart) {
@@ -35,11 +35,13 @@ export class RegisterDonorComponent implements OnInit,AfterViewInit {
       });}
   onSubmit(form:NgForm){
     console.log(form.value); 
-
-    this.message = "Loading ..."
+    this.progressService.start();
     this.authService.registerdonor(form.value).subscribe(
       response=>{ console.log(response)
-      this.router.navigate(['/login-donor'])
+        this.progressService.set(0.1);
+        this.progressService.inc(0.2);
+        this.progressService.done();
+      this.router.navigate(['/login-donor']);
       },
       error=>{console.log(error)}
     )
