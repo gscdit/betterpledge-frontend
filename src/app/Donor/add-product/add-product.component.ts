@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/Service/products.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticateService } from './../../Service/authentication.service';
 
 @Component({
@@ -16,6 +16,9 @@ export class AddProductComponent implements OnInit {
     'quantity':null,
     'image':null
     };
+    upload=false;
+    selectedFile=null;
+    res:boolean;
     id;
   constructor(private route:ActivatedRoute,
     private router:Router,private ps:ProductsService,
@@ -35,6 +38,30 @@ export class AddProductComponent implements OnInit {
     this.ps.deleteProduct(this.id).subscribe(res=>{
       this.router.navigate(['/donor/donatedProduct'])}
     );}
+  }
+  
+  
+  onFileChanged(event){
+   this.selectedFile= event.target.files[0];
+   if(event.target.files[0]){
+     this.upload=true;
+   } 
+   console.log(this.selectedFile)  
+  }
+  
+  onUpload(){
+    const uploadData = new FormData();
+    uploadData.append('file', this.selectedFile, this.selectedFile.name);
+    console.log(uploadData)
+    this.http.post('https://b90c5c01.ngrok.io/uploadimage', uploadData)
+      .subscribe(
+        res=>{
+          console.log(res)
+          this.product.image=res['url'];
+          console.log(this.product.image);
+          this.res=true; 
+        }
+      );
   }
 
   onSave(value:NgForm){

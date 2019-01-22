@@ -31,15 +31,17 @@
         <div class="form-group">
           <label id="quantity" for="quantity">Quantity</label>
           <input #quantity="ngModel" type="text" [(ngModel)]="product.quantity" name="quantity" id="quantity" class="form-control"
-            required>
+            required accept=".jpg,.jpeg" max="3MB">
         </div>
-        <div class="form-group">
-          <label id="url" for="url">Image URL</label>
-          <input #imageUrl="ngModel" type="text" [(ngModel)]="product.image" name="image" id="url" class="form-control"
-            required>
-        </div>
-        <button class="btn btn-success" [disabled]="!f.valid">Save</button>&nbsp;&nbsp;&nbsp;
-        <button class="btn btn-danger" type="submit" *ngIf="id" (click)="delete()">Delete</button>
+        <input 
+        style="display: none" 
+        type="file" (change)="onFileChanged($event)" 
+        #fileInput>
+      <button (click)="fileInput.click()" type="button" class="btn fa fa-paperclip">Select File</button>&nbsp;&nbsp;&nbsp;
+      <p *ngIf="selectedFile">{{selectedFile.name}}</p>
+      <button (click)="onUpload()" type="button" class="btn fa fa-upload" *ngIf="upload">Upload!</button><br><br>
+        <button class="btn btn-success"  [disabled]="!f.valid || !res">Save</button>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
       </div>
       <div class="col-md-5">
         <div>
@@ -48,7 +50,7 @@
         </div>
         <div style="margin:auto auto">
           <div class="card" *ngIf="f.valid">
-            <img class="card-img-top" *ngIf="imageUrl.value" [src]="imageUrl.value">
+            <img class="card-img-top" src="{{product.image}}" height="400px" >
             <div class="card-body">
               <span class="card-title display-6">{{ productName.value }}</span>
               <p class="card-text pull-right badge badge-light">{{ category.value | uppercase }}</p>
