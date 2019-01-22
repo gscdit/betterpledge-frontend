@@ -1,3 +1,11 @@
+<ng-progress
+    [positionUsing]="'marginLeft'"
+    [direction]="'leftToRightIncreased'"
+    [color]="'red'"
+    [trickleSpeed]="500" 
+    [thick]="true" 
+    [ease]="'easeInSine'"
+></ng-progress>
 <div class="container-fluid jumbotron m-0 p-0">
   <div class="container jumbotron">
     <h4 class="display-4">Donate Products</h4>
@@ -33,14 +41,13 @@
           <input #quantity="ngModel" type="text" [(ngModel)]="product.quantity" name="quantity" id="quantity" class="form-control"
             required accept=".jpg,.jpeg" max="3MB">
         </div>
-        <input 
-        style="display: none" 
-        type="file" (change)="onFileChanged($event)" 
-        #fileInput>
-      <button (click)="fileInput.click()" type="button" class="btn fa fa-paperclip">Select File</button>&nbsp;&nbsp;&nbsp;
-      <p *ngIf="selectedFile">{{selectedFile.name}}</p>
-      <button (click)="onUpload()" type="button" class="btn fa fa-upload" *ngIf="upload">Upload!</button><br><br>
-        <button class="btn btn-success"  [disabled]="!f.valid || !res">Save</button>&nbsp;&nbsp;&nbsp;
+        <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+        <button (click)="fileInput.click()" type="button" class="btn fa fa-paperclip">Select File</button>&nbsp;&nbsp;&nbsp;<br><br>
+        <p *ngIf="selectedFile">{{selectedFile.name}}</p>
+        <p *ngIf="type" style="color:red">Type of image should be of (.jpg,.jpeg)</p>
+        <p *ngIf="size" style="color:red">Image size should be less than 1MB</p>
+        
+        <button class="btn btn-success" [disabled]="!f.valid || !res">Save</button>&nbsp;&nbsp;&nbsp; 
         <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
       </div>
       <div class="col-md-5">
@@ -49,14 +56,14 @@
           <hr>
         </div>
         <div style="margin:auto auto">
-          <div class="card" *ngIf="f.valid">
-            <img class="card-img-top" src="{{product.image}}" height="400px" >
+          <div class="card" *ngIf="f.valid && res">
+            <img class="card-img-top" src="{{product.image}}" height="200px">
             <div class="card-body">
               <span class="card-title display-6">{{ productName.value }}</span>
               <p class="card-text pull-right badge badge-light">{{ category.value | uppercase }}</p>
               <p class="card-text">{{ AuthService.currentUser().organisation | uppercase}}</p>
               <hr>
-              <p class="card-text">Quantity:- {{ quantity.value  }}</p>
+              <p class="card-text">Quantity:- {{ quantity.value }}</p>
             </div>
           </div>
         </div>

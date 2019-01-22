@@ -6,6 +6,7 @@ import { ProblemsComponent } from './problems/problems.component';
 import { NgModule } from "@angular/core";
 import { HighlightsComponent } from "./highlights/highlights.component";
 import { HomePageRoutingModule } from "./homepage-routing.module";
+import { NgProgressModule } from "ngx-progressbar";
 
 @NgModule({
     declarations:[
@@ -16,7 +17,8 @@ import { HomePageRoutingModule } from "./homepage-routing.module";
     ],
     imports:[
     CommonModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    NgProgressModule
     ]
 })
 export class HomePageModule{}

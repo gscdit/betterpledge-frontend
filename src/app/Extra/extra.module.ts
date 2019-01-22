@@ -6,6 +6,7 @@ import { AboutComponent } from "./about/about.component";
 import { ContactComponent } from "./contact/contact.component";
 import { ExtraRoutingModule } from "./extra-routing.module";
 import { FaqsComponent } from './faqs/faqs.component';
+import { NgProgressModule } from "ngx-progressbar";
 
 @NgModule({
     declarations:[
@@ -15,7 +16,8 @@ import { FaqsComponent } from './faqs/faqs.component';
     ],
     imports:[
     CommonModule,
-    ExtraRoutingModule
+    ExtraRoutingModule,
+    NgProgressModule
     ]
 })
 export class ExtraModule{}

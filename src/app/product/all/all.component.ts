@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { ProductsService } from './../../Service/products.service';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { ShoppingCartService } from './../../Service/shopping-cart.service';
 import { Product } from './../../Models/product';
 import { Subscription } from 'rxjs';
@@ -15,7 +15,7 @@ import { ShoppingCart } from './../../Models/shoppingCart';
   templateUrl: './all.component.html',
   styleUrls: ['./all.component.css']
 })
-export class AllComponent implements OnInit, OnDestroy {
+export class AllComponent implements OnInit, OnDestroy,AfterViewInit {
   product = [];
   filteredProduct = [];
   searchProduct = [];
@@ -37,8 +37,24 @@ export class AllComponent implements OnInit, OnDestroy {
     public authService: AuthenticateService) {
   }
 
+  ngAfterViewInit() {
+    this.router.events
+        .subscribe((event) => {
+            if(event instanceof NavigationStart) {
+                this.progressService.start();
+            }
+            else if (
+                event instanceof NavigationEnd || 
+                event instanceof NavigationCancel
+                ) {     
+          this.progressService.set(0.1);
+          this.progressService.inc(0.2);
+          this.progressService.done();
+            }
+        });
+}
+
   async ngOnInit() {
-    this.progressService.start();
     this.productsubscription = this.ps.getAll().switchMap(
       p => {
         console.log(p)
@@ -49,9 +65,6 @@ export class AllComponent implements OnInit, OnDestroy {
       .subscribe(
         params => {
           //loader
-          this.progressService.set(0.1);
-          this.progressService.inc(0.2);
-          this.progressService.done();
           this.loader = false;
 
               

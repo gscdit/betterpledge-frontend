@@ -2,7 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShoppingCartService } from './../Service/shopping-cart.service';
 import { Subscription } from 'rxjs';
 import { ProductsService } from '../Service/products.service';
-import {interval} from 'rxjs';
+import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,11 +17,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   product_ids;
   subscription: Subscription;
   productSubscription: Subscription;
-  constructor(private cartService: ShoppingCartService,private ps:ProductsService) { }
+  constructor(private cartService: ShoppingCartService,private ps:ProductsService,private router:Router,private progressService:NgProgress) { }
 
   async ngOnInit() {
-   
-    
     this.subscription = (await this.cartService.getCart()).valueChanges().subscribe(cart => {
       this.count = this.cartService.totalCount(cart);
       this.cart$ = cart
@@ -37,6 +36,23 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
           )}
         }
       ) 
+  }
+
+  ngAfterViewInit() {
+    this.router.events
+      .subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          this.progressService.start();
+        }
+        else if (
+          event instanceof NavigationEnd ||
+          event instanceof NavigationCancel
+        ) {
+          this.progressService.set(0.1);
+          this.progressService.inc(0.2);
+          this.progressService.done();
+        }
+      });
   }
   
   removeFromCart(product) {

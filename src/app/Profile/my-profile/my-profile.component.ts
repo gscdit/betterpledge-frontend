@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateService } from '../../Service/authentication.service';
-import { Router } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HttpService } from '../../Service/http.service';
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-my-profile',
@@ -11,33 +12,50 @@ import { HttpService } from '../../Service/http.service';
 })
 export class MyProfileComponent implements OnInit {
 
-   title={ 
-   };
-  
+  title = {
+  };
+  edit: boolean;
 
-  constructor(public authenticateService:AuthenticateService,private router:Router,private httpService:HttpService) { }
-   edit:boolean;
+  constructor(public authenticateService: AuthenticateService, private router: Router, private httpService: HttpService, private progressService: NgProgress) { }
+
+  ngAfterViewInit() {
+    this.router.events
+      .subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          this.progressService.start();
+        }
+        else if (
+          event instanceof NavigationEnd ||
+          event instanceof NavigationCancel
+        ) {
+          this.progressService.set(0.1);
+          this.progressService.inc(0.2);
+          this.progressService.done();
+        }
+      });
+  }
+
   ngOnInit() {
-    this.httpService.getProfile().take(1).subscribe(res=>{
-     this.title=res['user']
-     console.log(res['user'])
+    this.httpService.getProfile().take(1).subscribe(res => {
+      this.title = res['user']
+      console.log(res['user'])
     })
   }
-  onEdit(){
-   this.edit=!this.edit;
-    }
-    errorshow=false;
-  onSave(form:NgForm){
+  onEdit() {
+    this.edit = !this.edit;
+  }
+  errorshow = false;
+  onSave(form: NgForm) {
     console.log(form.value);
-    this.httpService.changeProfile(form.value).subscribe(res=>{
+    this.httpService.changeProfile(form.value).subscribe(res => {
       console.log(res)
-      sessionStorage.setItem('token',res['token'])
-      if(res['message']===0)
-      {
-        this.errorshow=true;
+      sessionStorage.setItem('token', res['token'])
+      if (res['message'] === 0) {
+        this.errorshow = true;
       }
     });
-    if(this.errorshow===false){
-    this.edit=!this.edit;}
+    if (this.errorshow === false) {
+      this.edit = !this.edit;
+    }
   }
 }
