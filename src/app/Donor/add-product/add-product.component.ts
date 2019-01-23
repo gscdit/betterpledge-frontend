@@ -46,6 +46,10 @@ export class AddProductComponent implements OnInit,AfterContentInit {
         this.progressService.inc(0.2);
         this.progressService.done();
         this.router.navigate(['/donor/donatedProduct'])
+      },error=>{
+      this.progressService.set(0.1);
+        this.progressService.inc(0.2);
+        this.progressService.done();
       }
       );
     }
@@ -84,6 +88,10 @@ export class AddProductComponent implements OnInit,AfterContentInit {
             this.product.image = res['url'];
             this.res = true;
             this.upload = false;
+          },error=>{
+          this.progressService.set(0.1);
+        this.progressService.inc(0.2);
+        this.progressService.done();
           }
         );
     }
@@ -124,6 +132,9 @@ export class AddProductComponent implements OnInit,AfterContentInit {
         this.router.navigate(['/donor/donatedProduct']);
       },
         error => {
+        this.progressService.set(0.1);
+        this.progressService.inc(0.2);
+        this.progressService.done();
           console.log(error);
         });
     } else {
@@ -134,6 +145,9 @@ export class AddProductComponent implements OnInit,AfterContentInit {
         this.router.navigate(['/donor/donatedProduct']);
       },
         error => {
+        this.progressService.set(0.1);
+        this.progressService.inc(0.2);
+        this.progressService.done();
           console.log(error);
         });
     }
