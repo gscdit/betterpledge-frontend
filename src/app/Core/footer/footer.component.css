@@ -1,29 +1,27 @@
-footer{
-   background-color: #f7f8f9;
-   font-size: 14px;
-   text-align: left;
-   text-decoration: none;
-    color: black;
-    padding: 2rem;
-  }
-.border-right{
-  border-right: 1px solid #878787 !important;
+footer {
+  background-color: #F7F8F9;
+  font-size: 14px;
+  text-align: left;
+  text-decoration: none;
+  padding: 2rem;
 }
-p{
+
+.border-right {
+  border-right: 1px solid #87878746 !important;
+}
+
+p {
   text-align: left
-  
-}  
+}
+
 li {
   cursor: pointer;
   list-style: none;
   text-align: left;
 }
 
-.lead{
-  color: #878787;
-}
-  @media screen and (max-width: 600px) {
-    footer {
-      display: none;
-    }
+@media screen and (max-width: 600px) {
+  footer {
+    display: none;
   }
+}
