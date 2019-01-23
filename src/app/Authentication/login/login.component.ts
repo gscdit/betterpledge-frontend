@@ -49,6 +49,9 @@ export class LoginComponent implements OnInit,AfterContentInit {
          this.router.navigate([returnUrl || '/'])}
       },
       error=>{
+        this.progressService.set(0.1);
+        this.progressService.inc(0.2);
+        this.progressService.done();
         console.log(error)
         this.invalidLogin = true;
       }
