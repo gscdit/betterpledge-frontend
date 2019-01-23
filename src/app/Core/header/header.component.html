@@ -17,51 +17,51 @@
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+    <div class="collapse navbar-collapse"  id="navbarResponsive" >
       <ul class="navbar-nav ml-auto align-center">
-        <li class="nav-item float-left" routerLinkActive="active">
+        <li class="nav-item float-left" routerLinkActive="active" (click)="toggleNavbar()">
           <a class="nav-link" routerLink="/About" *ngIf="!authService.loggedin()" > <i class="fa fa-user"></i> About</a>
         </li>
-        <li class="nav-item float-left" routerLinkActive="active">
+        <li class="nav-item float-left" routerLinkActive="active" (click)="toggleNavbar()">
           <a class="nav-link" routerLink="/Contact" *ngIf="!authService.loggedin()"> <i class="fa fa-phone"></i>
             Contact</a>
         </li>
-        <li class="nav-item float-left" routerLinkActive="active">
+        <li class="nav-item float-left" routerLinkActive="active" (click)="toggleNavbar()">
           <a class="nav-link" routerLink="/donor/addProduct" *ngIf="authService.loggedin() && authService.currentUser().type==='donor'">Donate
             Now</a>
         </li>
-        <li class="nav-item float-left" routerLinkActive="active">
+        <li class="nav-item float-left" routerLinkActive="active" (click)="toggleNavbar()">
           <a class="nav-link" routerLink="/donor/donatedProduct" *ngIf="authService.loggedin() && authService.currentUser().type==='donor'">Manage
             Product</a>
         </li>
-        <li class="nav-item float-left" routerLinkActive="active">
+        <li class="nav-item float-left" routerLinkActive="active" (click)="toggleNavbar()">
           <a class="nav-link" routerLink="/product/all" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary'">Donations</a>
         </li>
 
-        <li class="nav-item d-none d-sm-block float-left" routerLinkActive="active" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary'">
+        <li class="nav-item d-none d-sm-block float-left" routerLinkActive="active" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary'" (click)="toggleNavbar()">
           <a class="nav-link" routerLink="/Cart"><i class="fa fa-shopping-cart" style="font-size:20px"></i> Cart
             <sup>
               <span class="badge badge-warning badge-pill">{{ totalQuantityCount }} </span>
             </sup>
           </a>
         </li>
-        <li class="nav-item dropdown" routerLinkActive="active">
+        <li class="nav-item dropdown" routerLinkActive="active" >
 
           <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" *ngIf="authService.loggedin()"
             aria-expanded="false"><span style="font-size:100%;cursor: pointer;"><i class="fa fa-user-circle"></i>
               Welcome, {{ authService.currentUser().first_name }}!</span></a>
 
           <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" *ngIf="!authService.loggedin()"
-            aria-expanded="false"><span style="font-size:100%;cursor: pointer;"><i class="fa fa-user-circle"></i>&nbsp;
+            aria-expanded="false"><span style="font-size:100%;cursor: pointer;" ><i class="fa fa-user-circle"></i>&nbsp;
               Welcome, Guest!</span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="cursor:pointer; z-index: 1;">
-            <a class="dropdown-item" routerLink="/login" *ngIf="!authService.loggedin()">Login</a>
-            <a class="dropdown-item" routerLink="/register-beneficiary" *ngIf="!authService.loggedin()">Register</a>
-            <a class="dropdown-item" routerLink="/order" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary'">My Orders</a>
-            <a class="dropdown-item" routerLink="/Profile" *ngIf="authService.loggedin()">My Account</a>
-            <a class="dropdown-item" routerLink="/Notifications" *ngIf="authService.loggedin() && authService.currentUser().type==='donor'">Notifications</a>
-            <a class="dropdown-item" routerLink="/Logout" *ngIf="authService.loggedin()" (click)="authService.logout()"><span><i
+            <a class="dropdown-item" routerLink="/login" *ngIf="!authService.loggedin()" (click)="toggleNavbar()">Login</a>
+            <a class="dropdown-item" routerLink="/register-beneficiary" *ngIf="!authService.loggedin()" (click)="toggleNavbar()">Register</a>
+            <a class="dropdown-item" routerLink="/order" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary'" (click)="toggleNavbar()">My Orders</a>
+            <a class="dropdown-item" routerLink="/Profile" *ngIf="authService.loggedin()" (click)="toggleNavbar()">My Account</a>
+            <a class="dropdown-item" routerLink="/Notifications" *ngIf="authService.loggedin() && authService.currentUser().type==='donor'" (click)="toggleNavbar()">Notifications</a>
+            <a class="dropdown-item" routerLink="/Logout" *ngIf="authService.loggedin()" (click)="logout()"><span><i
                   class="fas fa-sign-out-alt" style="font-size:100%"></i></span>
               Logout</a>
           </div>

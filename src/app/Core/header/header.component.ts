@@ -39,4 +39,15 @@ export class HeaderComponent implements OnInit, OnDestroy{
     this.router.navigate(['/login']);
   }
 
+  navbarOpen = false;
+
+  toggleNavbar() {
+   document.getElementById('navbarResponsive').classList.remove('show');
+  }
+
+  logout(){
+    this.authService.logout();
+    document.getElementById('navbarResponsive').classList.remove('show');
+  }
+
 }
