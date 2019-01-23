@@ -5,6 +5,7 @@ import { DonorRoutingModule } from "./donor-routing.module";
 import { FormsModule } from "@angular/forms";
 import { DonorProductComponent } from '../Donor/donor-product/donor-product.component';
 import { NgProgressModule } from "ngx-progressbar";
+import { CoreModule } from "../Core/core.module";
 
 @NgModule({
     declarations:[
@@ -15,7 +16,8 @@ import { NgProgressModule } from "ngx-progressbar";
         CommonModule,
         DonorRoutingModule,
         FormsModule,
-        NgProgressModule
+        NgProgressModule,
+        CoreModule
     ]
 })
 export class DonorModule{}

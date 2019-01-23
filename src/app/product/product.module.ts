@@ -8,6 +8,7 @@ import { ProductRoutingModule } from "./product-routing.module";
 import { ProductHeaderComponent } from "./product-header/product-header.component";
 import { NgProgressModule, NgProgressBrowserXhr } from "ngx-progressbar";
 import { BrowserXhr } from "@angular/http";
+import { CoreModule } from "../Core/core.module";
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { BrowserXhr } from "@angular/http";
     imports: [
         CommonModule,
         NgProgressModule,
-        ProductRoutingModule
+        ProductRoutingModule,
+        CoreModule
     ],
     providers:[
         {provide: BrowserXhr, useClass: NgProgressBrowserXhr}

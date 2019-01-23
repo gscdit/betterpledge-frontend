@@ -10,6 +10,7 @@ import { CommonModule } from "@angular/common";
 import { RegisterDonorComponent } from './register-donor/register-donor.component';
 import { LoginDonorComponent } from '../Authentication/login-donor/login-donor.component';
 import { NgProgressModule } from "ngx-progressbar";
+import { CoreModule } from "../Core/core.module";
 
 @NgModule({
     declarations:[
@@ -23,7 +24,8 @@ import { NgProgressModule } from "ngx-progressbar";
         CommonModule,
         FormsModule,
         AuthenticationRoutingModule,
-        NgProgressModule
+        NgProgressModule,
+        CoreModule
     ],
     providers: [HttpService,AuthenticateService ]
 })
