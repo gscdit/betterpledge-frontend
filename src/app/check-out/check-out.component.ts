@@ -22,7 +22,7 @@ export class CheckOutComponent implements OnInit, AfterContentInit {
   count;
   product_ids;
   ordersubsc: Subscription;
-  messsage;
+  message;
   productSubscription: Subscription;
   constructor(private modalService: NgbModal, private cartService: ShoppingCartService, private os: OrderService, private ps: ProductsService, private router: Router, private progressService: NgProgress) { }
 
@@ -67,6 +67,7 @@ export class CheckOutComponent implements OnInit, AfterContentInit {
    }
 
   openVerticallyCentered(content) {
+   
     this.modalService.open(content, { centered: true });
     let data = [];
     for (let product in this.product_ids)
@@ -78,8 +79,10 @@ export class CheckOutComponent implements OnInit, AfterContentInit {
     console.log(order)
     this.ordersubsc = this.os.storeOrder(order).take(1).subscribe(res => {
       console.log(res);
-      this.messsage = res['orders'];
+      this.message = res['orders'];
+      this.modalService.open(content, { centered: true });
       this.cartService.clearCart();
+
     });
   }
 

@@ -17,7 +17,7 @@
 <div class="container d3" style="margin-top:0px; padding-top:0px;">
   <div class="row">
     <div class="col-lg-2 col-sm align-self-start subd31 sticky-top" style="top:58px; background-color:white;">
-      Filter<i class="fa fa-filter pull-right"></i>
+      Filter<i class="fa fa-filter float-right"></i>
       <div class="card">
         <div class="card-body filter-custom">
           <label class="radio">
@@ -51,16 +51,16 @@
                 <img class="card-img-top px-0" height="200px" src="{{p.image}}" (click)="detailPage(p)">
                 <div class="card-body" (click)="detailPage(p)">
                   <h5 class="card-title lead">{{p.description}}</h5>
-                  <p class="badge badge-dark pull-right">{{p.type | uppercase}}</p>
+                  <p class="badge badge-dark float-right">{{p.type | uppercase}}</p>
                   <hr>
                   <p class="card-text">Quantity - {{p.quantity}}</p>
                   <p class="card-text">{{authService.currentUser().organisation}}</p>
                 </div>
                 <div class="card-footer p-1 text-center" style="opacity: 1;">
                   <div *ngIf="!getQuantity(p);else updateQuantity">
-                    <button class="btn btn-secondary pull-left btn-sm" type="button" (click)="addToCart(p)" style="color: white;margin-right: 10px">Add
+                    <button class="btn btn-secondary float-right btn-sm" type="button" (click)="addToCart(p)" style="color: white;margin-right: 10px">Add
                       to cart</button>
-                    <button (click)="checkout(p)" class="btn btn-primary pull-right btn-sm mx-1">Check Out</button>
+                    <button (click)="checkout(p)" class="btn btn-primary float-right btn-sm mx-1">Check Out</button>
                   </div>
                   <ng-template #updateQuantity>
                     <div class="row no-gutters text-center">
