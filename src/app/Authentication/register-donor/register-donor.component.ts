@@ -9,12 +9,12 @@ import { NgProgress } from 'ngx-progressbar';
   templateUrl: './register-donor.component.html',
   styleUrls: ['./register-donor.component.css']
 })
-export class RegisterDonorComponent implements OnInit,AfterContentInit {
+export class RegisterDonorComponent implements OnInit, AfterContentInit {
 
   type = "donor";
-  country="India";
-  
-  constructor(private authService:AuthenticateService,private router:Router,private progressService:NgProgress) { }
+  country = "India";
+
+  constructor(private authService: AuthenticateService, private router: Router, private progressService: NgProgress) { }
 
   ngOnInit() {
   }
@@ -32,21 +32,25 @@ export class RegisterDonorComponent implements OnInit,AfterContentInit {
           this.progressService.inc(0.2);
           this.progressService.done();
         }
-      });}
-  onSubmit(form:NgForm){
-    console.log(form.value); 
+      });
+  }
+  onSubmit(form: NgForm) {
+    console.log(form.value);
     this.progressService.start();
     this.authService.registerdonor(form.value).subscribe(
-      response=>{ console.log(response)
+      response => {
+        console.log(response)
         this.progressService.set(0.1);
         this.progressService.inc(0.2);
         this.progressService.done();
-      this.router.navigate(['/login-donor']);
+        this.router.navigate(['/login-donor']);
       },
-      error=>{console.log(error);
-             this.progressService.set(0.1);
+      error => {
+        console.log(error);
+        this.progressService.set(0.1);
         this.progressService.inc(0.2);
-        this.progressService.done();}
+        this.progressService.done();
+      }
     )
   }
 
