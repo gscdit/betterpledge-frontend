@@ -43,7 +43,10 @@ export class RegisterDonorComponent implements OnInit,AfterContentInit {
         this.progressService.done();
       this.router.navigate(['/login-donor']);
       },
-      error=>{console.log(error)}
+      error=>{console.log(error);
+             this.progressService.set(0.1);
+        this.progressService.inc(0.2);
+        this.progressService.done();}
     )
   }
 
