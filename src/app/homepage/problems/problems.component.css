@@ -7,3 +7,15 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.join-today{
+    background-color: rgba(255, 0, 0, 0.445);
+    border-radius: 30px;
+    padding: 10px 20px 10px 20px;
+}
+
+.join-today:hover{
+    background-color: rgba(255, 0, 0, 0.794);
+    border-radius: 30px;
+    padding: 10px 20px 10px 20px;
+}

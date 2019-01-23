@@ -71,10 +71,9 @@
 
 <section>
   <div class="container py-4">
-
     <!-- our vision -->
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-6 col-sm-12">
         <div class="jumbotron jumbotron-fluid bg-white">
           <div class="container">
             <h1 class="text-left display-4 pt-5 pb-4" style="font-family: 'Assistant', sans-serif; font-weight:bolder;">Our
@@ -86,7 +85,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6 d-none d-sm-block">
         <div class="jumbotron jumbotron-fluid bg-white">
           <div class="container">
             <img class="rounded-circle mx-auto d-block py-2" style="width:50%; height:50%;" src="https://i.imgur.com/eHanepF.jpg"
@@ -98,7 +97,7 @@
 
     <!-- about us -->
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-6 d-none d-sm-block">
         <div class="jumbotron jumbotron-fluid bg-white">
           <div class="container">
             <img class="rounded-circle mx-auto d-block py-2" style="width:50%; height:50%;" src="https://i.imgur.com/6c4lWeA.jpg"
@@ -109,9 +108,8 @@
       <div class="col-lg-6">
         <div class="jumbotron jumbotron-fluid bg-white">
           <div class="container">
-            <h1 class="text-right display-4 pb-4" style="font-family: 'Assistant', sans-serif; font-weight:bolder;">What
-              is
-              <span style="color: #930202;">Better Pledge</span>?</h1>
+            <h1 class="text-right display-4 pb-4" style="font-family: 'Assistant', sans-serif; font-weight:bolder;">Better
+              <span style="color: #930202;">Pledge</span>?</h1>
             <p class="text-justify text-muted" style="font-family: 'Montserrat', sans-serif; font-weight:700;">Better
               pledge is a web platform made by Google Student Community,
               DITU where individuals can donate surplus food from restaurants and communities to
@@ -133,14 +131,19 @@
 
 <!-- join us banner -->
 
-<section>
-  <div>
-    <div class="row">
-      <div class="col-lg-12">
-        <h1 class="display-4 py-5 mb-5 text-center" style="font-family: 'Assistant', sans-serif; font-weight:bolder; color:white; background-color:#930202;">Like
-          the idea? Take a Better Pledge today.<span class="pl-4"><button type="button" class="btn btn-outline-light"
-              style="font-family: 'Montserrat', sans-serif; border: none;"><i class="fas fa-hands-helping fa-4x"></i></button></span></h1>
-      </div>
+<section class="container-fluid h-100" style="min-height: 50vh;  font-family: 'Assistant', sans-serif; font-weight:bolder; color:white; background-color:#930202;">
+  <div class="row align-items-center h-100">
+    <div class="col-12">
+      <h1 class="display-4 mx-auto" style="margin-top:5rem">
+        <p class="text-center inline">
+          Take a Better Pledge today. <br>
+          <a routerLink="/register-donor" class="my-3" style=" font-family: 'Montserrat', sans-serif; text-decoration: none;">
+            <span style="font-size:2rem; color: white" class="join-today">
+              Join Today <i class="fas fa-hands-helping "></i>
+            </span>
+          </a>
+        </p>
+      </h1>
     </div>
   </div>
 </section>
