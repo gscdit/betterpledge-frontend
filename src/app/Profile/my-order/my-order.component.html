@@ -60,9 +60,9 @@
                                     <tbody>
                                         <tr>
                                          <div class="img-thumbnail mx-auto thumbnail" [style.backgroundImage]="'url('+ order.image +')'"></div> 
-                                            <td>{{order.description}}</td>
-                                            <td>{{order.quantity}}</td>
-                                            <td>{{order.organisation}}</td>
+                                            <td>{{order.description}}<br>
+                                            {{'Quantity'+' '+order.quantity}}<br>
+                                            {{order.organisation}}</td>
                                         </tr>
                                     </tbody>
                                 </table>

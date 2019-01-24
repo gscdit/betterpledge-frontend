@@ -54,8 +54,11 @@
                   <h5 class="card-title lead">{{p.description}}</h5>
                   <p class="badge badge-dark float-right">{{p.type | uppercase}}</p>
                   <hr>
-                  <p class="card-text">Quantity - {{p.quantity}}</p>
-                  <p class="card-text">{{authService.currentUser().organisation}}</p>
+                  <p class="card-text">Quantity:- {{p.quantity}}</p>
+                  <p class="card-text">{{p.organisation}}</p>
+                  <p class="card-text">{{p.street}},{{p.landmark}}</p>
+                  <p class="card-text">{{p.city}}</p>
+                  <!-- <p class="card-text">{{'Mobile':}}</p> -->
                 </div>
                 <div class="card-footer p-1 text-center" style="opacity: 1;">
                   <div *ngIf="!getQuantity(p);else updateQuantity">

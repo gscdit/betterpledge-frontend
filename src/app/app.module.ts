@@ -29,7 +29,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DonorGuard } from './donor.guard';
 import { BeneficiaryGuard } from './beneficiary.guard';
 import { NgProgressModule } from 'ngx-progressbar';
-
 @NgModule({
   declarations: [
     AppComponent,

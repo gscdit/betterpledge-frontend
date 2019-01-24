@@ -13,8 +13,8 @@ const recipesRoutes: Routes = [
   { path: 'product/all', component: AllComponent, canActivate: [AuthGuard, BeneficiaryGuard] },
   { path: 'product/detail/:id', component: ProductDetailComponent, canActivate: [AuthGuard, BeneficiaryGuard] },
   { path: 'product/lightning', component: LightningFastDealComponent, canActivate: [AuthGuard, BeneficiaryGuard] },
-  { path: 'product/trending', component: TrendingComponent, canActivate: [AuthGuard, BeneficiaryGuard] },
-  { path: 'product/header', component: ProductHeaderComponent, canActivate: [AuthGuard, BeneficiaryGuard] }
+  { path: 'product/trending', component: TrendingComponent, canActivate: [AuthGuard, BeneficiaryGuard] }
+  // { path: 'product/header', component: ProductHeaderComponent, canActivate: [AuthGuard, BeneficiaryGuard] }
 ];
 
 @NgModule({

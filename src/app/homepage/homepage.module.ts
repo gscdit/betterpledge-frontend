@@ -8,7 +8,7 @@ import { HighlightsComponent } from "./highlights/highlights.component";
 import { HomePageRoutingModule } from "./homepage-routing.module";
 import { NgProgressModule } from "ngx-progressbar";
 import { CoreModule } from "../Core/core.module";
-
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 @NgModule({
     declarations:[
      HomepageComponent,
@@ -20,7 +20,8 @@ import { CoreModule } from "../Core/core.module";
     CommonModule,
     HomePageRoutingModule,
     NgProgressModule,
-    CoreModule
+    CoreModule,
+    MDBBootstrapModule.forRoot()
     ]
 })
 export class HomePageModule{}
