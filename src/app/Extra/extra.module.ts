@@ -5,6 +5,7 @@ import { NgModule } from "@angular/core";
 import { AboutComponent } from "./about/about.component";
 import { ContactComponent } from "./contact/contact.component";
 import { FaqsComponent } from './faqs/faqs.component';
+import { NotFoundComponent } from './404/404.component';
 import { NgProgressModule } from "ngx-progressbar";
 import { CoreModule } from "../Core/core.module";
 import { ExtraRoutingModule } from "./extra-routing.module";
@@ -14,7 +15,8 @@ import { RouterModule } from "@angular/router";
     declarations:[
      AboutComponent,
      ContactComponent,
-     FaqsComponent
+     FaqsComponent,
+     NotFoundComponent
     ],
     imports:[
     CommonModule,
