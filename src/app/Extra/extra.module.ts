@@ -9,12 +9,14 @@ import { NgProgressModule } from "ngx-progressbar";
 import { CoreModule } from "../Core/core.module";
 import { ExtraRoutingModule } from "./extra-routing.module";
 import { RouterModule } from "@angular/router";
+import { ExtraComponent } from './extra.component';
 
 @NgModule({
     declarations:[
      AboutComponent,
      ContactComponent,
-     FaqsComponent
+     FaqsComponent,
+     ExtraComponent
     ],
     imports:[
     CommonModule,

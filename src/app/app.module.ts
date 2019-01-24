@@ -8,9 +8,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthenticateService } from './Service/authentication.service';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './Service/token-interceptor.service';
-import { HomePageModule } from './homepage/homepage.module';
 import { CoreModule } from './Core/core.module';
-import { ExtraModule } from './Extra/extra.module';
 import { ShoppingCartService } from './Service/shopping-cart.service';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
@@ -21,19 +19,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DonorGuard } from './donor.guard';
 import { BeneficiaryGuard } from './beneficiary.guard';
 import { RouterModule } from '@angular/router';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    HomePageModule,
     CoreModule,
-    ExtraModule,
     RouterModule,
     HttpClientModule,
     HttpModule,
