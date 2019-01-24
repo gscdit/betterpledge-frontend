@@ -49,4 +49,4 @@ Here's the list of current contributors (feel free to add your name):
 * [Mayank Birkhani](https://github.com/MayankBirkhani)
 * [Lokesh Karki](https://github.com/LokeshKarki)
 * [Krishna](https://github.com/krishnaK14)
-* [Rohit MOtwani](https://github.com/krishnaK14)
+* [Rohit Motwani](https://github.com/krishnaK14)
