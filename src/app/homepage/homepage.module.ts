@@ -5,10 +5,11 @@ import { CarouselComponent } from "./carousel/carousel.component";
 import { ProblemsComponent } from './problems/problems.component';
 import { NgModule } from "@angular/core";
 import { HighlightsComponent } from "./highlights/highlights.component";
-import { HomePageRoutingModule } from "./homepage-routing.module";
 import { NgProgressModule } from "ngx-progressbar";
 import { CoreModule } from "../Core/core.module";
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { HomePageRoutingModule } from "./homepage-routing.module";
+import { RouterModule } from "@angular/router";
+
 @NgModule({
     declarations:[
      HomepageComponent,
@@ -18,10 +19,10 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     ],
     imports:[
     CommonModule,
-    HomePageRoutingModule,
     NgProgressModule,
+    HomePageRoutingModule,
     CoreModule,
-    MDBBootstrapModule.forRoot()
+    RouterModule
     ]
 })
 export class HomePageModule{}

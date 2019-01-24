@@ -14,7 +14,7 @@ export class BeneficiaryGuard implements CanActivate {
       return true;
     }else{
         this.authService.logout();
-      this.router.navigate(['/login'],{queryParams:{returnUrl:state.url}})
+      this.router.navigate(['/user/login'],{queryParams:{returnUrl:state.url}})
       return false
     }
   }

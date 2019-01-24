@@ -11,6 +11,8 @@ import { RegisterDonorComponent } from './register-donor/register-donor.componen
 import { LoginDonorComponent } from '../Authentication/login-donor/login-donor.component';
 import { NgProgressModule } from "ngx-progressbar";
 import { CoreModule } from "../Core/core.module";
+import { AuthenticationComponent } from './authentication.component';
+import { RouterModule } from "@angular/router";
 
 @NgModule({
     declarations:[
@@ -18,13 +20,15 @@ import { CoreModule } from "../Core/core.module";
         RegisterComponent,
         ConfirmPassword,
         RegisterDonorComponent,
-        LoginDonorComponent  
+        LoginDonorComponent,
+        AuthenticationComponent  
     ],
     imports:[
         CommonModule,
         FormsModule,
         AuthenticationRoutingModule,
         NgProgressModule,
+        RouterModule,
         CoreModule
     ],
     providers: [HttpService,AuthenticateService ]

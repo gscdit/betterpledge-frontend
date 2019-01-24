@@ -9,9 +9,12 @@ import { ProductHeaderComponent } from "./product-header/product-header.componen
 import { NgProgressModule, NgProgressBrowserXhr } from "ngx-progressbar";
 import { BrowserXhr } from "@angular/http";
 import { CoreModule } from "../Core/core.module";
+import { ProductComponent } from './product.component';
+import { RouterModule } from "@angular/router";
 
 @NgModule({
     declarations: [
+        ProductComponent,
         ProductDetailComponent,
         AllComponent,
         TrendingComponent,
@@ -22,7 +25,8 @@ import { CoreModule } from "../Core/core.module";
         CommonModule,
         NgProgressModule,
         ProductRoutingModule,
-        CoreModule
+        CoreModule,
+        RouterModule
     ],
     providers:[
         {provide: BrowserXhr, useClass: NgProgressBrowserXhr}

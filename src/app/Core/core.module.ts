@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { NgProgressModule, NgProgressBrowserXhr } from 'ngx-progressbar';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { AppRoutingModule } from '../app-routing.module';
 import { CommonModule } from '@angular/common';
 import { BrowserXhr } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,10 +14,9 @@ import { BrowserXhr } from '@angular/http';
   imports: [
     CommonModule,
     NgProgressModule,
-    AppRoutingModule
+    RouterModule
   ],
   exports: [
-    AppRoutingModule,
     HeaderComponent,
     FooterComponent
   ],

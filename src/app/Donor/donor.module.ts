@@ -6,18 +6,22 @@ import { FormsModule } from "@angular/forms";
 import { DonorProductComponent } from '../Donor/donor-product/donor-product.component';
 import { NgProgressModule } from "ngx-progressbar";
 import { CoreModule } from "../Core/core.module";
+import { DonorComponent } from './donor.component';
+import { RouterModule } from "@angular/router";
 
 @NgModule({
     declarations:[
        AddProductComponent,
-       DonorProductComponent
+       DonorProductComponent,
+       DonorComponent
     ],
     imports:[
         CommonModule,
         DonorRoutingModule,
         FormsModule,
         NgProgressModule,
-        CoreModule
+        CoreModule,
+        RouterModule
     ]
 })
 export class DonorModule{}

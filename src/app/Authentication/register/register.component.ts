@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit ,AfterContentInit{
         this.progressService.set(0.1);
         this.progressService.inc(0.2);
         this.progressService.done();
-      this.router.navigate(['/login'])
+      this.router.navigate(['/user/login'])
       },error=>{
       this.progressService.set(0.1);
         this.progressService.inc(0.2);

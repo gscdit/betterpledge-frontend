@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
   }
 
   onNav() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/user/login']);
   }
 
   navbarOpen = false;
