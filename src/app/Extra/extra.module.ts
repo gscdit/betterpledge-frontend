@@ -1,6 +1,4 @@
-
 import { CommonModule } from "@angular/common";
-
 import { NgModule } from "@angular/core";
 import { AboutComponent } from "./about/about.component";
 import { ContactComponent } from "./contact/contact.component";
@@ -12,18 +10,19 @@ import { RouterModule } from "@angular/router";
 import { ExtraComponent } from './extra.component';
 
 @NgModule({
-    declarations:[
-     AboutComponent,
-     ContactComponent,
-     FaqsComponent,
-     ExtraComponent
+    declarations: [
+        AboutComponent,
+        ContactComponent,
+        FaqsComponent,
+        ExtraComponent
     ],
-    imports:[
-    CommonModule,
-    NgProgressModule,
-    ExtraRoutingModule,
-    CoreModule,
-    RouterModule
+    imports: [
+        CommonModule,
+        NgProgressModule,
+        ExtraRoutingModule,
+        CoreModule,
+        RouterModule
     ]
 })
-export class ExtraModule{}
+
+export class ExtraModule { }

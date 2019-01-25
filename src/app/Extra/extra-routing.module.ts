@@ -6,11 +6,13 @@ import { FaqsComponent } from './faqs/faqs.component';
 import { ExtraComponent } from './extra.component';
 
 const recipesRoutes: Routes = [
-  {path:'',component:ExtraComponent,children:[
-    { path:'About',component:AboutComponent},
-{ path:'Contact',component:ContactComponent},
-{path:'faqs',component:FaqsComponent}
-  ]}
+  {
+    path: '', component: ExtraComponent, children: [
+      { path: 'about', component: AboutComponent },
+      { path: 'contact', component: ContactComponent },
+      { path: 'faqs', component: FaqsComponent }
+    ]
+  }
 ];
 
 @NgModule({
@@ -22,4 +24,4 @@ const recipesRoutes: Routes = [
 
   ]
 })
-export class ExtraRoutingModule {}
+export class ExtraRoutingModule { }

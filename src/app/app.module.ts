@@ -19,7 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DonorGuard } from './donor.guard';
 import { BeneficiaryGuard } from './beneficiary.guard';
 import { RouterModule } from '@angular/router';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './Extra/404/404.component';
+import { NgProgress, NgProgressModule } from 'ngx-progressbar';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     RouterModule,
     HttpClientModule,
     HttpModule,
+    NgProgressModule,
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule

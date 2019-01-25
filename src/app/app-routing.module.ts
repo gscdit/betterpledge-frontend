@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from '@angular/router';
-import { NotFoundComponent } from "./not-found/not-found.component";
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { NotFoundComponent } from "./Extra/404/404.component";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,7 +16,7 @@ const appRoutes: Routes = [
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes,{preloadingStrategy:PreloadAllModules})
   ],
   exports: [RouterModule]
 })

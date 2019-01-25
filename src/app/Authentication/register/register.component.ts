@@ -26,13 +26,13 @@ export class RegisterComponent implements OnInit ,AfterContentInit{
       .subscribe((event) => {
         if (event instanceof NavigationStart) {
           this.progressService.start();
+          this.progressService.set(0.1);
+          this.progressService.inc(0.2);
         }
         else if (
           event instanceof NavigationEnd ||
           event instanceof NavigationCancel
         ) {
-          this.progressService.set(0.1);
-          this.progressService.inc(0.2);
           this.progressService.done();
         }
       });}
@@ -40,16 +40,15 @@ export class RegisterComponent implements OnInit ,AfterContentInit{
   response1:any;
   onSubmit(form:NgForm){
    this.progressService.start();
+   
+   this.progressService.set(0.1);
+   this.progressService.inc(0.2);
    console.log(form.value);
     this.authService.register(form.value).subscribe(
       response=>{ console.log(response)
-        this.progressService.set(0.1);
-        this.progressService.inc(0.2);
         this.progressService.done();
       this.router.navigate(['/user/login'])
       },error=>{
-      this.progressService.set(0.1);
-        this.progressService.inc(0.2);
         this.progressService.done();
       }
     )

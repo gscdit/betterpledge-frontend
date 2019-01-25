@@ -1,0 +1,45 @@
+<ng-progress
+    [positionUsing]="'marginLeft'"
+    [direction]="'leftToRightIncreased'"
+    [color]="'red'"
+    [trickleSpeed]="500" 
+    [thick]="true" 
+    [ease]="'easeInSine'"
+></ng-progress>
+<app-header></app-header>
+<div  style="overflow-x: hidden;">
+
+  <!-- We're Sorry jumbotron -->
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="jumbotron fx-nav">
+        <div class="container">
+          <b class="text-left display-4 py-4" style="font-family: 'Assistant', sans-serif; font-weight:bolder;">We're
+            <span style="color: #930202;">Sorry</span></b>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- end of we're sorry -->
+
+  <!-- contact form -->
+
+  <div class="container">
+    <div class="row">
+        <div class="jumbotron" style="background-color: white;">
+          <h1 class="wow fadeInRight animated display-4" style="font-family: 'Assistant', sans-serif; font-weight:bolder;">
+            This is not where you can donate/get
+            <span style="color: #930202;">Food</span></h1>
+          <p class="text-left px-2 text-muted" style="font-family: 'Montserrat', sans-serif; font-weight:700;">
+            But <a routerLink="/donor/addProduct">here</a>'s where you can. If you think something's wrong here, <a routerLink="/betterpledge/contact">contact us</a>.
+          </p>
+        </div>
+    </div>
+  </div>
+
+  <!-- end of contact form -->
+
+</div>
+<app-footer></app-footer>

@@ -23,13 +23,13 @@ export class LoginDonorComponent implements OnInit,AfterContentInit {
       .subscribe((event) => {
         if (event instanceof NavigationStart) {
           this.progressService.start();
+          this.progressService.set(0.1);
+          this.progressService.inc(0.2);
         }
         else if (
           event instanceof NavigationEnd ||
           event instanceof NavigationCancel
         ) {
-          this.progressService.set(0.1);
-          this.progressService.inc(0.2);
           this.progressService.done();
         }
       });}
@@ -37,11 +37,10 @@ export class LoginDonorComponent implements OnInit,AfterContentInit {
   onSubmit(form:NgForm){
     console.log(form.value);
    this.progressService.start();
-   
+   this.progressService.set(0.1);
+   this.progressService.inc(0.2);   
     this.authService.login(form.value).subscribe(
       response=>{console.log(response)
-        this.progressService.set(0.1);
-        this.progressService.inc(0.2);
         this.progressService.done();
         let returnUrl=this.route.snapshot.queryParamMap.get('returnUrl')
         if( response===null){
@@ -52,8 +51,6 @@ export class LoginDonorComponent implements OnInit,AfterContentInit {
          this.router.navigate([returnUrl || '/'])}
       },
       error=>{
-        this.progressService.set(0.1);
-        this.progressService.inc(0.2);
         this.progressService.done();
         console.log(error)
         this.invalidLogin = true;

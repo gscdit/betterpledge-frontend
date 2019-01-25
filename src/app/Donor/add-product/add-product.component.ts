@@ -40,15 +40,13 @@ export class AddProductComponent implements OnInit,AfterContentInit {
 
   delete() {
     this.progressService.start();
+    this.progressService.set(0.1);
+      this.progressService.inc(0.2);
     if (!confirm("Are you sure you want to delete this product?")) return; {
       this.ps.deleteProduct(this.id).subscribe(res => {
-        this.progressService.set(0.1);
-        this.progressService.inc(0.2);
         this.progressService.done();
         this.router.navigate(['/donor/donatedProduct'])
       },error=>{
-      this.progressService.set(0.1);
-        this.progressService.inc(0.2);
         this.progressService.done();
       }
       );
@@ -60,6 +58,8 @@ export class AddProductComponent implements OnInit,AfterContentInit {
     this.selectedFile = event.target.files[0];
     if (event.target.files[0]) {
       this.progressService.start();
+      this.progressService.set(0.1);
+      this.progressService.inc(0.2);
       if (this.selectedFile.size >= 10000000 ) {
         this.size = true;
         if(this.selectedFile.type==='image/png'){
@@ -81,16 +81,12 @@ export class AddProductComponent implements OnInit,AfterContentInit {
         this.http.post('https://obv53599.pythonanywhere.com/uploadimage', uploadData)
         .subscribe(
           res => {
-            this.progressService.set(0.1);
-          this.progressService.inc(0.2);
           this.progressService.done();
             console.log(res);
             this.product.image = res['url'];
             this.res = true;
             this.upload = false;
           },error=>{
-          this.progressService.set(0.1);
-        this.progressService.inc(0.2);
         this.progressService.done();
           }
         );
@@ -102,13 +98,13 @@ export class AddProductComponent implements OnInit,AfterContentInit {
       .subscribe((event) => {
         if (event instanceof NavigationStart) {
           this.progressService.start();
+          this.progressService.set(0.1);
+          this.progressService.inc(0.2);
         }
         else if (
           event instanceof NavigationEnd ||
           event instanceof NavigationCancel
         ) {
-          this.progressService.set(0.1);
-          this.progressService.inc(0.2);
           this.progressService.done();
         }
       });
@@ -117,6 +113,8 @@ export class AddProductComponent implements OnInit,AfterContentInit {
 
   onSave(value: NgForm) {
     this.progressService.start();
+    this.progressService.set(0.1);
+    this.progressService.inc(0.2);
   let  product={
        description:value['description'],
        type:value['type'],
@@ -126,27 +124,19 @@ export class AddProductComponent implements OnInit,AfterContentInit {
     console.log(product);
     if (this.id) {
       this.ps.updateProduct(product, this.id).subscribe(res => {
-        this.progressService.set(0.1);
-          this.progressService.inc(0.2);
           this.progressService.done();
         this.router.navigate(['/donor/donatedProduct']);
       },
         error => {
-        this.progressService.set(0.1);
-        this.progressService.inc(0.2);
         this.progressService.done();
           console.log(error);
         });
     } else {
       this.ps.addProduct(product).subscribe(res => {
-        this.progressService.set(0.1);
-          this.progressService.inc(0.2);
           this.progressService.done();
         this.router.navigate(['/donor/donatedProduct']);
       },
         error => {
-        this.progressService.set(0.1);
-        this.progressService.inc(0.2);
         this.progressService.done();
           console.log(error);
         });

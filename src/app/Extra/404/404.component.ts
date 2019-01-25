@@ -1,20 +1,19 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
-import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
+import { NavigationStart, NavigationEnd, NavigationCancel, Router } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
+import { AuthenticateService } from 'src/app/Service/authentication.service';
 
 @Component({
-  selector: 'app-faqs',
-  templateUrl: './faqs.component.html',
-  styleUrls: ['./faqs.component.css']
+  selector: 'app-404',
+  templateUrl: './404.component.html',
+  styleUrls: ['./404.component.css']
 })
-export class FaqsComponent implements OnInit,AfterContentInit {
-  
-  angle:boolean;
-  constructor(private router:Router,private progressService:NgProgress) { }
+export class NotFoundComponent implements OnInit,AfterContentInit {
+
+  constructor(private router:Router,private progressService:NgProgress,public authService:AuthenticateService) { }
 
   ngOnInit() {
   }
-  
   ngAfterContentInit() {
     this.router.events
       .subscribe((event) => {
@@ -31,6 +30,5 @@ export class FaqsComponent implements OnInit,AfterContentInit {
         }
       });
   }
-  
 
 }

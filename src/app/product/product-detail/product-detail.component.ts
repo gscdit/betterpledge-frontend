@@ -22,10 +22,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy, AfterContentIn
       .subscribe((event) => {
         if (event instanceof NavigationStart) {
           this.progressService.start();
-        }
-        else if (event instanceof NavigationEnd || event instanceof NavigationCancel) {
           this.progressService.set(0.1);
           this.progressService.inc(0.2);
+        }
+        else if (event instanceof NavigationEnd || event instanceof NavigationCancel) {
           this.progressService.done();
         }
       });
