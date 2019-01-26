@@ -19,3 +19,10 @@
     border-radius: 30px;
     padding: 10px 20px 10px 20px;
 }
+@media only screen and (max-width: 600px) {
+    .container-image {
+        background-image: url('/assets/steps-mobile.jpg');
+        height: 90vh;
+        background-position: center;    
+    }
+  }
