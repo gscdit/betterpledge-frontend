@@ -16,33 +16,43 @@
         class="fa fa-plus " title="Donate"></i> </a>
   </div>
 </div>
-<div *ngIf="product$ && product$.length" class="container">
-  <div class="row">
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="text-center">Title</th>
-          <th class="text-center">Category</th>
-          <th class="text-center">Modify/Change</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let p of products$; let i=index">
-          <td class="text-center">
-            {{p[i].description}}
-          </td>
-          <td class="text-center">
-            {{p[i].type | uppercase}}
-          </td>
-          <td *ngIf="p[i].quantity>0;" class="text-center">
-            <a [routerLink]="['/donor/editProduct/',p[i].listing_id]">Edit</a>
-          </td>
-          <td *ngIf="p[i].quantity===0" class="text-center">
-            <p style="color:green">Booked/<span style="color:red;">Delete</span></p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div *ngIf="loader; else load">
+  <div class="loader"></div>
 </div>
+<ng-template #load>
+  <div *ngIf="products$ && products$.length;else noitem" class="container">
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="text-center">Title</th>
+            <th class="text-center">Category</th>
+            <th class="text-center">Modify/Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of products$; let i=index">
+            <td class="text-center">
+              {{p[i].description}}
+            </td>
+            <td class="text-center">
+              {{p[i].type | uppercase}}
+            </td>
+            <td *ngIf="p[i].quantity>0;" class="text-center">
+              <a [routerLink]="['/donor/editProduct/',p[i].listing_id]">Edit</a>
+            </td>
+            <td *ngIf="p[i].quantity===0" class="text-center">
+              <p style="color:green">Booked/<span style="color:red;">Delete</span></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <ng-template #load>
+    <div>
+        No Items
+    </div>
+  </ng-template>
+</ng-template>
 <app-footer></app-footer>

@@ -10,11 +10,13 @@ import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angul
 })
 export class MyOrderComponent implements OnInit,AfterContentInit {
   orders=[];
+  loader=true;
   constructor(private profileService:OrderService,private progressService:NgProgress,private router:Router) { }
    
   ngOnInit() {
     this.profileService.showbeneficiaryOrder().subscribe(
       res=>{
+        this.loader=false;
         this.orders=res['orders']
         console.log(this.orders)
       }

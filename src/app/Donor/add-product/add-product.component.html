@@ -39,13 +39,13 @@
         </div>
         <div class="form-group">
           <label id="quantity" for="quantity">Quantity</label>
-          <input #quantity="ngModel" type="text" [(ngModel)]="product.quantity" name="quantity" id="quantity" class="form-control"
+          <input #quantity="ngModel" type="text" [(ngModel)]="product.quantity" pattern="^[1-9]+[0-9]*$" name="quantity" id="quantity" class="form-control"
             required accept=".jpg,.jpeg" max="3MB">
         </div>
         <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
         <button (click)="fileInput.click()" type="button" class="btn fa fa-paperclip">Select File</button>&nbsp;&nbsp;&nbsp;<br><br>
         <p *ngIf="selectedFile">{{selectedFile.name}}</p>
-        <p *ngIf="type" style="color:red">Type of image should be of (.jpg,.jpeg)</p>
+        <p *ngIf="type" style="color:red">Type of image should be of (.jpg)</p>
         <p *ngIf="size" style="color:red">Image size should be less than 1MB</p>
         
         <button class="btn btn-success" [disabled]="!f.valid || !res">Save</button>&nbsp;&nbsp;&nbsp; 

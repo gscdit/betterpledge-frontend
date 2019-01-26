@@ -33,6 +33,9 @@ export class LoginComponent implements OnInit, AfterContentInit {
         }
       });
   }
+  change(){
+    this.invalidLogin=false;
+  }
   onSubmit(form: NgForm) {
     console.log(form.value);
     this.progressService.start();

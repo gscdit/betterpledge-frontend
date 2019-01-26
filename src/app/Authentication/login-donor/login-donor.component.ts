@@ -33,6 +33,10 @@ export class LoginDonorComponent implements OnInit,AfterContentInit {
           this.progressService.done();
         }
       });}
+
+      change(){
+        this.invalidLogin=false;
+      }
   
   onSubmit(form:NgForm){
     console.log(form.value);

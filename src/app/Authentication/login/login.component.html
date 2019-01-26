@@ -36,11 +36,11 @@
             </div>
             <div hidden class="col  form-group">
                 <label for="type">Type</label>
-                <input type="text" id="type" name="type" [(ngModel)]="type" class="form-control" required >
+                <input type="text" id="type" name="type" (keyup)="change()" [(ngModel)]="type" class="form-control" required >
               </div>
             <div class="col  form-group">
               <label for="password">Password</label>
-              <input type="password" id="password" name="password" ngModel class="form-control" required />
+              <input type="password" id="password" name="password" (keyup)="change()" ngModel class="form-control" required />
             </div>
             <button type="submit" class="float-right btn btn-primary" [disabled]="!f.valid">{{message}}</button><br><br>
           </form>

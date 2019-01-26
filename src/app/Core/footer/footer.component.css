@@ -1,6 +1,6 @@
 footer{
    background-color: #f7f8f9;
-   font-size: 14px;
+   font-size: 15px;
    text-align: left;
    text-decoration: none;
     color: black;
@@ -17,6 +17,9 @@ li {
   cursor: pointer;
   list-style: none;
   text-align: left;
+}
+li:hover {
+  color:rgb(126, 34, 34)
 }
 
 .lead{

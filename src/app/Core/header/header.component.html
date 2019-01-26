@@ -1,6 +1,6 @@
 <nav class="navbar navbar-static-top navbar-expand-lg navbar-light bg-light " id="header">
   <div class="container">
-    <a class="navbar-brand" routerLink="/"><img src="assets/logo.png" height="45px"></a>
+    <a class="navbar-brand" routerLink="/home"><img src="assets/logo.png" height="45px"></a>
     <span class="d-block d-sm-none ml-auto" >
         <span class="nav-item" routerLinkActive="active" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary'">
           <a class="nav-link" routerLink="/Cart"><i class="fa fa-shopping-cart" style="font-size:30px"></i>
@@ -23,7 +23,7 @@
           <a class="nav-link" routerLink="/betterpledge/about" *ngIf="!authService.loggedin()"> <i class="fa fa-user"></i> About</a>
         </li>
         <li class="nav-item float-left" routerLinkActive="active" (click)="toggleNavbar()">
-          <a class="nav-link" routerLink="/betterpledge/contact" *ngIf="!authService.loggedin()"> <i class="fa fa-phone"></i>
+          <a class="nav-link" routerLink="/betterpledge/contact" *ngIf="!authService.loggedin()"> <i class="fa fa-phone" aria-hidden="true"></i>
             Contact</a>
         </li>
         <li class="nav-item float-left" routerLinkActive="active" (click)="toggleNavbar()">
