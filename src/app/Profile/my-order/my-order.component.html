@@ -1,11 +1,5 @@
-<ng-progress
-    [positionUsing]="'marginLeft'"
-    [direction]="'leftToRightIncreased'"
-    [color]="'red'"
-    [trickleSpeed]="500" 
-    [thick]="true" 
-    [ease]="'easeInSine'"
-></ng-progress>
+<ng-progress [positionUsing]="'marginLeft'" [direction]="'leftToRightIncreased'" [color]="'red'" [trickleSpeed]="500"
+    [thick]="true" [ease]="'easeInSine'"></ng-progress>
 <app-header></app-header>
 <div class="container d1">
     <h4>My Orders</h4>
@@ -15,71 +9,76 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                        <div *ngIf="loader; else load">
-                                <div class="loader"></div>
-                              </div>
-                              <ng-template #load>
-                                  <div *ngIf="orders && orders.length;else itmes">
+                    <div *ngIf="loader; else load">
+                        <div class="loader"></div>
+                    </div>
+                    <ng-template #load>
+                        <div *ngIf="orders && orders.length;else itmes">
 
-                                        <div *ngFor="let order of orders">
-                                            <div class="card" >
-                                                <div class="card-header">
-                                                    <div class="container">
-                                                        <div class="row">
-                                                            <div class="col-sm">
-                                                                <span class="a-color-secondary label">
-                                                                    Order placed
-                                                                </span>
-                                                                <div class="a-row">
-                                                                    <span class="a-color-secondary label ">
-                                                                        {{order.time_stamp | date}}
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm">
-                                                                <span>
-                                                                    Booked from
-                                                                </span>
-                                                                <div class="a-row">
-                                                                    <span>
-                                                                        {{order.street}},
-                                                                       {{order.landmark}} <br>
-                                                                       {{order.city}}
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm">
-                                                                <span class="a-color-secondary label">
-                                                                    Order 
-                                                                </span>
-                                                                <div class="a-row">
-                                                                    <span class="a-color-secondary value">
-                                                                        #{{order.time_stamp}}
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                            <div *ngFor="let order of orders">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-sm">
+                                                    <span class="a-color-secondary label">
+                                                        Order placed
+                                                    </span>
+                                                    <div class="a-row">
+                                                        <span class="a-color-secondary label ">
+                                                            {{order.time_stamp | date}}
+                                                        </span>
                                                     </div>
                                                 </div>
-                                                <div class="card-body">
-                                                    <table class="table table-borderless " script="border: none;">
-                                                        <tbody>
-                                                            <tr>
-                                                             <div class="img-thumbnail mx-auto thumbnail" [style.backgroundImage]="'url('+ order.image +')'"></div> 
-                                                                <td>{{order.description}}<br>
-                                                                {{'Quantity'+' '+order.quantity}}<br>
-                                                                {{order.organisation}}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                <div class="col-sm">
+                                                    <span>
+                                                        Booked from
+                                                    </span>
+                                                    <div class="a-row">
+                                                        <span>
+                                                            {{order.street}},
+                                                            {{order.landmark}} <br>
+                                                            {{order.city}}
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                            </div><br>
+                                                <div class="col-sm">
+                                                    <span class="a-color-secondary label">
+                                                        Order
+                                                    </span>
+                                                    <div class="a-row">
+                                                        <span class="a-color-secondary value">
+                                                            #{{order.time_stamp}}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                  </div>
-                                  <ng-template #items>
-                                        No Items
-                                  </ng-template>
-                   </ng-template>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-borderless " script="border: none;">
+                                            <tbody>
+                                                <tr>
+                                                    <div class="img-thumbnail mx-auto thumbnail"
+                                                        [style.backgroundImage]="'url('+ order.image +')'"></div>
+                                                    <td>{{order.description}}<br>
+                                                        {{'Quantity'+' '+order.quantity}}<br>
+                                                        {{order.organisation}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                        <ng-template #items>
+                            <div>
+                                <img src="assets/item_no.png" style=" display:block;
+                                        margin:auto; height: 200px;"
+                                    alt="">
+                            </div>
+                        </ng-template>
+                    </ng-template>
                 </div>
             </div>
         </div>

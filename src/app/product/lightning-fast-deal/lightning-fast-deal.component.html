@@ -1,12 +1,14 @@
 <app-header></app-header>
 <product-header></product-header>
-<ng-progress
-    [positionUsing]="'marginLeft'"
-    [direction]="'leftToRightIncreased'"
-    [color]="'red'"
-    [trickleSpeed]="500" 
-    [thick]="true" 
-    [ease]="'easeInSine'"
-></ng-progress>
-<p>Coming soon...</p>
+<ng-progress [positionUsing]="'marginLeft'" [direction]="'leftToRightIncreased'" [color]="'red'" [trickleSpeed]="500"
+    [thick]="true" [ease]="'easeInSine'"></ng-progress>
+<div>
+    <img src="assets/coming-soon.gif" style=" display:block;
+    margin:auto; height: 200px;" alt="">
+    <div class="lead:" style="text-align:center">
+       <p class="lead">
+           Work in progress ...
+       </p>
+    </div>
+</div>
 <app-footer></app-footer>

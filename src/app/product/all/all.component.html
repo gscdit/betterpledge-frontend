@@ -43,7 +43,10 @@
       </div>
       <ng-template #load>
         <div *ngIf="filteredProduct && !filteredProduct.length;else showproducts">
-          No Items
+        <div>
+          <img src="assets/item_no.png"  style=" display:block;
+          margin:auto; height: 200px;" alt="">
+        </div>
         </div>
         <ng-template #showproducts>
           <div class="card-deck">

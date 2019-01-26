@@ -1,11 +1,5 @@
-<ng-progress
-    [positionUsing]="'marginLeft'"
-    [direction]="'leftToRightIncreased'"
-    [color]="'red'"
-    [trickleSpeed]="500" 
-    [thick]="true" 
-    [ease]="'easeInSine'"
-></ng-progress>
+<ng-progress [positionUsing]="'marginLeft'" [direction]="'leftToRightIncreased'" [color]="'red'" [trickleSpeed]="500"
+  [thick]="true" [ease]="'easeInSine'"></ng-progress>
 <app-header></app-header>
 <div class="container-fluid jumbotron m-0 p-0">
   <div class="container jumbotron">
@@ -51,7 +45,8 @@
   </div>
   <ng-template #load>
     <div>
-        No Items
+      <img src="assets/item_no.png" style=" display:block;
+      margin:auto; height: 200px;" alt="">
     </div>
   </ng-template>
 </ng-template>

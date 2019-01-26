@@ -9,9 +9,15 @@ footer{
 .border-right{
   border-right: 1px solid #878787 !important;
 }
+a{
+  text-decoration: none;
+  color: black;
+}
+a:hover{
+  color: rgb(126, 34, 34);
+}
 p{
-  text-align: left
-  
+  text-align: left 
 }  
 li {
   cursor: pointer;
