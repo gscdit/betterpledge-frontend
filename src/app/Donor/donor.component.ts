@@ -12,4 +12,8 @@ export class DonorComponent implements OnInit {
   ngOnInit() {
   }
 
+  onActivate($event){
+    window.scroll(0,0);
+  }
+
 }

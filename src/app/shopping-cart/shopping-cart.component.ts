@@ -20,6 +20,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy,AfterContentInit
   constructor(private cartService: ShoppingCartService,private ps:ProductsService,private router:Router,private progressService:NgProgress) { }
 
   async ngOnInit() {
+    window.scroll(0,0);
     this.subscription = (await this.cartService.getCart()).valueChanges().subscribe(cart => {
       this.count = this.cartService.totalCount(cart);
       this.cart$ = cart

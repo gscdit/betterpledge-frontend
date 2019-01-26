@@ -10,6 +10,10 @@ export class ExtraComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
-
+   
+  onActivate(event) {
+    window.scroll(0,0);
+}
 }
