@@ -13,8 +13,7 @@
                         <div class="loader"></div>
                     </div>
                     <ng-template #load>
-                        <div *ngIf="orders && orders.length;else itmes">
-
+                        <div *ngIf="orders && orders.length;else items">
                             <div *ngFor="let order of orders">
                                 <div class="card">
                                     <div class="card-header">

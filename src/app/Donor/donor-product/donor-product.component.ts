@@ -13,9 +13,7 @@ export class DonorProductComponent implements OnInit,AfterContentInit,OnDestroy 
   products$=[];
   product:Subscription;
   loader=true;
-  constructor(private router:Router,private ps:ProductsService,private progressService:NgProgress) {
-    
-   }
+  constructor(private router:Router,private ps:ProductsService,private progressService:NgProgress) {}
   
   ngOnInit() {
     this.product=this.ps.getUserProduct().subscribe(p=>{

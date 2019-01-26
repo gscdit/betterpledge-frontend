@@ -18,7 +18,7 @@ export class MyOrderComponent implements OnInit,AfterContentInit {
       res=>{
         this.loader=false;
         this.orders=res['orders']
-        console.log(this.orders)
+        console.log(this.orders.length)
       }
     )
   }
