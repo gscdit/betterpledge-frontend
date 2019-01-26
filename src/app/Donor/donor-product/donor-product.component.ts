@@ -11,13 +11,16 @@ import { Subscription } from 'rxjs';
 })
 export class DonorProductComponent implements OnInit,AfterContentInit,OnDestroy {
   products$=[];
-  product:Subscription
+  product:Subscription;
+  loader=true;
   constructor(private router:Router,private ps:ProductsService,private progressService:NgProgress) {
     
    }
   
   ngOnInit() {
-    this.product=this.ps.getUserProduct().subscribe(p=>{console.log(p.listings.length)
+    this.product=this.ps.getUserProduct().subscribe(p=>{
+      this.loader=false;
+      console.log(p.listings.length)
       this.products$=p.listings}
       )
   }

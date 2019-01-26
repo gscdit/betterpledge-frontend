@@ -57,9 +57,6 @@ export class AddProductComponent implements OnInit,AfterContentInit {
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
     if (event.target.files[0]) {
-      this.progressService.start();
-      this.progressService.set(0.1);
-      this.progressService.inc(0.2);
       if (this.selectedFile.size >= 10000000 ) {
         this.size = true;
         if(this.selectedFile.type==='image/png'){
@@ -73,7 +70,10 @@ export class AddProductComponent implements OnInit,AfterContentInit {
         this.type = false;
         this.size = false;
         this.upload = true;
-      }
+      
+        this.progressService.start();
+        this.progressService.set(0.1);
+        this.progressService.inc(0.2);
       console.log(this.selectedFile);
     const uploadData = new FormData();
     uploadData.append('file', this.selectedFile, this.selectedFile.name);
@@ -89,7 +89,7 @@ export class AddProductComponent implements OnInit,AfterContentInit {
           },error=>{
         this.progressService.done();
           }
-        );
+        );}
     }
   }
 
