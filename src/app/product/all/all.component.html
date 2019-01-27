@@ -55,12 +55,12 @@
                 <img class="card-img-top px-0" height="200px" src="{{p.image}}" (click)="detailPage(p)">
                 <div class="card-body" (click)="detailPage(p)">
                   <h5 class="card-title lead">{{p.description}}</h5>
+                  <p class="card-text"> <i class="fa fa-map-marker"></i>&nbsp;{{p.street}},{{p.landmark}} <br>&nbsp;&nbsp;&nbsp;&nbsp;{{p.city}}</p>
                   <p class="badge badge-dark float-right">{{p.type | uppercase}}</p>
                   <hr>
                   <p class="card-text">Quantity:- {{p.quantity}}</p>
                   <p class="card-text">{{p.organisation}}</p>
-                  <p class="card-text">{{p.street}},{{p.landmark}}</p>
-                  <p class="card-text">{{p.city}}</p>
+                  
                   <!-- <p class="card-text">{{'Mobile':}}</p> -->
                 </div>
                 <div class="card-footer p-1 text-center" style="opacity: 1;">

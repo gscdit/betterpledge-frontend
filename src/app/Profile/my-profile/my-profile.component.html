@@ -26,8 +26,9 @@
             <span>
               <img class="propic img img-responsive" src="./assets/user.png" style="height: 50px; width:50px;" alt="Avatar">
               &nbsp;
-              <b style="font-family: 'Montserrat', sans-serif; font-weight:700;">Welcome
-                {{authenticateService.currentUser().name }} </b>
+
+              <strong> {{authenticateService.currentUser().first_name+' '+authenticateService.currentUser().last_name }} </strong>
+
             </span>
           </div>
         </div>
