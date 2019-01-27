@@ -11,3 +11,10 @@
     padding:0px;
     background-color:white;
 }
+
+/* for aligning the content under aligndiv in center on small screens */
+@media (max-width: 479px) {
+    .aligndiv{
+        text-align : center;
+    }   
+   }
