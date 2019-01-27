@@ -10,7 +10,7 @@ import { NgProgress } from 'ngx-progressbar';
   styleUrls: ['./register-donor.component.css']
 })
 export class RegisterDonorComponent implements OnInit, AfterContentInit {
-
+  disable=false;
   type = "donor";
   country = "India";
 
@@ -35,6 +35,7 @@ export class RegisterDonorComponent implements OnInit, AfterContentInit {
       });
   }
   onSubmit(form: NgForm) {
+    this.disable=true;
     console.log(form.value);
     this.progressService.start();
     this.progressService.set(0.1);
@@ -44,8 +45,10 @@ export class RegisterDonorComponent implements OnInit, AfterContentInit {
         console.log(response)
         this.progressService.done();
         this.router.navigate(['/user/login-donor']);
+        this.disable=false;
       },
       error => {
+        this.disable=false;
         console.log(error);
         this.progressService.done();
       }

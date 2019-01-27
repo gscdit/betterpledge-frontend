@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit ,AfterContentInit{
   type="beneficiary";
   message = "Sign Up";
   country="India"
-
+  disable=false;
   constructor(private httpService:HttpService,private authService:AuthenticateService,private router:Router,private progressService:NgProgress) { }
   ngOnInit() {
     
@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit ,AfterContentInit{
       
   response1:any;
   onSubmit(form:NgForm){
+    this.disable=true;
    this.progressService.start();
    
    this.progressService.set(0.1);
@@ -47,8 +48,10 @@ export class RegisterComponent implements OnInit ,AfterContentInit{
     this.authService.register(form.value).subscribe(
       response=>{ console.log(response)
         this.progressService.done();
-      this.router.navigate(['/user/login'])
+      this.router.navigate(['/user/login']);
+      this.disable=false;
       },error=>{
+        this.disable=false;
         this.progressService.done();
       }
     )

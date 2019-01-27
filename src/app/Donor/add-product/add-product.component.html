@@ -48,7 +48,7 @@
         <p *ngIf="type" style="color:red">Type of image should be of (.jpg)</p>
         <p *ngIf="size" style="color:red">Image size should be less than 1MB</p>
         
-        <button class="btn btn-success" [disabled]="!f.valid || !res">Save</button>&nbsp;&nbsp;&nbsp; 
+        <button class="btn btn-success" [disabled]="!f.valid || !res || disable" >Save</button>&nbsp;&nbsp;&nbsp; 
         <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
       </div>
       <div class="col-md-5">

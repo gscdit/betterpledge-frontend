@@ -115,7 +115,7 @@
               <span class="help-block" *ngIf="password2.touched && password2.invalid  && !password2.errors?.required && !password2.errors?.notEqual"
                 style="color:red">Please enter valid password</span>
             </div>
-            <button type="submit" class="col btn btn-primary" [disabled]="!f.valid">{{message}}</button>
+            <button type="submit" class="col btn btn-primary" [disabled]="!f.valid || disable">{{message}}</button>
           </form>
         </div>
       </div>

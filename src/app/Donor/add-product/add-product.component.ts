@@ -18,6 +18,7 @@ export class AddProductComponent implements OnInit,AfterContentInit {
     'quantity': null,
     'image': null
   };
+  disable=false;
   upload = false;
   selectedFile = null;
   res: boolean;
@@ -112,6 +113,7 @@ export class AddProductComponent implements OnInit,AfterContentInit {
 
 
   onSave(value: NgForm) {
+    this.disable=true;
     this.progressService.start();
     this.progressService.set(0.1);
     this.progressService.inc(0.2);
@@ -123,11 +125,13 @@ export class AddProductComponent implements OnInit,AfterContentInit {
     }
     console.log(product);
     if (this.id) {
+      this.disable=false;
       this.ps.updateProduct(product, this.id).subscribe(res => {
           this.progressService.done();
         this.router.navigate(['/donor/donatedProduct']);
       },
         error => {
+          this.disable=false;
         this.progressService.done();
           console.log(error);
         });
@@ -135,8 +139,10 @@ export class AddProductComponent implements OnInit,AfterContentInit {
       this.ps.addProduct(product).subscribe(res => {
           this.progressService.done();
         this.router.navigate(['/donor/donatedProduct']);
+        this.disable=false;
       },
         error => {
+          this.disable=false;
         this.progressService.done();
           console.log(error);
         });
