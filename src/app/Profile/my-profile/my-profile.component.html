@@ -1,21 +1,22 @@
-<ng-progress
-    [positionUsing]="'marginLeft'"
-    [direction]="'leftToRightIncreased'"
-    [color]="'red'"
-    [trickleSpeed]="500" 
-    [thick]="true" 
-    [ease]="'easeInSine'"
-></ng-progress>
+<ng-progress [positionUsing]="'marginLeft'" [direction]="'leftToRightIncreased'" [color]="'red'" [trickleSpeed]="500"
+  [thick]="true" [ease]="'easeInSine'"></ng-progress>
 <app-header></app-header>
+
+<!-- jumbotron -->
+
 <div class="container-fluid jumbotron m-0 p-0">
   <div class="container jumbotron">
-    <h4 class="display-4">My Account</h4>
-    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet impedit, voluptas culpa eaque repellendus
-      facere enim autem. Illum ipsa nobis magni reprehenderit soluta rerum doloribus a totam deserunt, culpa dolore?</span>
+    <b class="text-left display-4 py-4" style="font-family: 'Assistant', sans-serif; font-weight:bolder;">My
+      <span style="color: #930202;">Account</span></b>
+    <p class="text-left px-1 text-muted" style="font-family: 'Montserrat', sans-serif; font-weight:700;">
+      Manage your account, browse your order history all in one place.</p>
     <a style="bottom:25px;right:25px;position:fixed; color:white; z-index: 1 " routerLink="/donor/addProduct" class="btn btn-success"><i
         class="fa fa-plus " title="Donate"></i> </a>
   </div>
 </div>
+
+<!-- end of jumbotron -->
+
 <div class="container d2">
   <div class="row">
     <div class="col-lg-4">
@@ -25,7 +26,9 @@
             <span>
               <img class="propic img img-responsive" src="./assets/user.png" style="height: 50px; width:50px;" alt="Avatar">
               &nbsp;
+
               <strong> {{authenticateService.currentUser().first_name+' '+authenticateService.currentUser().last_name }} </strong>
+
             </span>
           </div>
         </div>
@@ -33,7 +36,7 @@
       <div class="more-info">
         <div class="card d3">
           <div class="card-body">
-            <h5>Other Links</h5>
+            <h5 style="font-family: 'Montserrat', sans-serif; font-weight:700;">Other Links</h5>
             <hr>
             <button class="btn btn-success" routerLink='/my/order'>Order History</button>
           </div>
@@ -44,66 +47,73 @@
       <div class="card">
         <div class="card-body">
           <form (ngSubmit)="onSave(f)" #f="ngForm">
-            <div class="card">
+            <div class="card border-0">
               <div class="card-body">
-                <h5> <span> <i class="fa fa-user"></i> &nbsp; Personal Information </span></h5>
+                <h5 style="font-family: 'Montserrat', sans-serif; font-weight:700;"> <span> <i class="fa fa-user"></i>
+                    &nbsp; Personal Information </span></h5>
                 <hr>
-                <input class="form-control" type="text" *ngIf="!edit" placeholder="First Name: {{title.first_name}}" readonly>
-                <input class="form-control" type="text" name="first_name" [(ngModel)]="title.first_name" *ngIf="edit" placeholder="First Name"
-                  ngModel><br>
-                <input class="form-control" type="text" *ngIf="!edit" placeholder="Last Name: {{title.last_name}}" readonly>
-                <input class="form-control" type="text" name="last_name" [(ngModel)]="title.last_name" *ngIf="edit" placeholder="Last Name"
-                  ngModel>
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="First Name: {{title.first_name}}"
+                  readonly>
+                <input class="form-control" type="text" name="first_name" [(ngModel)]="title.first_name" *ngIf="edit"
+                  placeholder="First Name" ngModel><br>
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="Last Name: {{title.last_name}}"
+                  readonly>
+                <input class="form-control" type="text" name="last_name" [(ngModel)]="title.last_name" *ngIf="edit"
+                  placeholder="Last Name" ngModel>
               </div>
             </div>
-            <div class="card d3">
+            <div class="card d3 border-0">
               <div class="card-body">
-                <h5> <span> <i class="fa fa-inbox"></i> &nbsp; Username</span> </h5>
+                <h5 style="font-family: 'Montserrat', sans-serif; font-weight:700;"> <span> <i class="fa fa-inbox"></i>
+                    &nbsp; Username</span> </h5>
                 <hr>
                 <input class="form-control" type="text" *ngIf="!edit" placeholder="{{title.username}}" readonly>
                 <input class="form-control" type="text" name="username" [(ngModel)]="title.username" *ngIf="edit"
                   placeholder="Username" ngModel readonly>
               </div>
             </div>
-            <div class="card d3">
+            <div class="card d3 border-0">
               <div class="card-body">
-                <h5> <span> <i class="fa fa-inbox"></i> &nbsp; Email Address</span> </h5>
+                <h5 style="font-family: 'Montserrat', sans-serif; font-weight:700;"> <span> <i class="fa fa-inbox"></i>
+                    &nbsp; Email Address</span> </h5>
                 <hr>
                 <input class="form-control" type="text" *ngIf="!edit" placeholder="{{title.email}}" readonly>
                 <input class="form-control" type="text" name="email" *ngIf="edit" [(ngModel)]="title.email" placeholder="Email Address"
                   ngModel readonly>
               </div>
             </div>
-            <div class="card d3">
+            <div class="card d3 border-0">
               <div class="card-body">
-                <h5> <span> <i class="fa fa-mobile"></i> &nbsp; Mobile Number </span> </h5>
+                <h5 style="font-family: 'Montserrat', sans-serif; font-weight:700;"> <span> <i class="fa fa-mobile"></i>
+                    &nbsp; Mobile Number </span> </h5>
                 <hr>
                 <input class="form-control" type="text" *ngIf="!edit" placeholder="{{title.phone_no}}" readonly>
                 <input class="form-control" type="text" *ngIf="edit" name="phone_no" [(ngModel)]="title.phone_no"
                   placeholder="Mobile Number" ngModel>
               </div>
             </div>
-            <div class="card d3">
+            <div class="card d3 border-0">
               <div class="card-body">
-                <h5> <span> <i class="fa fa-map-marker"></i> &nbsp; Address</span> </h5>
+                <h5 style="font-family: 'Montserrat', sans-serif; font-weight:700;"> <span> <i class="fa fa-map-marker"></i>
+                    &nbsp; Address</span> </h5>
                 <hr>
-                <input class="form-control" type="text" *ngIf="!edit" placeholder="Street: {{title.street}}"
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="Street: {{title.street}}" readonly>
+                <br *ngIf="!edit">
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="Landmark: {{title.landmark}}"
                   readonly> <br *ngIf="!edit">
-                  <input class="form-control" type="text" *ngIf="!edit" placeholder="Landmark: {{title.landmark}}"
-                  readonly> <br *ngIf="!edit">
-                  <input class="form-control" type="text" *ngIf="!edit" placeholder="City: {{title.city}}"
-                  readonly> <br *ngIf="!edit">
-                  <input class="form-control" type="text" *ngIf="!edit" placeholder="Country: {{title.country}}"
-                  readonly> <br *ngIf="!edit">
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="City: {{title.city}}" readonly> <br
+                  *ngIf="!edit">
+                <input class="form-control" type="text" *ngIf="!edit" placeholder="Country: {{title.country}}" readonly>
+                <br *ngIf="!edit">
 
-                  <input class="form-control" name="street" [(ngModel)]="title.street" type="text" *ngIf="edit" placeholder="Street"
-                  > <br *ngIf="edit">
-                  <input class="form-control" name="landmark" [(ngModel)]="title.landmark" type="text" *ngIf="edit" placeholder="Landmark"
-                  > <br *ngIf="edit">
-                  <input class="form-control" name="city" [(ngModel)]="title.city" type="text" *ngIf="edit" placeholder="City"
-                  > <br *ngIf="edit">
-                  <input class="form-control" name="country" [(ngModel)]="title.country" type="text" *ngIf="edit" placeholder="Country"
-                  > <br *ngIf="edit">
+                <input class="form-control" name="street" [(ngModel)]="title.street" type="text" *ngIf="edit"
+                  placeholder="Street"> <br *ngIf="edit">
+                <input class="form-control" name="landmark" [(ngModel)]="title.landmark" type="text" *ngIf="edit"
+                  placeholder="Landmark"> <br *ngIf="edit">
+                <input class="form-control" name="city" [(ngModel)]="title.city" type="text" *ngIf="edit" placeholder="City">
+                <br *ngIf="edit">
+                <input class="form-control" name="country" [(ngModel)]="title.country" type="text" *ngIf="edit"
+                  placeholder="Country"> <br *ngIf="edit">
               </div>
             </div><br>
             <Button class="btn btn-success float-left" *ngIf="edit" type="submit">Save Change</Button>
