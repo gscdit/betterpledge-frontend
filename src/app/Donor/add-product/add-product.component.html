@@ -9,9 +9,10 @@
 <app-header></app-header>
 <div class="container-fluid jumbotron m-0 p-0">
   <div class="container jumbotron">
-    <h4 class="display-4">Donate Products</h4>
-    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet impedit, voluptas culpa eaque repellendus
-      facere enim autem. Illum ipsa nobis magni reprehenderit soluta rerum doloribus a totam deserunt, culpa dolore?</span>
+    <b class="text-left display-4 py-4" style="font-family: 'Assistant', sans-serif; font-weight:bolder;">Donate
+      <span style="color: #930202;">Products</span></b>
+      <p class="text-left px-1 text-muted" style="font-family: 'Montserrat', sans-serif; font-weight:700;">
+        We are happy to get in touch with you. Fill up the form below to talk to us!</p>
     <a style="bottom:25px;right:25px;position:fixed; color:white; z-index: 1" routerLink="/donor/addProduct" class="btn btn-success"><i
         class="fa fa-plus " title="Donate"></i> </a>
   </div>
@@ -21,7 +22,7 @@
     <div class="row">
       <div class="col-md-7">
         <div>
-          <h2 class="display-5">Enter Information</h2>
+          <h2 class="lead" style="font-family: 'Montserrat', sans-serif; font-weight:700;">Enter Information</h2>
           <hr>
         </div>
         <div class="form-group">
@@ -46,14 +47,14 @@
         <button (click)="fileInput.click()" type="button" class="btn fa fa-paperclip">Select File</button>&nbsp;&nbsp;&nbsp;<br><br>
         <p *ngIf="selectedFile">{{selectedFile.name}}</p>
         <p *ngIf="type" style="color:red">Type of image should be of (.jpg)</p>
-        <p *ngIf="size" style="color:red">Image size should be less than 10MB</p>
+        <p *ngIf="size" style="color:red">Image size should be less than 1MB</p>
         
-        <button class="btn btn-success" [disabled]="!f.valid || !res || disable" >Save</button>&nbsp;&nbsp;&nbsp; 
+        <button class="btn btn-success" [disabled]="!f.valid || !res">Save</button>&nbsp;&nbsp;&nbsp; 
         <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
       </div>
       <div class="col-md-5">
         <div>
-          <h2 class="display-5">Preview Card</h2>
+          <h2 class="lead" style="font-family: 'Montserrat', sans-serif; font-weight:700;">Preview Card</h2>
           <hr>
         </div>
         <div style="margin:auto auto">
