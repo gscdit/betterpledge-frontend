@@ -115,11 +115,11 @@
                 required #password2="ngModel">
               <!-- <span class="help-block" *ngIf="password2.touched && password2.errors?.required" style="color:red">Confirm
                 Password is required</span> -->
-              <!-- <span class="help-block" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required"
-                style="color:red">Password and Confirm Password does not match</span> -->
-<!--               <span class="help-block" *ngIf="password2.touched && password2.invalid  && !password2.errors?.required && !password2.errors?.notEqual"
+                <span class="help-block" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required"
+                style="color:red">Password and Confirm Password does not match</span> 
+<!--               <span class="help-block" *ngIf="password2.touched && password2.invalid  && !password2.errors?.required"
                 style="color:red">Please enter valid password</span> -->
-               <small style="font-weight:lighter; font-style:italic"> Password must include min 8 characters,one capital character,one small character,one numerical value </small>
+              <small *ngIf=" !password2.errors?.notEqual && password2.errors?.required" style="font-weight:lighter; font-style:italic"> Password must include min 8 characters,one capital character,one small character,one numerical value </small>
             </div>
             <button type="submit" class="col btn btn-primary" [disabled]="!f.valid || disable">{{message}}</button>
           </form>

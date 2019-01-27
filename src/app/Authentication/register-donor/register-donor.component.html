@@ -125,12 +125,12 @@
               <input type="password" id="password2" confirmPassword="password" name="password2" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" ngModel class="form-control"
                 required #password2="ngModel">
               <!-- <span class="help-block" *ngIf="password2.touched && password2.errors?.required" style="color:red">Confirm
-                Password is required</span>
+                Password is required</span>-->
               <span class="help-block" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required"
-                style="color:red">Password and Confirm Password does not match</span> -->
+                style="color:red">Password and Confirm Password does not match</span> 
 <!--               <span class="help-block" *ngIf="password2.touched && password2.invalid  && !password2.errors?.required"
                 style="color:red">Please enter valid password</span> -->
-              <small style="font-weight:lighter; font-style:italic"> Password must include min 8 characters,one capital character,one small character,one numerical value </small>
+              <small *ngIf=" !password2.errors?.notEqual && password2.errors?.required" style="font-weight:lighter; font-style:italic"> Password must include min 8 characters,one capital character,one small character,one numerical value </small>
             </div>
             <button type="submit" class="col btn btn-primary" [disabled]="!f.valid || disable">Sign Up</button>
           </form>
