@@ -78,7 +78,7 @@ export class CheckOutComponent implements OnInit, AfterContentInit {
       orders: data
     }
     console.log(order)
-    this.ordersubsc = this.os.storeOrder(order).take(1).subscribe(res => {
+    this.ordersubsc = this.os.storeOrder(order).subscribe(res => {
       console.log(res);
       this.message = res['message'];
       this.modalService.open(content, { centered: true });
@@ -103,6 +103,9 @@ export class CheckOutComponent implements OnInit, AfterContentInit {
     this.subscription.unsubscribe();
     if (this.cart$ && this.cart$.items)
       this.productSubscription.unsubscribe();
+      this.ordersubsc.unsubscribe();  
   }
+
+  
 
 }

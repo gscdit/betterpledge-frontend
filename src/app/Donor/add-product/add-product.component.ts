@@ -1,23 +1,25 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { ProductsService } from 'src/app/Service/products.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticateService } from './../../Service/authentication.service';
 import { NgProgress } from 'ngx-progressbar';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
-export class AddProductComponent implements OnInit, AfterContentInit {
+export class AddProductComponent implements OnInit, AfterContentInit,OnDestroy {
   product = {
     'description': null,
     'type': null,
     'quantity': null,
     'image': null
   };
+  productSubscription:Subscription;
   disable = false;
   upload = false;
   selectedFile = null;
@@ -34,7 +36,7 @@ export class AddProductComponent implements OnInit, AfterContentInit {
     this.id = this.route.snapshot.paramMap.get('id')   //to get :id from url
     if (this.id) {
       this.res = true;
-      this.ps.getSingleProduct(this.id).take(1)
+    this.productSubscription=  this.ps.getSingleProduct(this.id)
         .subscribe(res => { this.product = JSON.parse(res), console.log(this.product) });
     }
   }
@@ -150,5 +152,9 @@ export class AddProductComponent implements OnInit, AfterContentInit {
           console.log(error);
         });
     }
+  }
+
+  ngOnDestroy(){
+    this.productSubscription.unsubscribe();
   }
 }
