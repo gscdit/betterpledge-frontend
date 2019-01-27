@@ -1,32 +1,17 @@
-/* .carousel-item {
-    min-height: 300px;
-    background: no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
-*/
+
 @media only screen and (min-width: 600px){
   .carousel-item{
     height: 91vh;
   }
 } 
 
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
 
-/* Carousel base class */
-/* .carousel {
-  margin-bottom: 4rem;
-} */
-/* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   bottom: 3rem;
   z-index: 10;
 }
 
-/* Declare heights because of positioning of img element */
+
 .carousel-item {
   width: 100%;
   min-height: 300px;
@@ -47,3 +32,53 @@
 .bh{
   background-size:cover; 
 }
+
+
+/* BOUNCE EFFECT OF DOWN ARROW ON CAROUSEL */
+   
+@keyframes bounce {
+
+  from {
+    top: 90%;
+    animation-timing-function: ease-out;
+  }
+
+  25% {
+    top: 87%;
+    animation-timing-function: ease-in;
+  }
+
+  50% {
+    top: 91%;
+    animation-timing-function: ease-out;
+  }
+
+  75% {
+    top: 88%;
+    animation-timing-function: ease-in;
+  }
+
+  to {
+    top: 90%;
+  }
+
+}
+
+.element {
+  animation-name: bounce;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.box {
+  animation-name: jump;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+}
+
+.animated {
+  animation-name: bounce, change-bg-color;
+  animation-duration: 3s, 2s;
+  
+}
+
