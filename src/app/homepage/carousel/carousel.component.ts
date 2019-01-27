@@ -12,5 +12,7 @@ export class CarouselComponent implements OnInit {
 
   ngOnInit() {
   }
- 
+   Scroll(){
+     
+   }
 }
