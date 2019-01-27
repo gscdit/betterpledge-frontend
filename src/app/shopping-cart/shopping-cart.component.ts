@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { ProductsService } from '../Service/products.service';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -17,9 +18,10 @@ export class ShoppingCartComponent implements OnInit, OnDestroy,AfterContentInit
   product_ids;
   subscription: Subscription;
   productSubscription: Subscription;
-  constructor(private cartService: ShoppingCartService,private ps:ProductsService,private router:Router,private progressService:NgProgress) { }
+  constructor(private cartService: ShoppingCartService,private ps:ProductsService,private router:Router,private progressService:NgProgress,private titleService:Title) { }
 
   async ngOnInit() {
+    this.titleService.setTitle('Cart')
     window.scroll(0,0);
     this.subscription = (await this.cartService.getCart()).valueChanges().subscribe(cart => {
       this.count = this.cartService.totalCount(cart);

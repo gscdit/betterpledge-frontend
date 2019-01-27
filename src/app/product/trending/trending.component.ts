@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { NavigationStart, NavigationEnd, NavigationCancel, Router } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-trending',
@@ -9,9 +10,11 @@ import { NgProgress } from 'ngx-progressbar';
 })
 export class TrendingComponent implements OnInit,AfterContentInit {
 
-  constructor(private progressService:NgProgress,private router:Router) { }
+  constructor(private progressService:NgProgress,private router:Router,
+    private titleService:Title) { }
 
   ngOnInit() {
+      this.titleService.setTitle('Clothes')
   }
 
   ngAfterContentInit() {

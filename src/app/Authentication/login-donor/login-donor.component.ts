@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AuthenticateService } from 'src/app/Service/authentication.service';
 import { Router, ActivatedRoute, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login-donor',
@@ -14,9 +15,12 @@ export class LoginDonorComponent implements OnInit,AfterContentInit {
   invalidLogin: boolean;
   message = "Login"
   type="donor"
-  constructor(private authService:AuthenticateService,private router:Router,private route:ActivatedRoute,private progressService:NgProgress) { }
+  constructor(private authService:AuthenticateService,private router:Router,
+    private route:ActivatedRoute,private progressService:NgProgress
+    ,private titleService:Title) { }
 
   ngOnInit() {
+   this.titleService.setTitle('Donor Login')
   }
   ngAfterContentInit() {
     this.router.events

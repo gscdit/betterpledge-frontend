@@ -2,6 +2,7 @@ import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { NavigationStart, NavigationEnd, NavigationCancel, Router } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
 import { AuthenticateService } from 'src/app/Service/authentication.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-404',
@@ -10,9 +11,11 @@ import { AuthenticateService } from 'src/app/Service/authentication.service';
 })
 export class NotFoundComponent implements OnInit,AfterContentInit {
 
-  constructor(private router:Router,private progressService:NgProgress,public authService:AuthenticateService) { }
+  constructor(private router:Router,private progressService:NgProgress,
+    public authService:AuthenticateService,private titleService:Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Not Found')
   }
   ngAfterContentInit() {
     this.router.events

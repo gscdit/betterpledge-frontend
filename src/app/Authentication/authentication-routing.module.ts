@@ -8,10 +8,10 @@ import { AuthenticationComponent } from './authentication.component';
 
 const recipesRoutes: Routes = [
   {path:'',component:AuthenticationComponent,children:[
-  {path:'login',component:LoginComponent},
-  {path:'login-donor',component:LoginDonorComponent},
-  {path:'register-beneficiary',component:RegisterComponent},
-  {path:'register-donor',component:RegisterDonorComponent}
+  {path:'login',component:LoginComponent,data:{title:'Login'}},
+  {path:'login-donor',component:LoginDonorComponent,data:{title:'Login'}},
+  {path:'register-beneficiary',component:RegisterComponent,data:{title:'Register'}},
+  {path:'register-donor',component:RegisterDonorComponent,data:{title:'Register'}}
   ]}
 ];
 

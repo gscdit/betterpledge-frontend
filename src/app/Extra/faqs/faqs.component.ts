@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-faqs',
@@ -10,9 +11,11 @@ import { NgProgress } from 'ngx-progressbar';
 export class FaqsComponent implements OnInit,AfterContentInit {
   
   angle:boolean;
-  constructor(private router:Router,private progressService:NgProgress) { }
+  constructor(private router:Router,private progressService:NgProgress
+    ,private titleServive:Title) { }
 
   ngOnInit() {
+    this.titleServive.setTitle('FAQ')
   }
   
   ngAfterContentInit() {

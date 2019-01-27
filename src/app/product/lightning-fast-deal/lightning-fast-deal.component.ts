@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { NgProgress } from 'ngx-progressbar';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-lightning-fast-deal',
@@ -9,10 +10,10 @@ import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angul
 })
 export class LightningFastDealComponent implements OnInit,AfterContentInit {
 
-  constructor(private progressService: NgProgress,private router:Router) { }
+  constructor(private progressService: NgProgress,private router:Router,private titleService: Title) { }
 
   ngOnInit() {
-
+   this.titleService.setTitle('Stationary')
   }
   ngAfterContentInit() {
     this.router.events

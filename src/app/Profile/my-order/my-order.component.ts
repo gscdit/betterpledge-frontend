@@ -2,6 +2,7 @@ import { Component, OnInit,  AfterContentInit } from '@angular/core';
 import { OrderService } from 'src/app/Service/order.service';
 import { NgProgress } from 'ngx-progressbar';
 import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-my-order',
@@ -11,9 +12,11 @@ import { Router, NavigationStart, NavigationCancel, NavigationEnd } from '@angul
 export class MyOrderComponent implements OnInit,AfterContentInit {
   orders=[];
   loader=true;
-  constructor(private profileService:OrderService,private progressService:NgProgress,private router:Router) { }
+  constructor(private profileService:OrderService,private progressService:NgProgress,
+    private router:Router,private titleService:Title) { }
    
   ngOnInit() {
+    this.titleService.setTitle('My Orders')
     this.profileService.showbeneficiaryOrder().subscribe(
       res=>{
         this.loader=false;

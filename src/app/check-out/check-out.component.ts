@@ -1,14 +1,13 @@
-import { Component, OnInit, OnDestroy, AfterContentInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { ShoppingCartService } from 'src/app/Service/shopping-cart.service';
 import { Subscription } from 'rxjs';
-import { ShoppingCart } from './../Models/shoppingCart';
-import { p } from '@angular/core/src/render3';
 import { OrderService } from './../Service/order.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductsService } from '../Service/products.service';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
+import { Title } from '@angular/platform-browser';
+import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
 
 @Component({
   selector: 'app-check-out',
@@ -24,9 +23,12 @@ export class CheckOutComponent implements OnInit, AfterContentInit {
   ordersubsc: Subscription;
   message;
   productSubscription: Subscription;
-  constructor(private modalService: NgbModal, private cartService: ShoppingCartService, private os: OrderService, private ps: ProductsService, private router: Router, private progressService: NgProgress) { }
+  constructor(private modalService: NgbModal, private cartService: ShoppingCartService, 
+    private os: OrderService, private ps: ProductsService, 
+    private router: Router, private progressService: NgProgress,private titleService: Title) { }
 
   async ngOnInit() {
+    this.titleService.setTitle('Check Out');
     window.scroll(0,0);
     this.subscription = (await this.cartService.getCart()).valueChanges().subscribe(cart => {
       this.count = this.cartService.totalCount(cart);

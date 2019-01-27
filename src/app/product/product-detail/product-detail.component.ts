@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, NavigationStart, NavigationEnd, NavigationCance
 import { ShoppingCartService } from 'src/app/Service/shopping-cart.service';
 import { Subscription } from 'rxjs';
 import { NgProgress } from 'ngx-progressbar';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,7 +16,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy, AfterContentIn
   product = { image: null, description: null, quantity: null, type: null }
   shoppingCart;
   subscription: Subscription
-  constructor(private ps: ProductsService, private route: ActivatedRoute, private cartService: ShoppingCartService, private router: Router, private progressService: NgProgress) { }
+  constructor(private ps: ProductsService, private route: ActivatedRoute, 
+    private cartService: ShoppingCartService, private router: Router, 
+    private progressService: NgProgress, private titleService:Title) { }
 
   ngAfterContentInit() {
     this.router.events
@@ -32,6 +35,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy, AfterContentIn
   }
 
   async ngOnInit() {
+    this.titleService.setTitle('Food Detail')
     this.id = this.route.snapshot.paramMap.get('id')
     this.ps.getSingleProduct(this.id).subscribe(res => {
       this.product = JSON.parse(res);

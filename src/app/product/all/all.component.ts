@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 import { NgProgress } from 'ngx-progressbar';
 import { AuthenticateService } from 'src/app/Service/authentication.service';
 import { ShoppingCart } from './../../Models/shoppingCart';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-all',
@@ -34,7 +35,8 @@ export class AllComponent implements OnInit, OnDestroy, AfterContentInit {
     private ps: ProductsService,
     private progressService: NgProgress,
     private cartService: ShoppingCartService,
-    public authService: AuthenticateService) {
+    public authService: AuthenticateService,
+    private titleService: Title) {
   }
 
   ngAfterContentInit() {
@@ -56,6 +58,7 @@ export class AllComponent implements OnInit, OnDestroy, AfterContentInit {
   }
 
   async ngOnInit() {
+    this.titleService.setTitle('Food')
     this.productsubscription = this.ps.getAll().switchMap(
       p => {
         console.log(p)

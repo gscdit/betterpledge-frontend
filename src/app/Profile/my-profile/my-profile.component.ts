@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { HttpService } from '../../Service/http.service';
 import { NgProgress } from 'ngx-progressbar';
 import { Subscription } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-my-profile',
@@ -18,7 +19,9 @@ export class MyProfileComponent implements OnInit,AfterContentInit,OnDestroy {
   edit: boolean;
   profileSubs: Subscription;
 
-  constructor(public authenticateService: AuthenticateService, private router: Router, private httpService: HttpService, private progressService: NgProgress) { }
+  constructor(public authenticateService: AuthenticateService, private router: Router, 
+    private httpService: HttpService, private progressService: NgProgress,
+    private titleService:Title) { }
 
   ngAfterContentInit() {
     this.router.events
@@ -38,6 +41,7 @@ export class MyProfileComponent implements OnInit,AfterContentInit,OnDestroy {
   }
 
   ngOnInit() {
+    this.titleService.setTitle('My Profile')
    this.profileSubs= this.httpService.getProfile().subscribe(res => {
       this.title = res['user']
       console.log(res['user'])

@@ -3,6 +3,7 @@ import { AuthenticateService } from 'src/app/Service/authentication.service';
 import { NgForm } from '@angular/forms';
 import { Router, NavigationEnd, NavigationCancel, NavigationStart } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register-donor',
@@ -14,9 +15,11 @@ export class RegisterDonorComponent implements OnInit, AfterContentInit {
   type = "donor";
   country = "India";
 
-  constructor(private authService: AuthenticateService, private router: Router, private progressService: NgProgress) { }
+  constructor(private authService: AuthenticateService, private router: Router,
+     private progressService: NgProgress,private titleService:Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Donor Register')
   }
   ngAfterContentInit() {
     this.router.events

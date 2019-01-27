@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-about',
@@ -9,9 +10,10 @@ import { NgProgress } from 'ngx-progressbar';
 })
 export class AboutComponent implements OnInit,AfterContentInit {
 
-  constructor(private router:Router,private progressService:NgProgress) { }
+  constructor(private router:Router,private progressService:NgProgress,private titleService:Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle('About Us')
   }
 
   ngAfterContentInit() {

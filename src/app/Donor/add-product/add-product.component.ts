@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticateService } from './../../Service/authentication.service';
 import { NgProgress } from 'ngx-progressbar';
 import { Subscription } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-add-product',
@@ -29,9 +30,11 @@ export class AddProductComponent implements OnInit, AfterContentInit,OnDestroy {
   id;
   constructor(private route: ActivatedRoute,
     private router: Router, private ps: ProductsService,
-    private http: HttpClient, public AuthService: AuthenticateService, private progressService: NgProgress) { }
+    private http: HttpClient, public AuthService: AuthenticateService,
+     private progressService: NgProgress,private titleService:Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Donate Product')
     console.log(this.AuthService.currentUser())
     this.id = this.route.snapshot.paramMap.get('id')   //to get :id from url
     if (this.id) {

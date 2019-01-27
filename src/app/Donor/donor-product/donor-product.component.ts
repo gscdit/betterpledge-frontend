@@ -3,6 +3,7 @@ import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angul
 import { ProductsService } from 'src/app/Service/products.service';
 import { NgProgress } from 'ngx-progressbar';
 import { Subscription } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-donor-product',
@@ -13,9 +14,11 @@ export class DonorProductComponent implements OnInit,AfterContentInit,OnDestroy 
   products$=[];
   product:Subscription;
   loader=true;
-  constructor(private router:Router,private ps:ProductsService,private progressService:NgProgress) {}
+  constructor(private router:Router,private ps:ProductsService,
+    private progressService:NgProgress,private titleService:Title) {}
   
   ngOnInit() {
+    this.titleService.setTitle('Manage Product')
     this.product=this.ps.getUserProduct().subscribe(p=>{
       this.loader=false;
       console.log(p.listings.length)

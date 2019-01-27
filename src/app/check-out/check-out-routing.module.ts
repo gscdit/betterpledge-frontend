@@ -5,7 +5,7 @@ import { CheckOutComponent } from './check-out.component';
 
 
 const recipesRoutes: Routes = [
-  { path: '', component: CheckOutComponent, canActivate: [AuthGuard] }
+  { path: '', component: CheckOutComponent, canActivate: [AuthGuard],data:{title:'Check-Out'} }
 ];
 
 @NgModule({

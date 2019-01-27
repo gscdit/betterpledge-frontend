@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AuthenticateService } from '../../Service/authentication.service';
 import { Router, ActivatedRoute, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +14,14 @@ export class LoginComponent implements OnInit, AfterContentInit {
   invalidLogin: boolean;
   message = "Login";
   type = "beneficiary"
-  constructor(private authService: AuthenticateService, private router: Router, private route: ActivatedRoute, private progressService: NgProgress) { }
+  constructor(private authService: AuthenticateService, 
+    private router: Router, private route: ActivatedRoute,
+     private progressService: NgProgress,private titleService: Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Beneficiary Login');
   }
+
   ngAfterContentInit() {
     this.router.events
       .subscribe((event) => {
@@ -33,9 +38,11 @@ export class LoginComponent implements OnInit, AfterContentInit {
         }
       });
   }
+
   change(){
     this.invalidLogin=false;
   }
+
   onSubmit(form: NgForm) {
     console.log(form.value);
     this.progressService.start();
