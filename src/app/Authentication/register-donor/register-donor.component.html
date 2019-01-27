@@ -30,8 +30,8 @@
               <label for="first_name" class="control-label">First Name</label>
               <input type="text" id="first_name" pattern="^[A-Z]+[a-z]*$" minlength="3" maxlength="10" name="first_name"
                 ngModel class="form-control" required #first_name="ngModel">
-              <span class="help-block" *ngIf="first_name.touched && first_name.errors?.required" style="color:red">Name
-                is required</span>
+              <!-- <span class="help-block" *ngIf="first_name.touched && first_name.errors?.required" style="color:red">Name
+                is required</span> -->
 <!--               <span class="help-block" *ngIf="first_name.touched && first_name.invalid  && !first_name.errors?.required"
                 style="color:red">Please
                 enter valid name</span> -->
@@ -42,8 +42,8 @@
               <label for="last_name" class="control-label">Last Name</label>
               <input type="text" id="last_name" pattern="^[A-Z]+[a-z]*$" minlength="3" maxlength="10" name="last_name"
                 ngModel class="form-control" required #last_name="ngModel">
-              <span class="help-block" *ngIf="last_name.touched && last_name.errors?.required" style="color:red">Name
-                is required</span>
+              <!-- <span class="help-block" *ngIf="last_name.touched && last_name.errors?.required" style="color:red">Name
+                is required</span> -->
 <!--               <span class="help-block" *ngIf="last_name.touched && last_name.invalid  && !last_name.errors?.required"
                 style="color:red">Please
                 enter valid name</span> -->
@@ -54,8 +54,8 @@
               <label for="email">Email</label>
               <input type="email" id="email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]+)$" name="email"
                 ngModel class="form-control" required #email="ngModel">
-              <span class="help-block" *ngIf="email.touched && email.errors?.required" style="color:red">Email is
-                required</span>
+              <!-- <span class="help-block" *ngIf="email.touched && email.errors?.required" style="color:red">Email is
+                required</span> -->
 <!--               <span class="help-block" *ngIf="email.touched && email.invalid  && !email.errors?.required" style="color:red">Please
                 enter valid email</span> -->
               <small style="font-weight:lighter; font-style:italic"> Format: demo@gmail.com </small>
@@ -68,8 +68,8 @@
               <label for="phone_no">Phone No</label>
               <input type="text" id="phone_no" pattern="^[1-9]+[0-9]*$" name="phone_no" ngModel class="form-control"
                 required minlength="10" maxlength="10" #phone_no="ngModel">
-              <span class="help-block" *ngIf="phone_no.touched && phone_no.errors?.required" style="color:red">Phone No
-                is required</span>
+              <!-- <span class="help-block" *ngIf="phone_no.touched && phone_no.errors?.required" style="color:red">Phone No
+                is required</span> -->
 <!--               <span class="help-block" *ngIf="phone_no.touched && phone_no.invalid  && !phone_no.errors?.required"
                 style="color:red">Please enter valid phone no</span> -->
               <small style="font-weight:lighter; font-style:italic"> Phone no must include 10 characters</small>
@@ -79,22 +79,22 @@
                 <label for="organisation">Organisation</label>
                 <input type="text" id="organisation" name="organisation" ngModel class="form-control"
                   required #organisation="ngModel">
-                <span class="help-block" *ngIf="organisation.touched && organisation.errors?.required" style="color:red">Organisation
-                  is required</span>
+                <!-- <span class="help-block" *ngIf="organisation.touched && organisation.errors?.required" style="color:red">Organisation
+                  is required</span> -->
               </div>
             <div class="col  form-group">
                 <label for="street">Street</label>
                 <input type="text" id="street" name="street" ngModel class="form-control"
                   required #street="ngModel">
-                <span class="help-block" *ngIf="street.touched && street.errors?.required" style="color:red">Street
-                  is required</span>
+                <!-- <span class="help-block" *ngIf="street.touched && street.errors?.required" style="color:red">Street
+                  is required</span> -->
               </div>
               <div class="col  form-group">
                   <label for="landmark">Landmark</label>
                   <input type="text" id="landmark" name="landmark" ngModel class="form-control"
                     required #landmark="ngModel">
-                  <span class="help-block" *ngIf="landmark.touched && landmark.errors?.required" style="color:red">Landmark
-                    is required</span>
+                  <!-- <span class="help-block" *ngIf="landmark.touched && landmark.errors?.required" style="color:red">Landmark
+                    is required</span> -->
                 </div>
                 <div class="col  form-group">
                     <label for="city">City</label>
@@ -102,8 +102,8 @@
                       required  #city="ngModel">
                     <option value="Dehradun">Dehradun</option>
                     </select>
-                    <span class="help-block" *ngIf="city.touched && city.errors?.required" style="color:red">City
-                      is required</span>
+                    <!-- <span class="help-block" *ngIf="city.touched && city.errors?.required" style="color:red">City
+                      is required</span> -->
                   </div>
                   <div hidden class="col  form-group">
                       <label for="country">Country</label>
@@ -114,8 +114,8 @@
               <label for="password">Password</label>
               <input type="password" id="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" name="password" ngModel class="form-control"
                 required #password="ngModel">
-              <span class="help-block" *ngIf="password.touched && password.errors?.required" style="color:red">Password
-                is required</span>
+              <!-- <span class="help-block" *ngIf="password.touched && password.errors?.required" style="color:red">Password
+                is required</span> -->
 <!--               <span class="help-block" *ngIf="password.touched && password.invalid  && !password.errors?.required"
                 style="color:red">Please enter valid password</span> -->
               <small style="font-weight:lighter; font-style:italic"> Password must include min 8 characters,one capital character,one small character,one numerical value </small>
@@ -124,10 +124,10 @@
               <label for="password2">Confirm Password</label>
               <input type="password" id="password2" confirmPassword="password" name="password2" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" ngModel class="form-control"
                 required #password2="ngModel">
-              <span class="help-block" *ngIf="password2.touched && password2.errors?.required" style="color:red">Confirm
+              <!-- <span class="help-block" *ngIf="password2.touched && password2.errors?.required" style="color:red">Confirm
                 Password is required</span>
               <span class="help-block" *ngIf="password2.touched && password2.errors?.notEqual && !password2.errors?.required"
-                style="color:red">Password and Confirm Password does not match</span>
+                style="color:red">Password and Confirm Password does not match</span> -->
 <!--               <span class="help-block" *ngIf="password2.touched && password2.invalid  && !password2.errors?.required"
                 style="color:red">Please enter valid password</span> -->
               <small style="font-weight:lighter; font-style:italic"> Password must include min 8 characters,one capital character,one small character,one numerical value </small>

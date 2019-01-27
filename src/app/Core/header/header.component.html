@@ -60,7 +60,7 @@
             <a class="dropdown-item" routerLink="/user/register-beneficiary" *ngIf="!authService.loggedin()" (click)="toggleNavbar()">Register</a>
             <a class="dropdown-item" routerLink="/my/order" *ngIf="authService.loggedin() && authService.currentUser().type==='beneficiary'" (click)="toggleNavbar()">My Orders</a>
             <a class="dropdown-item" routerLink="/my/Profile" *ngIf="authService.loggedin()" (click)="toggleNavbar()">My Account</a>
-            <a class="dropdown-item" routerLink="/Notifications" *ngIf="authService.loggedin() && authService.currentUser().type==='donor'" (click)="toggleNavbar()">Notifications</a>
+            <a class="dropdown-item" routerLink="/my/notification" *ngIf="authService.loggedin() && authService.currentUser().type==='donor'" (click)="toggleNavbar()">Notifications</a>
             <a class="dropdown-item" *ngIf="authService.loggedin()" (click)="logout()"><span><i
                   class="fas fa-sign-out-alt" style="font-size:100%"></i></span>
               Logout</a>
