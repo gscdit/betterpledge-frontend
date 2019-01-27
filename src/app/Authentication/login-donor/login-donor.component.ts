@@ -52,7 +52,7 @@ export class LoginDonorComponent implements OnInit,AfterContentInit {
           return;
         }else{
         sessionStorage.setItem('token',response.token)//(key,value)
-         this.router.navigate([returnUrl || '/'])}
+         this.router.navigate([returnUrl || '/donor/addProduct'])}
       },
       error=>{
         this.progressService.done();

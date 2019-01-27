@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit, AfterContentInit {
           return;
         } else {
           sessionStorage.setItem('token', response.token)//(key,value)
-          this.router.navigate([returnUrl || '/'])
+          this.router.navigate([returnUrl || '/product/all'])
         }
       },
       error => {

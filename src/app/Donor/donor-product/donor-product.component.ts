@@ -44,6 +44,7 @@ export class DonorProductComponent implements OnInit,AfterContentInit,OnDestroy 
   }
 
   ngOnDestroy(){
+    if(this.products$ && this.products$.length)
     this.product.unsubscribe();
   }
   

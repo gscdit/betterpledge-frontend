@@ -56,7 +56,8 @@
                 <div class="card-body" (click)="detailPage(p)">
                   <h5 class="card-title lead">{{p.description}}</h5>
                   <p class="card-text"> <i class="fa fa-map-marker"></i>&nbsp;{{p.street}},{{p.landmark}} <br>&nbsp;&nbsp;&nbsp;&nbsp;{{p.city}}</p>
-                  <p class="badge badge-dark float-right">{{p.type | uppercase}}</p>
+                  <p *ngIf="p.type==='non-veg'" class="badge badge-danger float-right">{{p.type | uppercase}}</p>
+                  <p *ngIf="p.type==='veg'" class="badge badge-success float-right">{{p.type | uppercase}}</p>
                   <hr>
                   <p class="card-text">Quantity:- {{p.quantity}}</p>
                   <p class="card-text">{{p.organisation}}</p>

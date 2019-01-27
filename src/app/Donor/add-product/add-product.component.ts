@@ -155,6 +155,7 @@ export class AddProductComponent implements OnInit, AfterContentInit,OnDestroy {
   }
 
   ngOnDestroy(){
+    if(this.id)
     this.productSubscription.unsubscribe();
   }
 }

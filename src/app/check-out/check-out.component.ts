@@ -64,7 +64,7 @@ export class CheckOutComponent implements OnInit, AfterContentInit {
   
    close(){
     this.modalService.dismissAll('Close click');
-    this.router.navigate(['product/all']);
+    this.router.navigate(['my/order']);
    }
 
   openVerticallyCentered(content) {
@@ -78,12 +78,11 @@ export class CheckOutComponent implements OnInit, AfterContentInit {
       orders: data
     }
     console.log(order)
-    this.ordersubsc = this.os.storeOrder(order).subscribe(res => {
+    this.os.storeOrder(order).subscribe(res => {
       console.log(res);
       this.message = res['message'];
       this.modalService.open(content, { centered: true });
       this.cartService.clearCart();
-
     });
   }
 
@@ -103,7 +102,7 @@ export class CheckOutComponent implements OnInit, AfterContentInit {
     this.subscription.unsubscribe();
     if (this.cart$ && this.cart$.items)
       this.productSubscription.unsubscribe();
-      this.ordersubsc.unsubscribe();  
+       
   }
 
   
