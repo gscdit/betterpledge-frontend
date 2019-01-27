@@ -1,3 +1,95 @@
-<p>
-  notification works!
-</p>
+<app-header></app-header>
+<div class="container-fluid jumbotron m-0 p-0">
+  <div class="container jumbotron">
+    <h4 class="display-4">Notification</h4>
+    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet impedit, voluptas culpa eaque repellendus
+      facere enim autem. Illum ipsa nobis magni reprehenderit soluta rerum doloribus a totam deserunt, culpa dolore?</span>
+    <a style="bottom:25px;right:25px;position:fixed; color:white; z-index: 1 " routerLink="/donor/addProduct" class="btn btn-success"><i
+        class="fa fa-plus " title="Donate"></i> </a>
+  </div>
+</div>
+<div class="container d1">
+  <h4>My Orders</h4>
+</div>
+<div class="container d2">
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="card">
+              <div class="card-body">
+                  <div *ngIf="loader; else load">
+                      <div class="loader"></div>
+                  </div>
+                  <ng-template #load>
+                      <div *ngIf="orders && orders.length;else items">
+                          <div *ngFor="let order of orders">
+                              <div class="card">
+                                  <div class="card-header">
+                                      <div class="container">
+                                          <div class="row">
+                                              <div class="col-sm">
+                                                  <span class="a-color-secondary label">
+                                                      Order placed
+                                                  </span>
+                                                  <div class="a-row">
+                                                      <span class="a-color-secondary label ">
+                                                          {{order.time_stamp | date}}
+                                                      </span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm">
+                                                  <span>
+                                                      Picked By:-
+                                                  </span>
+                                                  <div class="a-row">
+                                                      <span>
+                                                          {{order.first_name}}
+                                                          {{order.last_name}} <br>
+                                                          {{order.phone_no}} <br>
+                                                          {{order.email}}
+                                                      </span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm">
+                                                  <span class="a-color-secondary label">
+                                                      Order
+                                                  </span>
+                                                  <div class="a-row">
+                                                      <span class="a-color-secondary value">
+                                                          #{{order.time_stamp}}
+                                                      </span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="card-body">
+                                      <table class="table table-borderless " script="border: none;">
+                                          <tbody>
+                                              <tr>
+                                                  <div class="img-thumbnail mx-auto thumbnail"
+                                                      [style.backgroundImage]="'url('+ order.image +')'"></div>
+                                                  <td>{{order.description}}<br>
+                                                      {{'Quantity:-'+' '+order.quantity}}<br>
+                                                      {{order.organisation}}</td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </div>
+                              </div><br>
+                          </div>
+                      </div>
+                      <ng-template #items>
+                          <div>
+                              <img src="assets/item_no.png" style=" display:block;
+                                      margin:auto; height: 200px;"
+                                  alt="">
+                          </div>
+                      </ng-template>
+                  </ng-template>
+              </div>
+          </div>
+      </div>
+  </div>
+  <br>
+</div>
+<app-footer></app-footer>

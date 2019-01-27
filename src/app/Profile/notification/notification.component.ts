@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from 'src/app/Service/order.service';
 
 @Component({
   selector: 'app-notification',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notification.component.css']
 })
 export class NotificationComponent implements OnInit {
-
-  constructor() { }
-
+   orders=[];
+  constructor(private orderService:OrderService) { }
+   loader=true;
   ngOnInit() {
+   this.orderService.notification().subscribe(res=>{
+     this.loader=false;
+     console.log(res);
+     this.orders=res['orders'];
+     console.log(this.orders)
+   })
   }
 
 }

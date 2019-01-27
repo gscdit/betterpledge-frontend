@@ -11,14 +11,14 @@ import { NgProgress } from 'ngx-progressbar';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
-export class AddProductComponent implements OnInit,AfterContentInit {
+export class AddProductComponent implements OnInit, AfterContentInit {
   product = {
     'description': null,
     'type': null,
     'quantity': null,
     'image': null
   };
-  disable=false;
+  disable = false;
   upload = false;
   selectedFile = null;
   res: boolean;
@@ -27,7 +27,7 @@ export class AddProductComponent implements OnInit,AfterContentInit {
   id;
   constructor(private route: ActivatedRoute,
     private router: Router, private ps: ProductsService,
-    private http: HttpClient, public AuthService: AuthenticateService,private progressService:NgProgress) { }
+    private http: HttpClient, public AuthService: AuthenticateService, private progressService: NgProgress) { }
 
   ngOnInit() {
     console.log(this.AuthService.currentUser())
@@ -35,19 +35,19 @@ export class AddProductComponent implements OnInit,AfterContentInit {
     if (this.id) {
       this.res = true;
       this.ps.getSingleProduct(this.id).take(1)
-      .subscribe(res => { this.product = JSON.parse(res), console.log(this.product) });
+        .subscribe(res => { this.product = JSON.parse(res), console.log(this.product) });
     }
   }
 
   delete() {
     this.progressService.start();
     this.progressService.set(0.1);
-      this.progressService.inc(0.2);
+    this.progressService.inc(0.2);
     if (!confirm("Are you sure you want to delete this product?")) return; {
       this.ps.deleteProduct(this.id).subscribe(res => {
         this.progressService.done();
         this.router.navigate(['/donor/donatedProduct'])
-      },error=>{
+      }, error => {
         this.progressService.done();
       }
       );
@@ -56,41 +56,44 @@ export class AddProductComponent implements OnInit,AfterContentInit {
 
 
   onFileChanged(event) {
+    this.upload = false;
     this.selectedFile = event.target.files[0];
     if (event.target.files[0]) {
-      if (this.selectedFile.size >= 10000000 ) {
+      console.log(this.selectedFile.size+' '+this.selectedFile.type)
+      if (this.selectedFile.size >= 10000000) {
         this.size = true;
-        if(this.selectedFile.type==='image/png'){
-        this.type=true;
+        if (this.selectedFile.type != "image/jpeg") {
+          this.type = true;
+        }
       }
-      }
-      else if(this.selectedFile.type==='image/png'){
-        this.type=true;
+      else if (this.selectedFile.type != "image/jpeg") {
+        this.type = true;
       }
       else {
         this.type = false;
         this.size = false;
         this.upload = true;
-      
+
         this.progressService.start();
         this.progressService.set(0.1);
         this.progressService.inc(0.2);
-      console.log(this.selectedFile);
-    const uploadData = new FormData();
-    uploadData.append('file', this.selectedFile, this.selectedFile.name);
-    console.log(uploadData); 
+        console.log(this.selectedFile);
+        const uploadData = new FormData();
+        uploadData.append('file', this.selectedFile, this.selectedFile.name);
+        console.log(uploadData);
         this.http.post('https://obv53599.pythonanywhere.com/uploadimage', uploadData)
-        .subscribe(
-          res => {
-          this.progressService.done();
-            console.log(res);
-            this.product.image = res['url'];
-            this.res = true;
-            this.upload = false;
-          },error=>{
-        this.progressService.done();
-          }
-        );}
+          .subscribe(
+            res => {
+              this.progressService.done();
+              console.log(res);
+              this.product.image = res['url'];
+              this.res = true;
+              this.upload = false;
+            }, error => {
+              this.progressService.done();
+            }
+          );
+      }
     }
   }
 
@@ -109,41 +112,41 @@ export class AddProductComponent implements OnInit,AfterContentInit {
           this.progressService.done();
         }
       });
-    }
+  }
 
 
   onSave(value: NgForm) {
-    this.disable=true;
+    this.disable = true;
     this.progressService.start();
     this.progressService.set(0.1);
     this.progressService.inc(0.2);
-  let  product={
-       description:value['description'],
-       type:value['type'],
-       quantity:value['quantity'],
-       image:this.product.image
+    let product = {
+      description: value['description'],
+      type: value['type'],
+      quantity: value['quantity'],
+      image: this.product.image
     }
     console.log(product);
     if (this.id) {
-      this.disable=false;
+      this.disable = false;
       this.ps.updateProduct(product, this.id).subscribe(res => {
-          this.progressService.done();
+        this.progressService.done();
         this.router.navigate(['/donor/donatedProduct']);
       },
         error => {
-          this.disable=false;
-        this.progressService.done();
+          this.disable = false;
+          this.progressService.done();
           console.log(error);
         });
     } else {
       this.ps.addProduct(product).subscribe(res => {
-          this.progressService.done();
+        this.progressService.done();
         this.router.navigate(['/donor/donatedProduct']);
-        this.disable=false;
+        this.disable = false;
       },
         error => {
-          this.disable=false;
-        this.progressService.done();
+          this.disable = false;
+          this.progressService.done();
           console.log(error);
         });
     }
