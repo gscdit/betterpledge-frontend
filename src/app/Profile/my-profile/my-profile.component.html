@@ -38,7 +38,8 @@
           <div class="card-body">
             <h5 style="font-family: 'Montserrat', sans-serif; font-weight:700;">Other Links</h5>
             <hr>
-            <button class="btn btn-success" routerLink='/my/order'>Order History</button>
+            <button *ngIf="authenticateService.currentUser().type==='beneficiary'" class="btn btn-success" routerLink='/my/order'>Order History</button>
+            <button *ngIf="authenticateService.currentUser().type==='donor'" class="btn btn-success" routerLink='/my/notification'>My Order</button>
           </div>
         </div>
       </div><br>
