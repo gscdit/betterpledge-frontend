@@ -18,7 +18,8 @@ export class AddProductComponent implements OnInit, AfterContentInit,OnDestroy {
     'description': null,
     'type': null,
     'quantity': null,
-    'image': null
+    'image': null,
+    'expiry' : null,
   };
   productSubscription:Subscription;
   disable = false;
@@ -129,7 +130,8 @@ export class AddProductComponent implements OnInit, AfterContentInit,OnDestroy {
       description: value['description'],
       type: value['type'],
       quantity: value['quantity'],
-      image: this.product.image
+      image: this.product.image,
+      expiry : value['expiry']
     }
     console.log(product);
     if (this.id) {
