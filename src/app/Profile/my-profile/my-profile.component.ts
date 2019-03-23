@@ -6,6 +6,7 @@ import { HttpService } from '../../Service/http.service';
 import { NgProgress } from 'ngx-progressbar';
 import { Subscription } from 'rxjs';
 import { Title } from '@angular/platform-browser';
+import { NgoVerificationService } from './../../Service/ngo-verification.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -21,7 +22,7 @@ export class MyProfileComponent implements OnInit,AfterContentInit,OnDestroy {
 
   constructor(public authenticateService: AuthenticateService, private router: Router, 
     private httpService: HttpService, private progressService: NgProgress,
-    private titleService:Title) { }
+    private titleService:Title,private ngoService: NgoVerificationService) { }
 
   ngAfterContentInit() {
     this.router.events
@@ -41,16 +42,20 @@ export class MyProfileComponent implements OnInit,AfterContentInit,OnDestroy {
   }
 
   ngOnInit() {
+    console.log(this.authenticateService.currentUser())
     this.titleService.setTitle('My Profile')
    this.profileSubs= this.httpService.getProfile().subscribe(res => {
       this.title = res['user']
       console.log(res['user'])
     })
   }
+
   onEdit() {
     this.edit = !this.edit;
   }
+
   errorshow = false;
+
   onSave(form: NgForm) {
     console.log(form.value);
     this.httpService.changeProfile(form.value).subscribe(res => {
@@ -64,6 +69,15 @@ export class MyProfileComponent implements OnInit,AfterContentInit,OnDestroy {
       this.edit = !this.edit;
     }
   }
+
+  ngo(value:NgForm){
+    console.log(value.value)
+   this.ngoService.sendDetails(value.value).subscribe(res=>{
+     console.log(res['token'])
+     sessionStorage.setItem('token',res['token'])
+   })
+  }
+
   ngOnDestroy(){
     this.profileSubs.unsubscribe();
   }

@@ -27,16 +27,14 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form>
+      <form (ngSubmit)="ngo(w)" #w="ngForm">
         <div class="modal-body">
-          <p>Please fill the form below to verify your Organization.</p>
-          Registration Number - <input type="text" placeholder="0000000" name="registrationNumber" id="reg"
-            class="form-control">
-          Unique Id of VO/NGO - <input type="text" placeholder="UA/XX/XXXXX" name="registrationNumber" id="reg"
-            class="form-control">
+          <p>Please fill the form below to verify your Organization.</p><br>
+          Registration Number - <input type="text" placeholder="0000000" name="registration_no" ngModel class="form-control">
+          Unique Id of VO/NGO - <input type="text" placeholder="UA/XX/XXXXX" name="ngo_unique_id" ngModel  class="form-control">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Request Verificaition</button>
+          <button type="submit" class="btn btn-primary">Request Verificaition</button>
         </div>
       </form>
     </div>
@@ -61,9 +59,15 @@
 
             </span>
             <hr>
-            <p *ngIf="authenticateService.currentUser().type==='beneficiary'">
+            <p *ngIf="authenticateService.currentUser().type==='beneficiary'&& authenticateService.currentUser().status===0">
               Status - <span id="status"> Not Verified</span> <br>
               <small><a data-toggle="modal" style="color:navy; cursor: pointer; " data-target="#verify">Apply for verification</a> &nbsp; <i class="fas fa-check-circle"></i></small>
+            </p>
+            <p *ngIf="authenticateService.currentUser().type==='beneficiary'&& authenticateService.currentUser().status===2">
+              Status - <span id="status"> Pending</span>
+            </p>
+            <p *ngIf="authenticateService.currentUser().type==='beneficiary'&& authenticateService.currentUser().status===1">
+              Status - <span id="status"> Verified</span>
             </p>
           </div>
         </div>

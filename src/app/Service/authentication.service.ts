@@ -6,9 +6,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthenticateService {
-private _registerUrl="https://27ef592a.ngrok.io/beneficiary"
-private _register2Url="https://27ef592a.ngrok.io/donor"
-private _loginUrl="https://27ef592a.ngrok.io/login"
+private _registerUrl="https://76c328b6.ngrok.io/beneficiary"
+private _register2Url="https://76c328b6.ngrok.io/donor"
+private _loginUrl="https://76c328b6.ngrok.io/login"
   constructor(private http:HttpClient,private router:Router) { }
 
   register(user){
