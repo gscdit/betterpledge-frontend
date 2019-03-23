@@ -66,10 +66,18 @@
                 </div>
                 <div class="card-footer p-1 text-center" style="opacity: 1;">
                   <div *ngIf="!getQuantity(p);else updateQuantity">
-                    <button class="btn btn-secondary float-right btn-sm" type="button" (click)="addToCart(p)" style="color: white;margin-right: 10px">Add
-                      to cart</button>
-                    <button (click)="checkout(p)" class="btn btn-primary float-right btn-sm mx-1">Check Out</button>
-                  </div>
+                    <div *ngIf="authService.currentUser().status===1;else pending">
+                      <button class="btn btn-secondary float-right btn-sm" type="button" (click)="addToCart(p)" style="color: white;margin-right: 10px">Add
+                          to cart</button>
+                          <button (click)="checkout(p)" class="btn btn-primary float-right btn-sm mx-1">Check Out</button>
+                        </div>
+                        <ng-template #pending>
+                            <button class="btn btn-secondary float-right btn-sm" type="button" (click)="addToCarts()" style="color: white;margin-right: 10px">Add
+                                to cart</button>
+                                <button (click)="checkouts()" class="btn btn-primary float-right btn-sm mx-1">Check Out</button>       
+                        </ng-template>
+                        
+                        </div>
                   <ng-template #updateQuantity>
                     <div class="row no-gutters text-center">
                       <div class="col-2">

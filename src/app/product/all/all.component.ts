@@ -58,6 +58,7 @@ export class AllComponent implements OnInit, OnDestroy, AfterContentInit {
   }
 
   async ngOnInit() {
+    console.log(this.authService.currentUser())
     this.titleService.setTitle('Food')
     this.productsubscription = this.ps.getAll().switchMap(
       p => {
@@ -98,6 +99,14 @@ export class AllComponent implements OnInit, OnDestroy, AfterContentInit {
   totalQuantity() {
     if (this.filteredProduct)
       return this.filteredProduct.length
+  }
+
+  addToCarts(){
+    this.router.navigate(['my/Profile'])
+  }
+
+  checkouts(){
+    this.router.navigate(['my/Profile'])
   }
 
   removeFromCart(product) {

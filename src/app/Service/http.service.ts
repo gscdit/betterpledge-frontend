@@ -7,9 +7,9 @@ export class HttpService {
    
   
     changeProfile(value){
-   return this.http.post('https://gscditu.com/api/user/update',value)
+   return this.http.post('https://27ef592a.ngrok.io/user/update',value)
     }
     getProfile(){
-     return this.http.get('https://gscditu.com/api/user')
+     return this.http.get('https://27ef592a.ngrok.io/user')
     }
 }
