@@ -10,12 +10,40 @@
       <span style="color: #930202;">Account</span></b>
     <p class="text-left px-1 text-muted" style="font-family: 'Montserrat', sans-serif; font-weight:700;">
       Manage your account, browse your order history all in one place.</p>
-    <a style="bottom:25px;right:25px;position:fixed; color:white; z-index: 1 " routerLink="/donor/addProduct" class="btn btn-success"><i
-        class="fa fa-plus " title="Donate"></i> </a>
+    <a style="bottom:25px;right:25px;position:fixed; color:white; z-index: 1 " routerLink="/donor/addProduct"
+      class="btn btn-success"><i class="fa fa-plus " title="Donate"></i> </a>
   </div>
 </div>
 
 <!-- end of jumbotron -->
+
+<!-- Modal-->
+<div class="modal" tabindex="-1" role="dialog" id="verify">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Verify your Organization!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <p>Please fill the form below to verify your Organization.</p>
+          Registration Number - <input type="text" placeholder="0000000" name="registrationNumber" id="reg"
+            class="form-control">
+          Unique Id of VO/NGO - <input type="text" placeholder="UA/XX/XXXXX" name="registrationNumber" id="reg"
+            class="form-control">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Request Verificaition</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- End of Modal -->
 
 <div class="container d2">
   <div class="row">
@@ -24,12 +52,19 @@
         <div class="card">
           <div class="card-body">
             <span>
-              <img class="propic img img-responsive" src="./assets/user.png" style="height: 50px; width:50px;" alt="Avatar">
+              <img class="propic img img-responsive" src="./assets/user.png" style="height: 50px; width:50px;"
+                alt="Avatar">
               &nbsp;
 
-              <strong> {{authenticateService.currentUser().first_name+' '+authenticateService.currentUser().last_name }} </strong>
+              <strong> {{authenticateService.currentUser().first_name+' '+authenticateService.currentUser().last_name }}
+              </strong>
 
             </span>
+            <hr>
+            <p *ngIf="authenticateService.currentUser().type==='beneficiary'">
+              Status - <span id="status"> Not Verified</span> <br>
+              <small><a data-toggle="modal" style="color:navy; cursor: pointer; " data-target="#verify">Apply for verification</a> &nbsp; <i class="fas fa-check-circle"></i></small>
+            </p>
           </div>
         </div>
       </div>
@@ -38,8 +73,10 @@
           <div class="card-body">
             <h5 style="font-family: 'Montserrat', sans-serif; font-weight:700;">Other Links</h5>
             <hr>
-            <button *ngIf="authenticateService.currentUser().type==='beneficiary'" class="btn btn-success" routerLink='/my/order'>Order History</button>
-            <button *ngIf="authenticateService.currentUser().type==='donor'" class="btn btn-success" routerLink='/my/notification'>My Order</button>
+            <button *ngIf="authenticateService.currentUser().type==='beneficiary'" class="btn btn-success"
+              routerLink='/my/order'>Order History</button>
+            <button *ngIf="authenticateService.currentUser().type==='donor'" class="btn btn-success"
+              routerLink='/my/notification'>My Order</button>
           </div>
         </div>
       </div><br>
@@ -79,8 +116,8 @@
                     &nbsp; Email Address</span> </h5>
                 <hr>
                 <input class="form-control" type="text" *ngIf="!edit" placeholder="{{title.email}}" readonly>
-                <input class="form-control" type="text" name="email" *ngIf="edit" [(ngModel)]="title.email" placeholder="Email Address"
-                  ngModel readonly>
+                <input class="form-control" type="text" name="email" *ngIf="edit" [(ngModel)]="title.email"
+                  placeholder="Email Address" ngModel readonly>
               </div>
             </div>
             <div class="card d3 border-0">
@@ -95,7 +132,8 @@
             </div>
             <div class="card d3 border-0">
               <div class="card-body">
-                <h5 style="font-family: 'Montserrat', sans-serif; font-weight:700;"> <span> <i class="fa fa-map-marker"></i>
+                <h5 style="font-family: 'Montserrat', sans-serif; font-weight:700;"> <span> <i
+                      class="fa fa-map-marker"></i>
                     &nbsp; Address</span> </h5>
                 <hr>
                 <input class="form-control" type="text" *ngIf="!edit" placeholder="Street: {{title.street}}" readonly>
@@ -111,7 +149,8 @@
                   placeholder="Street"> <br *ngIf="edit">
                 <input class="form-control" name="landmark" [(ngModel)]="title.landmark" type="text" *ngIf="edit"
                   placeholder="Landmark"> <br *ngIf="edit">
-                <input class="form-control" name="city" [(ngModel)]="title.city" type="text" *ngIf="edit" placeholder="City">
+                <input class="form-control" name="city" [(ngModel)]="title.city" type="text" *ngIf="edit"
+                  placeholder="City">
                 <br *ngIf="edit">
                 <input class="form-control" name="country" [(ngModel)]="title.country" type="text" *ngIf="edit"
                   placeholder="Country"> <br *ngIf="edit">
