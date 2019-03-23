@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
-import { take } from 'rxjs-compat/operator/take';
-import { Product } from '../Models/product';
 import { ShoppingCart } from './../Models/shoppingCart';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCartService {
-  constructor(private http: HttpClient, private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase) { }
 
   async delete(product) {
     let cart_id = await this.getorcreateCartId();

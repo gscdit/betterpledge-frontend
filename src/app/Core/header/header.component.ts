@@ -32,6 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
     )
   }
   ngOnDestroy() {
+    if(this.authService.loggedin() && this.cart$ && this.authService.currentUser().type==='beneficiary')
     this.subscription.unsubscribe(); 
   }
 

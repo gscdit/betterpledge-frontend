@@ -43,7 +43,7 @@
               <input type="text" id="last_name" pattern="^[A-Z]+[a-z]*$" minlength="3" maxlength="10" name="last_name"
                 ngModel class="form-control" required #last_name="ngModel">
 
-<!--               <span class="help-block" *ngIf="last_name.touched && last_name.errors?.required" style="color:red">Name
+<!--               <span class="help-block" *ngIf="last_name.name && last_name.errors?.required" style="color:red">Name
                 is required</span>
               <span class="help-block" *ngIf="last_name.touched && last_name.invalid  && !last_name.errors?.required"
 

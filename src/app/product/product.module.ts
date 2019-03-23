@@ -11,6 +11,7 @@ import { BrowserXhr } from "@angular/http";
 import { CoreModule } from "../Core/core.module";
 import { ProductComponent } from './product.component';
 import { RouterModule } from "@angular/router";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { RouterModule } from "@angular/router";
         NgProgressModule,
         ProductRoutingModule,
         CoreModule,
+        FormsModule,
         RouterModule
     ],
     providers:[

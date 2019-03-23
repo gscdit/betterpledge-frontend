@@ -6,9 +6,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthenticateService {
-private _registerUrl="https://obv53599.pythonanywhere.com/beneficiary"
-private _register2Url="https://obv53599.pythonanywhere.com/donor"
-private _loginUrl="https://obv53599.pythonanywhere.com/login"
+private _registerUrl="https://gscditu.com/api/beneficiary"
+private _register2Url="https://gscditu.com/api/donor"
+private _loginUrl="https://gscditu.com/api/login"
   constructor(private http:HttpClient,private router:Router) { }
 
   register(user){

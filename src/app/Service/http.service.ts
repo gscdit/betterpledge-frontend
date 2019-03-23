@@ -7,9 +7,9 @@ export class HttpService {
    
   
     changeProfile(value){
-   return this.http.post('https://obv53599.pythonanywhere.com/user/update',value)
+   return this.http.post('https://gscditu.com/api/user/update',value)
     }
     getProfile(){
-     return this.http.get('https://obv53599.pythonanywhere.com/user')
+     return this.http.get('https://gscditu.com/api/user')
     }
 }

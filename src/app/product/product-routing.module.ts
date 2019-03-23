@@ -15,7 +15,7 @@ const recipesRoutes: Routes = [
   { path: 'detail/:id', component: ProductDetailComponent, canActivate: [AuthGuard, BeneficiaryGuard] },
   { path: 'lightning', component: LightningFastDealComponent, canActivate: [AuthGuard, BeneficiaryGuard] },
   { path: 'trending', component: TrendingComponent, canActivate: [AuthGuard, BeneficiaryGuard] }
-  ]},
+ ]},
 ];
 
 @NgModule({

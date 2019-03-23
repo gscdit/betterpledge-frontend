@@ -82,9 +82,8 @@ export class CheckOutComponent implements OnInit, AfterContentInit {
     console.log(order)
     this.os.storeOrder(order).subscribe(res => {
       console.log(res);
-      this.message = res['message'];
-      this.modalService.open(content, { centered: true });
       this.cartService.clearCart();
+      this.modalService.open(content, { centered: true });
     });
   }
 

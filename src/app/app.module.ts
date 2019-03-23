@@ -21,6 +21,7 @@ import { BeneficiaryGuard } from './beneficiary.guard';
 import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './Extra/404/404.component';
 import { NgProgress, NgProgressModule } from 'ngx-progressbar';
+import { ApprovedGuard } from './approved.guard';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { NgProgress, NgProgressModule } from 'ngx-progressbar';
     AngularFireDatabaseModule
   ],
 
-  providers: [HttpService, OrderService, AuthenticateService, AuthGuard, DonorGuard, BeneficiaryGuard, ShoppingCartService, {
+  providers: [HttpService, OrderService, AuthenticateService, AuthGuard, DonorGuard,ApprovedGuard, BeneficiaryGuard, ShoppingCartService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
