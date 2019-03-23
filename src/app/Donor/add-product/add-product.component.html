@@ -7,7 +7,7 @@
       <span style="color: #930202;">Products</span></b>
     <p class="text-left px-1 text-muted" style="font-family: 'Montserrat', sans-serif; font-weight:700;">
       Take a Better Pledge today. Start Donating.</p>
-   
+
   </div>
 </div>
 <div class="container my-3 mx-auto">
@@ -35,22 +35,32 @@
           <label id="quantity" for="quantity">Quantity</label><br>
           <div class="input-group mb-3">
             <input type="text" #quantity="ngModel" type="text" [(ngModel)]="product.quantity" pattern="^[1-9]+[0-9]*$"
-              name="quantity" id="quantity" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2"
-              required>
+              name="quantity" id="quantity" class="form-control" aria-label="Recipient's username"
+              aria-describedby="basic-addon2" required>
             <div class="input-group-append">
-              <span class="input-group-text" id="basic-addon2">per serving</span>
+              <span class="input-group-text" id="basic-addon2">Plate/Pcs/Servings</span>
             </div>
           </div>
         </div>
-
+        <span>Select Image of the Listing - &nbsp;</span>
         <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
-        <button (click)="fileInput.click()" type="button" class="btn fa fa-paperclip">Select File</button>&nbsp;&nbsp;&nbsp;<br><br>
+        <button (click)="fileInput.click()" type="button" class="btn fa fa-paperclip">Select
+          File</button>&nbsp;&nbsp;&nbsp;<br><br>
         <p *ngIf="selectedFile">{{selectedFile.name}}</p>
         <p *ngIf="type" style="color:red">Type of image should be of (.jpg)</p>
         <p *ngIf="size" style="color:red">Image size should be less than 1MB</p>
 
+        <p>Expiry Time</p>
+        <div class="input-group mb-3">
+          <input #expiry="ngModel" name="expiry" [(ngModel)]="product.expiry" type="time" class="form-control" aria-label="The listing will expire in XX hours">
+          <div class="input-group-append">
+            <span class="input-group-text">Hrs.</span>
+          </div>
+        </div>
+
         <button class="btn btn-success" [disabled]="!f.valid || !res">Save</button>&nbsp;&nbsp;&nbsp;
         <button class="btn btn-danger" type="button" *ngIf="id" (click)="delete()">Delete</button>
+        <br> <br> <br>
       </div>
       <div class="col-md-5">
         <div>
