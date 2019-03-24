@@ -51,7 +51,7 @@
         <ng-template #showproducts>
           <div class="card-deck">
             <ng-container *ngFor="let p of filteredProduct; let i=index;">
-              <div *ngIf="p.quantity" class="card col-md-4 col-sm-12 product" style="width: 92vw; margin-bottom: 15px;">
+              <div *ngIf="p.quantity&&p.expiry!=0" class="card col-md-4 col-sm-12 product" style="width: 92vw; margin-bottom: 15px;">
                 <img class="card-img-top px-0" height="200px" src="{{p.image}}" (click)="detailPage(p)">
                 <div class="card-body" (click)="detailPage(p)">
                   <h5 class="card-title lead">{{p.description}}</h5>
@@ -75,8 +75,7 @@
                             <button class="btn btn-secondary float-right btn-sm" type="button" (click)="addToCarts()" style="color: white;margin-right: 10px">Add
                                 to cart</button>
                                 <button (click)="checkouts()" class="btn btn-primary float-right btn-sm mx-1">Check Out</button>       
-                        </ng-template>
-                        
+                        </ng-template>                        
                         </div>
                   <ng-template #updateQuantity>
                     <div class="row no-gutters text-center">

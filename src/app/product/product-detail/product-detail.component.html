@@ -69,10 +69,19 @@
 						</dl>
 						<hr>
 						<div *ngIf="!getQuantity();else updateQuantity">
-							<a class="btn btn btn-secondary text-uppercase" (click)="checkout()" style="color:aliceblue;"> Check-out </a>
-							&nbsp;
-							<a (click)="addToCart()" style="color:aliceblue;" class="btn btn btn-secondary text-uppercase"> <i class="fa fa-shopping-cart"></i>
-								Add to cart </a>
+							<div *ngIf="authService.currentUser().status==1;else verifiy">
+
+								<a class="btn btn btn-secondary text-uppercase" (click)="checkout()" style="color:aliceblue;"> Check-out </a>
+								&nbsp;
+								<a (click)="addToCart()" style="color:aliceblue;" class="btn btn btn-secondary text-uppercase"> <i class="fa fa-shopping-cart"></i>
+									Add to cart </a>
+							</div>
+							<ng-template #verify>
+								<a class="btn btn btn-secondary text-uppercase" (click)="checkouts()" style="color:aliceblue;"> Check-out </a>
+									&nbsp;
+									<a (click)="addToCarts()" style="color:aliceblue;" class="btn btn btn-secondary text-uppercase"> <i class="fa fa-shopping-cart"></i>
+										Add to cart </a>
+							</ng-template>
 						</div>
 						<ng-template #updateQuantity>
 							<div class="row no-gutters text-center">

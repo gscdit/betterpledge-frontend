@@ -5,6 +5,7 @@ import { ShoppingCartService } from 'src/app/Service/shopping-cart.service';
 import { Subscription } from 'rxjs';
 import { NgProgress } from 'ngx-progressbar';
 import { Title } from '@angular/platform-browser';
+import { AuthenticateService } from 'src/app/Service/authentication.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,12 +14,12 @@ import { Title } from '@angular/platform-browser';
 })
 export class ProductDetailComponent implements OnInit, OnDestroy, AfterContentInit {
   id
-  product = { image: null, description: null, quantity: null, type: null }
+  product = { image: null, description: null, quantity: null, type: null,expiry:null }
   shoppingCart;
   subscription: Subscription
   constructor(private ps: ProductsService, private route: ActivatedRoute, 
     private cartService: ShoppingCartService, private router: Router, 
-    private progressService: NgProgress, private titleService:Title) { }
+    private progressService: NgProgress, private titleService:Title,public authService: AuthenticateService) { }
 
   ngAfterContentInit() {
     this.router.events
@@ -44,7 +45,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy, AfterContentIn
     this.subscription = (await this.cartService.getCart()).snapshotChanges().subscribe(
       cart => {
         this.shoppingCart = cart.payload.val();
-        if (this.getQuantity() > this.product.quantity) {
+        if (this.getQuantity() > this.product.quantity || this.product.expiry==='0') {
           this.delete();
         }
       }
@@ -55,7 +56,13 @@ export class ProductDetailComponent implements OnInit, OnDestroy, AfterContentIn
     this.cartService.addToCart(this.product);
   }
 
+  checkouts(){
+    this.router.navigate(['my/Profile'])
+  }
 
+  addToCarts(){
+    this.router.navigate(['my/Profile'])
+  }
 
   checkout() {
     this.addToCart();

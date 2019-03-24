@@ -9,7 +9,7 @@ export class NgoVerificationService {
   constructor(private http:HttpClient) { }
 
   sendDetails(value){
-  return  this.http.post("https://76c328b6.ngrok.io/addverificationdetails",value)
+  return  this.http.post("https://gscditu.com/api/addverificationdetails",value)
   }
   
 }

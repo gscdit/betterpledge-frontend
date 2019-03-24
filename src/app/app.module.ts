@@ -38,7 +38,6 @@ import { NgoVerificationService } from './Service/ngo-verification.service';
     HttpClientModule,
     HttpModule,
     NgProgressModule,
-    NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule
   ],

@@ -10,13 +10,13 @@ export class OrderService {
   constructor(private db:AngularFireDatabase,private http:HttpClient) { }
 
   storeOrder(order){
-  return this.http.post('https://76c328b6.ngrok.io/order',order);
+  return this.http.post('https://gscditu.com/api/order',order);
   }
   showbeneficiaryOrder(){
-    return this.http.get('https://76c328b6.ngrok.io/beneficiary/orders');
+    return this.http.get('https://gscditu.com/api/beneficiary/orders');
   }
   notification(){
-    return this.http.get('https://76c328b6.ngrok.io/donor/orders');
+    return this.http.get('https://gscditu.com/api/donor/orders');
   }
   //donor/orders
   

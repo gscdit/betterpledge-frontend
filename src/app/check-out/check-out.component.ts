@@ -7,7 +7,6 @@ import { ProductsService } from '../Service/products.service';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { NgProgress } from 'ngx-progressbar';
 import { Title } from '@angular/platform-browser';
-import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
 
 @Component({
   selector: 'app-check-out',
@@ -37,8 +36,9 @@ export class CheckOutComponent implements OnInit, AfterContentInit {
         this.product_ids = Object.keys(cart.items);
         this.productSubscription = this.ps.getAllWithZero().subscribe(res => {
           for (let product in res) {
+            console.log(res)
             console.log(res[product].quantity);
-            if (this.getQuantity(res[product]) > res[product].quantity) {
+            if (this.getQuantity(res[product]) > res[product].quantity||res[product].expiry===0) {
               this.delete(res[product]);
             }
           }

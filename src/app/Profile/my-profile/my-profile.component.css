@@ -11,6 +11,17 @@
 .propic {
     border-radius: 50%;
 }
+
+.dark-modal .modal-content {
+  background-color: #292b2c;
+  color: white;
+}
+.dark-modal .close {
+  color: white;
+}
+.light-blue-backdrop {
+  background-color: #5cb3fd;
+}
 @media screen and (min-width: 0px) and (max-width: 400px) {
   .more-info { display: none; }   /* hide it elsewhere */
 }

@@ -71,6 +71,7 @@ export class AllComponent implements OnInit, OnDestroy, AfterContentInit {
         params => {
           //loader
           this.loader = false;
+
           this.type = params.get('type');
           this.searchProduct = this.filteredProduct = (this.type) ?
             this.product.filter(p => p.type === this.type) : this.product;
@@ -79,7 +80,7 @@ export class AllComponent implements OnInit, OnDestroy, AfterContentInit {
             this.product_ids = Object.keys(this.shoppingCart.items);
             for (let product in this.filteredProduct) {
               console.log(this.filteredProduct[product].quantity);
-              if (this.getQuantity(this.filteredProduct[product]) > this.filteredProduct[product].quantity) {
+              if (this.getQuantity(this.filteredProduct[product]) > this.filteredProduct[product].quantity || this.filteredProduct[product].expiry==='0') {
                 this.delete(this.filteredProduct[product]);
               }
             }

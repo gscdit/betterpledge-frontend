@@ -32,7 +32,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy,AfterContentInit
           this.product=res;
             for(let product in res ){
               console.log(res[product].quantity);
-              if(this.getQuantity(res[product])>res[product].quantity){
+              if(this.getQuantity(res[product])>res[product].quantity||res[product].expiry===0){
                   this.delete(res[product]);
               }}  
             }

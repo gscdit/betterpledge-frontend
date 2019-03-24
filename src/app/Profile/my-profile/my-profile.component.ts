@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterContentInit, OnDestroy, ViewChild, ElementRef,ChangeDetectionStrategy } from '@angular/core';
 import { AuthenticateService } from '../../Service/authentication.service';
 import { Router, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -7,6 +7,7 @@ import { NgProgress } from 'ngx-progressbar';
 import { Subscription } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 import { NgoVerificationService } from './../../Service/ngo-verification.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-my-profile',
@@ -22,7 +23,8 @@ export class MyProfileComponent implements OnInit,AfterContentInit,OnDestroy {
 
   constructor(public authenticateService: AuthenticateService, private router: Router, 
     private httpService: HttpService, private progressService: NgProgress,
-    private titleService:Title,private ngoService: NgoVerificationService) { }
+    private titleService:Title,private ngoService: NgoVerificationService
+    ,private modal:NgbModal) { }
 
   ngAfterContentInit() {
     this.router.events
@@ -39,7 +41,11 @@ export class MyProfileComponent implements OnInit,AfterContentInit,OnDestroy {
           this.progressService.done();
         }
       });
-  }
+    }
+    
+  @ViewChild('content') content:ElementRef;
+ 
+  
 
   ngOnInit() {
     console.log(this.authenticateService.currentUser())
@@ -47,14 +53,23 @@ export class MyProfileComponent implements OnInit,AfterContentInit,OnDestroy {
    this.profileSubs= this.httpService.getProfile().subscribe(res => {
       this.title = res['user']
       console.log(res['user'])
+      if(this.authenticateService.currentUser().status===0)
+      this.openVerticallyCentered(this.content)
     })
   }
+
+  close(){
+    this.modal.dismissAll('Close click');
+  }
+
+
 
   onEdit() {
     this.edit = !this.edit;
   }
 
   errorshow = false;
+
 
   onSave(form: NgForm) {
     console.log(form.value);
@@ -75,7 +90,12 @@ export class MyProfileComponent implements OnInit,AfterContentInit,OnDestroy {
    this.ngoService.sendDetails(value.value).subscribe(res=>{
      console.log(res['token'])
      sessionStorage.setItem('token',res['token'])
+     this.close()
    })
+  }
+
+  openVerticallyCentered(content) {
+    this.modal.open(content, { centered: true });
   }
 
   ngOnDestroy(){

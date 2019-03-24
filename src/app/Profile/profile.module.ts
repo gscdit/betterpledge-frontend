@@ -8,6 +8,7 @@ import { ProfileRoutingModule } from "./profile-routing.module";
 import { ProfileComponent } from "./profile.component";
 import { FormsModule } from "@angular/forms";
 import { NotificationComponent } from './notification/notification.component';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
     declarations:[
@@ -20,6 +21,7 @@ import { NotificationComponent } from './notification/notification.component';
     CommonModule,
     NgProgressModule,
     CoreModule,
+    NgbModule,
     FormsModule,
     ProfileRoutingModule
     ]

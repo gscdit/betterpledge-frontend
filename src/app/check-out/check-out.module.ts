@@ -6,6 +6,7 @@ import { CheckOutComponent } from "./check-out.component";
 import { CheckOutRoutingModule } from "./check-out-routing.module";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
     declarations:[
@@ -17,6 +18,7 @@ import { RouterModule } from "@angular/router";
     CoreModule,
     FormsModule,
     RouterModule,
+    NgbModule,
     CheckOutRoutingModule
     ]
 })
