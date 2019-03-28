@@ -11,7 +11,7 @@ const appRoutes: Routes = [
   {path:'donor',loadChildren:'./Donor/donor.module#DonorModule'},
   {path:'check-out',loadChildren:'./check-out/check-out.module#CheckOutModule'},
   {path:'user',loadChildren:'./Authentication/authentication.module#AuthenticateModule'},
-  {path:'betterpledge',loadChildren:'./Extra/extra.module#ExtraModule'},
+  {path:'view',loadChildren:'./Extra/extra.module#ExtraModule'},
   {path:'**',component:NotFoundComponent}
 ];
 @NgModule({
