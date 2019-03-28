@@ -70,8 +70,10 @@ export class CheckOutComponent implements OnInit, AfterContentInit {
    }
 
   openVerticallyCentered(content) {
-   
-    this.modalService.open(content, { centered: true });
+    this.progressService.start();
+    this.progressService.set(0.1);
+    this.progressService.inc(0.2);
+    // this.modalService.open(content, { centered: true });
     let data = [];
     for (let product in this.product_ids)
       data.push(this.cart$.items[this.product_ids[product]])
@@ -84,7 +86,11 @@ export class CheckOutComponent implements OnInit, AfterContentInit {
       console.log(res);
       this.cartService.clearCart();
       this.modalService.open(content, { centered: true });
-    });
+      this.progressService.done();
+    }, error=>{
+      this.progressService.done();
+    }
+    );
   }
 
   delete(product) {
@@ -103,7 +109,6 @@ export class CheckOutComponent implements OnInit, AfterContentInit {
     this.subscription.unsubscribe();
     if (this.cart$ && this.cart$.items)
       this.productSubscription.unsubscribe();
-       
   }
 
   

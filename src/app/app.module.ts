@@ -13,7 +13,7 @@ import { ShoppingCartService } from './Service/shopping-cart.service';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { environment } from 'src/environments/environment';
+// import { environment } from 'src/environments/environment';
 import { OrderService } from './Service/order.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DonorGuard } from './donor.guard';
@@ -22,6 +22,8 @@ import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './Extra/404/404.component';
 import { NgProgressModule } from 'ngx-progressbar';
 import { NgoVerificationService } from './Service/ngo-verification.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { NgoVerificationService } from './Service/ngo-verification.service';
     HttpModule,
     NgProgressModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
 
   providers: [HttpService, OrderService, AuthenticateService, AuthGuard, DonorGuard, BeneficiaryGuard,NgoVerificationService, ShoppingCartService, {

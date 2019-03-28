@@ -86,25 +86,25 @@
   }
   .icon-cards__item:nth-child(1) {
 
-    background-image: url("http://placehold.it/100");
+    /* background-image: url("http://placehold.it/100"); */
     -webkit-transform: rotateY(0) translateZ(182px);
             transform: rotateY(0) translateZ(182px);
   }
   .icon-cards__item:nth-child(2) {
  
-    background-image: url("http://placehold.it/100");
+    /* background-image: url("http://placehold.it/100"); */
     -webkit-transform: rotateY(120deg) translateZ(182px);
             transform: rotateY(120deg) translateZ(182px);
   }
   .icon-cards__item:nth-child(3) {
 
-    background-image: url("http://placehold.it/100");
+    /* background-image: url("http://placehold.it/100"); */
     -webkit-transform: rotateY(240deg) translateZ(182px);
             transform: rotateY(240deg) translateZ(182px);
   }
   .icon-cards__item:nth-child(4) {
 
-    background-image: url("http://placehold.it/100");
+    /* background-image: url("http://placehold.it/100"); */
     -webkit-transform: rotateY(240deg) translateZ(182px);
             transform: rotateY(240deg) translateZ(182px);
   }

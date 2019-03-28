@@ -31,6 +31,6 @@ import { RouterModule } from "@angular/router";
         RouterModule,
         CoreModule
     ],
-    providers: [HttpService,AuthenticateService ]
+    providers: [ ]
 })
 export class AuthenticateModule{}
