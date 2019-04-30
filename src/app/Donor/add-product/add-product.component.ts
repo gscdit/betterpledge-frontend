@@ -87,7 +87,7 @@ export class AddProductComponent implements OnInit, AfterContentInit,OnDestroy {
         const uploadData = new FormData();
         uploadData.append('file', this.selectedFile, this.selectedFile.name);
         console.log(uploadData);
-        this.http.post('https://obv53599.pythonanywhere.com/uploadimage', uploadData)
+        this.http.post('https://gscditu.com/api/uploadimage', uploadData)
           .subscribe(
             res => {
               this.progressService.done();
