@@ -54,7 +54,7 @@
       </div>
         <p>Expiry Time</p>
         <div class="input-group mb-3">
-          <input #expiry="ngModel" name="expiry"  pattern="^[1-9]+[0-9]*$" maxlength="3" [(ngModel)]="product.expiry" type="text" class="form-control" pattern="" aria-label="The listing will expire in XX hours">
+          <input #expiry="ngModel" name="expiry"  pattern="^[1-9]+[0-9]*$" maxlength="3" [(ngModel)]="product.expiry" type="text" class="form-control" pattern="" aria-label="The listing will expire in XX hours" required>
           <div class="input-group-append">
             <span class="input-group-text">Hrs.</span>
           </div>
